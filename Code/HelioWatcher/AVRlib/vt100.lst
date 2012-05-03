@@ -1,0 +1,1067 @@
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/cc1Vnkpa.s 			page 1
+
+
+   1               		.file	"vt100.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+   8               		.section	.debug_abbrev,"",@progbits
+   9               	.Ldebug_abbrev0:
+  10               		.section	.debug_info,"",@progbits
+  11               	.Ldebug_info0:
+  12               		.section	.debug_line,"",@progbits
+  13               	.Ldebug_line0:
+  14               		.text
+  15               	.Ltext0:
+  16               	.global	vt100SetCursorPos
+  17               		.type	vt100SetCursorPos, @function
+  18               	vt100SetCursorPos:
+  19               	.LFB6:
+  20               	.LM1:
+  21               	.LVL0:
+  22               	/* prologue: function */
+  23               	/* frame size = 0 */
+  24               	.LM2:
+  25 0000 2DB7      		in r18,__SP_L__
+  26 0002 3EB7      		in r19,__SP_H__
+  27 0004 2750      		subi r18,lo8(-(-7))
+  28 0006 3040      		sbci r19,hi8(-(-7))
+  29 0008 0FB6      		in __tmp_reg__,__SREG__
+  30 000a F894      		cli
+  31 000c 3EBF      		out __SP_H__,r19
+  32 000e 0FBE      		out __SREG__,__tmp_reg__
+  33 0010 2DBF      		out __SP_L__,r18
+  34 0012 EDB7      		in r30,__SP_L__
+  35 0014 FEB7      		in r31,__SP_H__
+  36 0016 3196      		adiw r30,1
+  37 0018 91E0      		ldi r25,lo8(1)
+  38 001a ADB7      		in r26,__SP_L__
+  39 001c BEB7      		in r27,__SP_H__
+  40 001e 1196      		adiw r26,1
+  41 0020 9C93      		st X,r25
+  42 0022 20E0      		ldi r18,lo8(__c.1414)
+  43 0024 30E0      		ldi r19,hi8(__c.1414)
+  44 0026 3283      		std Z+2,r19
+  45 0028 2183      		std Z+1,r18
+  46 002a 8383      		std Z+3,r24
+  47 002c 1482      		std Z+4,__zero_reg__
+  48 002e 6583      		std Z+5,r22
+  49 0030 1682      		std Z+6,__zero_reg__
+  50 0032 0E94 0000 		call rprintf1RamRom
+  51               	.LVL1:
+  52 0036 2DB7      		in r18,__SP_L__
+  53 0038 3EB7      		in r19,__SP_H__
+  54 003a 295F      		subi r18,lo8(-(7))
+  55 003c 3F4F      		sbci r19,hi8(-(7))
+  56 003e 0FB6      		in __tmp_reg__,__SREG__
+  57 0040 F894      		cli
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/cc1Vnkpa.s 			page 2
+
+
+  58 0042 3EBF      		out __SP_H__,r19
+  59 0044 0FBE      		out __SREG__,__tmp_reg__
+  60 0046 2DBF      		out __SP_L__,r18
+  61               	/* epilogue start */
+  62               	.LM3:
+  63 0048 0895      		ret
+  64               	.LFE6:
+  65               		.size	vt100SetCursorPos, .-vt100SetCursorPos
+  66               	.global	vt100SetCursorMode
+  67               		.type	vt100SetCursorMode, @function
+  68               	vt100SetCursorMode:
+  69               	.LFB5:
+  70               	.LM4:
+  71               	.LVL2:
+  72               	/* prologue: function */
+  73               	/* frame size = 0 */
+  74               	.LM5:
+  75 004a 8823      		tst r24
+  76 004c 01F0      		breq .L4
+  77               	.LM6:
+  78 004e 00D0      		rcall .
+  79 0050 0F92      		push __tmp_reg__
+  80 0052 81E0      		ldi r24,lo8(1)
+  81               	.LVL3:
+  82 0054 EDB7      		in r30,__SP_L__
+  83 0056 FEB7      		in r31,__SP_H__
+  84 0058 8183      		std Z+1,r24
+  85 005a 80E0      		ldi r24,lo8(__c.1406)
+  86 005c 90E0      		ldi r25,hi8(__c.1406)
+  87 005e 00C0      		rjmp .L7
+  88               	.LVL4:
+  89               	.L4:
+  90               	.LM7:
+  91 0060 00D0      		rcall .
+  92 0062 0F92      		push __tmp_reg__
+  93 0064 81E0      		ldi r24,lo8(1)
+  94               	.LVL5:
+  95 0066 EDB7      		in r30,__SP_L__
+  96 0068 FEB7      		in r31,__SP_H__
+  97 006a 8183      		std Z+1,r24
+  98 006c 80E0      		ldi r24,lo8(__c.1408)
+  99 006e 90E0      		ldi r25,hi8(__c.1408)
+ 100               	.L7:
+ 101 0070 9383      		std Z+3,r25
+ 102 0072 8283      		std Z+2,r24
+ 103 0074 0E94 0000 		call rprintf1RamRom
+ 104 0078 0F90      		pop __tmp_reg__
+ 105 007a 0F90      		pop __tmp_reg__
+ 106 007c 0F90      		pop __tmp_reg__
+ 107 007e 0895      		ret
+ 108               	.LFE5:
+ 109               		.size	vt100SetCursorMode, .-vt100SetCursorMode
+ 110               	.global	vt100SetAttr
+ 111               		.type	vt100SetAttr, @function
+ 112               	vt100SetAttr:
+ 113               	.LFB4:
+ 114               	.LM8:
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/cc1Vnkpa.s 			page 3
+
+
+ 115               	.LVL6:
+ 116               	/* prologue: function */
+ 117               	/* frame size = 0 */
+ 118               	.LM9:
+ 119 0080 00D0      		rcall .
+ 120 0082 00D0      		rcall .
+ 121 0084 0F92      		push __tmp_reg__
+ 122 0086 EDB7      		in r30,__SP_L__
+ 123 0088 FEB7      		in r31,__SP_H__
+ 124 008a 3196      		adiw r30,1
+ 125 008c 91E0      		ldi r25,lo8(1)
+ 126 008e ADB7      		in r26,__SP_L__
+ 127 0090 BEB7      		in r27,__SP_H__
+ 128 0092 1196      		adiw r26,1
+ 129 0094 9C93      		st X,r25
+ 130 0096 20E0      		ldi r18,lo8(__c.1400)
+ 131 0098 30E0      		ldi r19,hi8(__c.1400)
+ 132 009a 3283      		std Z+2,r19
+ 133 009c 2183      		std Z+1,r18
+ 134 009e 8383      		std Z+3,r24
+ 135 00a0 1482      		std Z+4,__zero_reg__
+ 136 00a2 0E94 0000 		call rprintf1RamRom
+ 137               	.LVL7:
+ 138 00a6 0F90      		pop __tmp_reg__
+ 139 00a8 0F90      		pop __tmp_reg__
+ 140 00aa 0F90      		pop __tmp_reg__
+ 141 00ac 0F90      		pop __tmp_reg__
+ 142 00ae 0F90      		pop __tmp_reg__
+ 143               	/* epilogue start */
+ 144               	.LM10:
+ 145 00b0 0895      		ret
+ 146               	.LFE4:
+ 147               		.size	vt100SetAttr, .-vt100SetAttr
+ 148               	.global	vt100ClearScreen
+ 149               		.type	vt100ClearScreen, @function
+ 150               	vt100ClearScreen:
+ 151               	.LFB3:
+ 152               	.LM11:
+ 153               	/* prologue: function */
+ 154               	/* frame size = 0 */
+ 155               	.LM12:
+ 156 00b2 80E0      		ldi r24,lo8(__c.1395)
+ 157 00b4 90E0      		ldi r25,hi8(__c.1395)
+ 158 00b6 0E94 0000 		call rprintfProgStr
+ 159               	/* epilogue start */
+ 160               	.LM13:
+ 161 00ba 0895      		ret
+ 162               	.LFE3:
+ 163               		.size	vt100ClearScreen, .-vt100ClearScreen
+ 164               	.global	vt100Init
+ 165               		.type	vt100Init, @function
+ 166               	vt100Init:
+ 167               	.LFB2:
+ 168               	.LM14:
+ 169               	/* prologue: function */
+ 170               	/* frame size = 0 */
+ 171               	.LM15:
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/cc1Vnkpa.s 			page 4
+
+
+ 172 00bc 80E0      		ldi r24,lo8(__c.1390)
+ 173 00be 90E0      		ldi r25,hi8(__c.1390)
+ 174 00c0 0E94 0000 		call rprintfProgStr
+ 175               	/* epilogue start */
+ 176               	.LM16:
+ 177 00c4 0895      		ret
+ 178               	.LFE2:
+ 179               		.size	vt100Init, .-vt100Init
+ 180               		.section	.progmem.data,"a",@progbits
+ 181               		.type	__c.1414, @object
+ 182               		.size	__c.1414, 9
+ 183               	__c.1414:
+ 184 0000 1B5B 2564 		.string	"\033[%d;%dH"
+ 184      3B25 6448 
+ 184      00
+ 185               		.type	__c.1408, @object
+ 186               		.size	__c.1408, 7
+ 187               	__c.1408:
+ 188 0009 1B5B 3F32 		.string	"\033[?25l"
+ 188      356C 00
+ 189               		.type	__c.1406, @object
+ 190               		.size	__c.1406, 7
+ 191               	__c.1406:
+ 192 0010 1B5B 3F32 		.string	"\033[?25h"
+ 192      3568 00
+ 193               		.type	__c.1400, @object
+ 194               		.size	__c.1400, 6
+ 195               	__c.1400:
+ 196 0017 1B5B 2564 		.string	"\033[%dm"
+ 196      6D00 
+ 197               		.type	__c.1395, @object
+ 198               		.size	__c.1395, 5
+ 199               	__c.1395:
+ 200 001d 1B5B 324A 		.string	"\033[2J"
+ 200      00
+ 201               		.type	__c.1390, @object
+ 202               		.size	__c.1390, 3
+ 203               	__c.1390:
+ 204 0022 1B63 00   		.string	"\033c"
+ 205               		.section	.debug_frame,"",@progbits
+ 206               	.Lframe0:
+ 207 0000 0C00 0000 		.long	.LECIE0-.LSCIE0
+ 208               	.LSCIE0:
+ 209 0004 FFFF FFFF 		.long	0xffffffff
+ 210 0008 01        		.byte	0x1
+ 211 0009 00        		.string	""
+ 212 000a 01        		.uleb128 0x1
+ 213 000b 7F        		.sleb128 -1
+ 214 000c 24        		.byte	0x24
+ 215 000d 0C        		.byte	0xc
+ 216 000e 20        		.uleb128 0x20
+ 217 000f 00        		.uleb128 0x0
+ 218               		.p2align	2
+ 219               	.LECIE0:
+ 220               	.LSFDE0:
+ 221 0010 0C00 0000 		.long	.LEFDE0-.LASFDE0
+ 222               	.LASFDE0:
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/cc1Vnkpa.s 			page 5
+
+
+ 223 0014 0000 0000 		.long	.Lframe0
+ 224 0018 0000 0000 		.long	.LFB6
+ 225 001c 4A00 0000 		.long	.LFE6-.LFB6
+ 226               		.p2align	2
+ 227               	.LEFDE0:
+ 228               	.LSFDE2:
+ 229 0020 0C00 0000 		.long	.LEFDE2-.LASFDE2
+ 230               	.LASFDE2:
+ 231 0024 0000 0000 		.long	.Lframe0
+ 232 0028 0000 0000 		.long	.LFB5
+ 233 002c 3600 0000 		.long	.LFE5-.LFB5
+ 234               		.p2align	2
+ 235               	.LEFDE2:
+ 236               	.LSFDE4:
+ 237 0030 0C00 0000 		.long	.LEFDE4-.LASFDE4
+ 238               	.LASFDE4:
+ 239 0034 0000 0000 		.long	.Lframe0
+ 240 0038 0000 0000 		.long	.LFB4
+ 241 003c 3200 0000 		.long	.LFE4-.LFB4
+ 242               		.p2align	2
+ 243               	.LEFDE4:
+ 244               	.LSFDE6:
+ 245 0040 0C00 0000 		.long	.LEFDE6-.LASFDE6
+ 246               	.LASFDE6:
+ 247 0044 0000 0000 		.long	.Lframe0
+ 248 0048 0000 0000 		.long	.LFB3
+ 249 004c 0A00 0000 		.long	.LFE3-.LFB3
+ 250               		.p2align	2
+ 251               	.LEFDE6:
+ 252               	.LSFDE8:
+ 253 0050 0C00 0000 		.long	.LEFDE8-.LASFDE8
+ 254               	.LASFDE8:
+ 255 0054 0000 0000 		.long	.Lframe0
+ 256 0058 0000 0000 		.long	.LFB2
+ 257 005c 0A00 0000 		.long	.LFE2-.LFB2
+ 258               		.p2align	2
+ 259               	.LEFDE8:
+ 260               		.text
+ 261               	.Letext0:
+ 262               		.section	.debug_loc,"",@progbits
+ 263               	.Ldebug_loc0:
+ 264               	.LLST1:
+ 265 0000 0000 0000 		.long	.LVL0-.Ltext0
+ 266 0004 3600 0000 		.long	.LVL1-.Ltext0
+ 267 0008 0100      		.word	0x1
+ 268 000a 68        		.byte	0x68
+ 269 000b 0000 0000 		.long	0x0
+ 270 000f 0000 0000 		.long	0x0
+ 271               	.LLST2:
+ 272 0013 0000 0000 		.long	.LVL0-.Ltext0
+ 273 0017 3600 0000 		.long	.LVL1-.Ltext0
+ 274 001b 0100      		.word	0x1
+ 275 001d 66        		.byte	0x66
+ 276 001e 0000 0000 		.long	0x0
+ 277 0022 0000 0000 		.long	0x0
+ 278               	.LLST4:
+ 279 0026 4A00 0000 		.long	.LVL2-.Ltext0
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/cc1Vnkpa.s 			page 6
+
+
+ 280 002a 5400 0000 		.long	.LVL3-.Ltext0
+ 281 002e 0100      		.word	0x1
+ 282 0030 68        		.byte	0x68
+ 283 0031 6000 0000 		.long	.LVL4-.Ltext0
+ 284 0035 6600 0000 		.long	.LVL5-.Ltext0
+ 285 0039 0100      		.word	0x1
+ 286 003b 68        		.byte	0x68
+ 287 003c 0000 0000 		.long	0x0
+ 288 0040 0000 0000 		.long	0x0
+ 289               	.LLST6:
+ 290 0044 8000 0000 		.long	.LVL6-.Ltext0
+ 291 0048 A600 0000 		.long	.LVL7-.Ltext0
+ 292 004c 0100      		.word	0x1
+ 293 004e 68        		.byte	0x68
+ 294 004f 0000 0000 		.long	0x0
+ 295 0053 0000 0000 		.long	0x0
+ 296               		.section	.debug_info
+ 297 0000 0C02 0000 		.long	0x20c
+ 298 0004 0200      		.word	0x2
+ 299 0006 0000 0000 		.long	.Ldebug_abbrev0
+ 300 000a 04        		.byte	0x4
+ 301 000b 01        		.uleb128 0x1
+ 302 000c 0000 0000 		.long	.LASF18
+ 303 0010 01        		.byte	0x1
+ 304 0011 0000 0000 		.long	.LASF19
+ 305 0015 0000 0000 		.long	.Ltext0
+ 306 0019 0000 0000 		.long	.Letext0
+ 307 001d 0000 0000 		.long	.Ldebug_line0
+ 308 0021 02        		.uleb128 0x2
+ 309 0022 01        		.byte	0x1
+ 310 0023 06        		.byte	0x6
+ 311 0024 0000 0000 		.long	.LASF0
+ 312 0028 02        		.uleb128 0x2
+ 313 0029 01        		.byte	0x1
+ 314 002a 08        		.byte	0x8
+ 315 002b 0000 0000 		.long	.LASF1
+ 316 002f 03        		.uleb128 0x3
+ 317 0030 02        		.byte	0x2
+ 318 0031 05        		.byte	0x5
+ 319 0032 696E 7400 		.string	"int"
+ 320 0036 02        		.uleb128 0x2
+ 321 0037 02        		.byte	0x2
+ 322 0038 07        		.byte	0x7
+ 323 0039 0000 0000 		.long	.LASF2
+ 324 003d 02        		.uleb128 0x2
+ 325 003e 04        		.byte	0x4
+ 326 003f 05        		.byte	0x5
+ 327 0040 0000 0000 		.long	.LASF3
+ 328 0044 02        		.uleb128 0x2
+ 329 0045 04        		.byte	0x4
+ 330 0046 07        		.byte	0x7
+ 331 0047 0000 0000 		.long	.LASF4
+ 332 004b 02        		.uleb128 0x2
+ 333 004c 08        		.byte	0x8
+ 334 004d 05        		.byte	0x5
+ 335 004e 0000 0000 		.long	.LASF5
+ 336 0052 02        		.uleb128 0x2
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/cc1Vnkpa.s 			page 7
+
+
+ 337 0053 08        		.byte	0x8
+ 338 0054 07        		.byte	0x7
+ 339 0055 0000 0000 		.long	.LASF6
+ 340 0059 04        		.uleb128 0x4
+ 341 005a 01        		.byte	0x1
+ 342 005b 06        		.byte	0x6
+ 343 005c 04        		.uleb128 0x4
+ 344 005d 01        		.byte	0x1
+ 345 005e 08        		.byte	0x8
+ 346 005f 05        		.uleb128 0x5
+ 347 0060 7530 3800 		.string	"u08"
+ 348 0064 02        		.byte	0x2
+ 349 0065 20        		.byte	0x20
+ 350 0066 2800 0000 		.long	0x28
+ 351 006a 02        		.uleb128 0x2
+ 352 006b 02        		.byte	0x2
+ 353 006c 07        		.byte	0x7
+ 354 006d 0000 0000 		.long	.LASF7
+ 355 0071 02        		.uleb128 0x2
+ 356 0072 02        		.byte	0x2
+ 357 0073 05        		.byte	0x5
+ 358 0074 0000 0000 		.long	.LASF8
+ 359 0078 02        		.uleb128 0x2
+ 360 0079 01        		.byte	0x1
+ 361 007a 06        		.byte	0x6
+ 362 007b 0000 0000 		.long	.LASF9
+ 363 007f 06        		.uleb128 0x6
+ 364 0080 01        		.byte	0x1
+ 365 0081 0000 0000 		.long	.LASF11
+ 366 0085 01        		.byte	0x1
+ 367 0086 41        		.byte	0x41
+ 368 0087 01        		.byte	0x1
+ 369 0088 0000 0000 		.long	.LFB6
+ 370 008c 0000 0000 		.long	.LFE6
+ 371 0090 02        		.byte	0x2
+ 372 0091 90        		.byte	0x90
+ 373 0092 20        		.uleb128 0x20
+ 374 0093 C700 0000 		.long	0xc7
+ 375 0097 07        		.uleb128 0x7
+ 376 0098 0000 0000 		.long	.LASF10
+ 377 009c 01        		.byte	0x1
+ 378 009d 40        		.byte	0x40
+ 379 009e 5F00 0000 		.long	0x5f
+ 380 00a2 0000 0000 		.long	.LLST1
+ 381 00a6 08        		.uleb128 0x8
+ 382 00a7 636F 6C00 		.string	"col"
+ 383 00ab 01        		.byte	0x1
+ 384 00ac 40        		.byte	0x40
+ 385 00ad 5F00 0000 		.long	0x5f
+ 386 00b1 0000 0000 		.long	.LLST2
+ 387 00b5 09        		.uleb128 0x9
+ 388 00b6 5F5F 6300 		.string	"__c"
+ 389 00ba 01        		.byte	0x1
+ 390 00bb 43        		.byte	0x43
+ 391 00bc 0A02 0000 		.long	0x20a
+ 392 00c0 05        		.byte	0x5
+ 393 00c1 03        		.byte	0x3
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/cc1Vnkpa.s 			page 8
+
+
+ 394 00c2 0000 0000 		.long	__c.1414
+ 395 00c6 00        		.byte	0x0
+ 396 00c7 06        		.uleb128 0x6
+ 397 00c8 01        		.byte	0x1
+ 398 00c9 0000 0000 		.long	.LASF12
+ 399 00cd 01        		.byte	0x1
+ 400 00ce 37        		.byte	0x37
+ 401 00cf 01        		.byte	0x1
+ 402 00d0 0000 0000 		.long	.LFB5
+ 403 00d4 0000 0000 		.long	.LFE5
+ 404 00d8 02        		.byte	0x2
+ 405 00d9 90        		.byte	0x90
+ 406 00da 20        		.uleb128 0x20
+ 407 00db 1101 0000 		.long	0x111
+ 408 00df 07        		.uleb128 0x7
+ 409 00e0 0000 0000 		.long	.LASF13
+ 410 00e4 01        		.byte	0x1
+ 411 00e5 36        		.byte	0x36
+ 412 00e6 5F00 0000 		.long	0x5f
+ 413 00ea 0000 0000 		.long	.LLST4
+ 414 00ee 09        		.uleb128 0x9
+ 415 00ef 5F5F 6300 		.string	"__c"
+ 416 00f3 01        		.byte	0x1
+ 417 00f4 3A        		.byte	0x3a
+ 418 00f5 F001 0000 		.long	0x1f0
+ 419 00f9 05        		.byte	0x5
+ 420 00fa 03        		.byte	0x3
+ 421 00fb 0000 0000 		.long	__c.1406
+ 422 00ff 09        		.uleb128 0x9
+ 423 0100 5F5F 6300 		.string	"__c"
+ 424 0104 01        		.byte	0x1
+ 425 0105 3D        		.byte	0x3d
+ 426 0106 F501 0000 		.long	0x1f5
+ 427 010a 05        		.byte	0x5
+ 428 010b 03        		.byte	0x3
+ 429 010c 0000 0000 		.long	__c.1408
+ 430 0110 00        		.byte	0x0
+ 431 0111 06        		.uleb128 0x6
+ 432 0112 01        		.byte	0x1
+ 433 0113 0000 0000 		.long	.LASF14
+ 434 0117 01        		.byte	0x1
+ 435 0118 31        		.byte	0x31
+ 436 0119 01        		.byte	0x1
+ 437 011a 0000 0000 		.long	.LFB4
+ 438 011e 0000 0000 		.long	.LFE4
+ 439 0122 02        		.byte	0x2
+ 440 0123 90        		.byte	0x90
+ 441 0124 20        		.uleb128 0x20
+ 442 0125 4A01 0000 		.long	0x14a
+ 443 0129 07        		.uleb128 0x7
+ 444 012a 0000 0000 		.long	.LASF15
+ 445 012e 01        		.byte	0x1
+ 446 012f 30        		.byte	0x30
+ 447 0130 5F00 0000 		.long	0x5f
+ 448 0134 0000 0000 		.long	.LLST6
+ 449 0138 09        		.uleb128 0x9
+ 450 0139 5F5F 6300 		.string	"__c"
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/cc1Vnkpa.s 			page 9
+
+
+ 451 013d 01        		.byte	0x1
+ 452 013e 33        		.byte	0x33
+ 453 013f DB01 0000 		.long	0x1db
+ 454 0143 05        		.byte	0x5
+ 455 0144 03        		.byte	0x3
+ 456 0145 0000 0000 		.long	__c.1400
+ 457 0149 00        		.byte	0x0
+ 458 014a 06        		.uleb128 0x6
+ 459 014b 01        		.byte	0x1
+ 460 014c 0000 0000 		.long	.LASF16
+ 461 0150 01        		.byte	0x1
+ 462 0151 2B        		.byte	0x2b
+ 463 0152 01        		.byte	0x1
+ 464 0153 0000 0000 		.long	.LFB3
+ 465 0157 0000 0000 		.long	.LFE3
+ 466 015b 02        		.byte	0x2
+ 467 015c 90        		.byte	0x90
+ 468 015d 20        		.uleb128 0x20
+ 469 015e 7401 0000 		.long	0x174
+ 470 0162 09        		.uleb128 0x9
+ 471 0163 5F5F 6300 		.string	"__c"
+ 472 0167 01        		.byte	0x1
+ 473 0168 2D        		.byte	0x2d
+ 474 0169 C601 0000 		.long	0x1c6
+ 475 016d 05        		.byte	0x5
+ 476 016e 03        		.byte	0x3
+ 477 016f 0000 0000 		.long	__c.1395
+ 478 0173 00        		.byte	0x0
+ 479 0174 06        		.uleb128 0x6
+ 480 0175 01        		.byte	0x1
+ 481 0176 0000 0000 		.long	.LASF17
+ 482 017a 01        		.byte	0x1
+ 483 017b 24        		.byte	0x24
+ 484 017c 01        		.byte	0x1
+ 485 017d 0000 0000 		.long	.LFB2
+ 486 0181 0000 0000 		.long	.LFE2
+ 487 0185 02        		.byte	0x2
+ 488 0186 90        		.byte	0x90
+ 489 0187 20        		.uleb128 0x20
+ 490 0188 9E01 0000 		.long	0x19e
+ 491 018c 09        		.uleb128 0x9
+ 492 018d 5F5F 6300 		.string	"__c"
+ 493 0191 01        		.byte	0x1
+ 494 0192 27        		.byte	0x27
+ 495 0193 B101 0000 		.long	0x1b1
+ 496 0197 05        		.byte	0x5
+ 497 0198 03        		.byte	0x3
+ 498 0199 0000 0000 		.long	__c.1390
+ 499 019d 00        		.byte	0x0
+ 500 019e 0A        		.uleb128 0xa
+ 501 019f 7800 0000 		.long	0x78
+ 502 01a3 AE01 0000 		.long	0x1ae
+ 503 01a7 0B        		.uleb128 0xb
+ 504 01a8 AE01 0000 		.long	0x1ae
+ 505 01ac 02        		.byte	0x2
+ 506 01ad 00        		.byte	0x0
+ 507 01ae 04        		.uleb128 0x4
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/cc1Vnkpa.s 			page 10
+
+
+ 508 01af 02        		.byte	0x2
+ 509 01b0 07        		.byte	0x7
+ 510 01b1 0C        		.uleb128 0xc
+ 511 01b2 9E01 0000 		.long	0x19e
+ 512 01b6 0A        		.uleb128 0xa
+ 513 01b7 7800 0000 		.long	0x78
+ 514 01bb C601 0000 		.long	0x1c6
+ 515 01bf 0B        		.uleb128 0xb
+ 516 01c0 AE01 0000 		.long	0x1ae
+ 517 01c4 04        		.byte	0x4
+ 518 01c5 00        		.byte	0x0
+ 519 01c6 0C        		.uleb128 0xc
+ 520 01c7 B601 0000 		.long	0x1b6
+ 521 01cb 0A        		.uleb128 0xa
+ 522 01cc 7800 0000 		.long	0x78
+ 523 01d0 DB01 0000 		.long	0x1db
+ 524 01d4 0B        		.uleb128 0xb
+ 525 01d5 AE01 0000 		.long	0x1ae
+ 526 01d9 05        		.byte	0x5
+ 527 01da 00        		.byte	0x0
+ 528 01db 0C        		.uleb128 0xc
+ 529 01dc CB01 0000 		.long	0x1cb
+ 530 01e0 0A        		.uleb128 0xa
+ 531 01e1 7800 0000 		.long	0x78
+ 532 01e5 F001 0000 		.long	0x1f0
+ 533 01e9 0B        		.uleb128 0xb
+ 534 01ea AE01 0000 		.long	0x1ae
+ 535 01ee 06        		.byte	0x6
+ 536 01ef 00        		.byte	0x0
+ 537 01f0 0C        		.uleb128 0xc
+ 538 01f1 E001 0000 		.long	0x1e0
+ 539 01f5 0C        		.uleb128 0xc
+ 540 01f6 E001 0000 		.long	0x1e0
+ 541 01fa 0A        		.uleb128 0xa
+ 542 01fb 7800 0000 		.long	0x78
+ 543 01ff 0A02 0000 		.long	0x20a
+ 544 0203 0B        		.uleb128 0xb
+ 545 0204 AE01 0000 		.long	0x1ae
+ 546 0208 08        		.byte	0x8
+ 547 0209 00        		.byte	0x0
+ 548 020a 0C        		.uleb128 0xc
+ 549 020b FA01 0000 		.long	0x1fa
+ 550 020f 00        		.byte	0x0
+ 551               		.section	.debug_abbrev
+ 552 0000 01        		.uleb128 0x1
+ 553 0001 11        		.uleb128 0x11
+ 554 0002 01        		.byte	0x1
+ 555 0003 25        		.uleb128 0x25
+ 556 0004 0E        		.uleb128 0xe
+ 557 0005 13        		.uleb128 0x13
+ 558 0006 0B        		.uleb128 0xb
+ 559 0007 03        		.uleb128 0x3
+ 560 0008 0E        		.uleb128 0xe
+ 561 0009 11        		.uleb128 0x11
+ 562 000a 01        		.uleb128 0x1
+ 563 000b 12        		.uleb128 0x12
+ 564 000c 01        		.uleb128 0x1
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/cc1Vnkpa.s 			page 11
+
+
+ 565 000d 10        		.uleb128 0x10
+ 566 000e 06        		.uleb128 0x6
+ 567 000f 00        		.byte	0x0
+ 568 0010 00        		.byte	0x0
+ 569 0011 02        		.uleb128 0x2
+ 570 0012 24        		.uleb128 0x24
+ 571 0013 00        		.byte	0x0
+ 572 0014 0B        		.uleb128 0xb
+ 573 0015 0B        		.uleb128 0xb
+ 574 0016 3E        		.uleb128 0x3e
+ 575 0017 0B        		.uleb128 0xb
+ 576 0018 03        		.uleb128 0x3
+ 577 0019 0E        		.uleb128 0xe
+ 578 001a 00        		.byte	0x0
+ 579 001b 00        		.byte	0x0
+ 580 001c 03        		.uleb128 0x3
+ 581 001d 24        		.uleb128 0x24
+ 582 001e 00        		.byte	0x0
+ 583 001f 0B        		.uleb128 0xb
+ 584 0020 0B        		.uleb128 0xb
+ 585 0021 3E        		.uleb128 0x3e
+ 586 0022 0B        		.uleb128 0xb
+ 587 0023 03        		.uleb128 0x3
+ 588 0024 08        		.uleb128 0x8
+ 589 0025 00        		.byte	0x0
+ 590 0026 00        		.byte	0x0
+ 591 0027 04        		.uleb128 0x4
+ 592 0028 24        		.uleb128 0x24
+ 593 0029 00        		.byte	0x0
+ 594 002a 0B        		.uleb128 0xb
+ 595 002b 0B        		.uleb128 0xb
+ 596 002c 3E        		.uleb128 0x3e
+ 597 002d 0B        		.uleb128 0xb
+ 598 002e 00        		.byte	0x0
+ 599 002f 00        		.byte	0x0
+ 600 0030 05        		.uleb128 0x5
+ 601 0031 16        		.uleb128 0x16
+ 602 0032 00        		.byte	0x0
+ 603 0033 03        		.uleb128 0x3
+ 604 0034 08        		.uleb128 0x8
+ 605 0035 3A        		.uleb128 0x3a
+ 606 0036 0B        		.uleb128 0xb
+ 607 0037 3B        		.uleb128 0x3b
+ 608 0038 0B        		.uleb128 0xb
+ 609 0039 49        		.uleb128 0x49
+ 610 003a 13        		.uleb128 0x13
+ 611 003b 00        		.byte	0x0
+ 612 003c 00        		.byte	0x0
+ 613 003d 06        		.uleb128 0x6
+ 614 003e 2E        		.uleb128 0x2e
+ 615 003f 01        		.byte	0x1
+ 616 0040 3F        		.uleb128 0x3f
+ 617 0041 0C        		.uleb128 0xc
+ 618 0042 03        		.uleb128 0x3
+ 619 0043 0E        		.uleb128 0xe
+ 620 0044 3A        		.uleb128 0x3a
+ 621 0045 0B        		.uleb128 0xb
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/cc1Vnkpa.s 			page 12
+
+
+ 622 0046 3B        		.uleb128 0x3b
+ 623 0047 0B        		.uleb128 0xb
+ 624 0048 27        		.uleb128 0x27
+ 625 0049 0C        		.uleb128 0xc
+ 626 004a 11        		.uleb128 0x11
+ 627 004b 01        		.uleb128 0x1
+ 628 004c 12        		.uleb128 0x12
+ 629 004d 01        		.uleb128 0x1
+ 630 004e 40        		.uleb128 0x40
+ 631 004f 0A        		.uleb128 0xa
+ 632 0050 01        		.uleb128 0x1
+ 633 0051 13        		.uleb128 0x13
+ 634 0052 00        		.byte	0x0
+ 635 0053 00        		.byte	0x0
+ 636 0054 07        		.uleb128 0x7
+ 637 0055 05        		.uleb128 0x5
+ 638 0056 00        		.byte	0x0
+ 639 0057 03        		.uleb128 0x3
+ 640 0058 0E        		.uleb128 0xe
+ 641 0059 3A        		.uleb128 0x3a
+ 642 005a 0B        		.uleb128 0xb
+ 643 005b 3B        		.uleb128 0x3b
+ 644 005c 0B        		.uleb128 0xb
+ 645 005d 49        		.uleb128 0x49
+ 646 005e 13        		.uleb128 0x13
+ 647 005f 02        		.uleb128 0x2
+ 648 0060 06        		.uleb128 0x6
+ 649 0061 00        		.byte	0x0
+ 650 0062 00        		.byte	0x0
+ 651 0063 08        		.uleb128 0x8
+ 652 0064 05        		.uleb128 0x5
+ 653 0065 00        		.byte	0x0
+ 654 0066 03        		.uleb128 0x3
+ 655 0067 08        		.uleb128 0x8
+ 656 0068 3A        		.uleb128 0x3a
+ 657 0069 0B        		.uleb128 0xb
+ 658 006a 3B        		.uleb128 0x3b
+ 659 006b 0B        		.uleb128 0xb
+ 660 006c 49        		.uleb128 0x49
+ 661 006d 13        		.uleb128 0x13
+ 662 006e 02        		.uleb128 0x2
+ 663 006f 06        		.uleb128 0x6
+ 664 0070 00        		.byte	0x0
+ 665 0071 00        		.byte	0x0
+ 666 0072 09        		.uleb128 0x9
+ 667 0073 34        		.uleb128 0x34
+ 668 0074 00        		.byte	0x0
+ 669 0075 03        		.uleb128 0x3
+ 670 0076 08        		.uleb128 0x8
+ 671 0077 3A        		.uleb128 0x3a
+ 672 0078 0B        		.uleb128 0xb
+ 673 0079 3B        		.uleb128 0x3b
+ 674 007a 0B        		.uleb128 0xb
+ 675 007b 49        		.uleb128 0x49
+ 676 007c 13        		.uleb128 0x13
+ 677 007d 02        		.uleb128 0x2
+ 678 007e 0A        		.uleb128 0xa
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/cc1Vnkpa.s 			page 13
+
+
+ 679 007f 00        		.byte	0x0
+ 680 0080 00        		.byte	0x0
+ 681 0081 0A        		.uleb128 0xa
+ 682 0082 01        		.uleb128 0x1
+ 683 0083 01        		.byte	0x1
+ 684 0084 49        		.uleb128 0x49
+ 685 0085 13        		.uleb128 0x13
+ 686 0086 01        		.uleb128 0x1
+ 687 0087 13        		.uleb128 0x13
+ 688 0088 00        		.byte	0x0
+ 689 0089 00        		.byte	0x0
+ 690 008a 0B        		.uleb128 0xb
+ 691 008b 21        		.uleb128 0x21
+ 692 008c 00        		.byte	0x0
+ 693 008d 49        		.uleb128 0x49
+ 694 008e 13        		.uleb128 0x13
+ 695 008f 2F        		.uleb128 0x2f
+ 696 0090 0B        		.uleb128 0xb
+ 697 0091 00        		.byte	0x0
+ 698 0092 00        		.byte	0x0
+ 699 0093 0C        		.uleb128 0xc
+ 700 0094 26        		.uleb128 0x26
+ 701 0095 00        		.byte	0x0
+ 702 0096 49        		.uleb128 0x49
+ 703 0097 13        		.uleb128 0x13
+ 704 0098 00        		.byte	0x0
+ 705 0099 00        		.byte	0x0
+ 706 009a 00        		.byte	0x0
+ 707               		.section	.debug_pubnames,"",@progbits
+ 708 0000 6F00 0000 		.long	0x6f
+ 709 0004 0200      		.word	0x2
+ 710 0006 0000 0000 		.long	.Ldebug_info0
+ 711 000a 1002 0000 		.long	0x210
+ 712 000e 7F00 0000 		.long	0x7f
+ 713 0012 7674 3130 		.string	"vt100SetCursorPos"
+ 713      3053 6574 
+ 713      4375 7273 
+ 713      6F72 506F 
+ 713      7300 
+ 714 0024 C700 0000 		.long	0xc7
+ 715 0028 7674 3130 		.string	"vt100SetCursorMode"
+ 715      3053 6574 
+ 715      4375 7273 
+ 715      6F72 4D6F 
+ 715      6465 00
+ 716 003b 1101 0000 		.long	0x111
+ 717 003f 7674 3130 		.string	"vt100SetAttr"
+ 717      3053 6574 
+ 717      4174 7472 
+ 717      00
+ 718 004c 4A01 0000 		.long	0x14a
+ 719 0050 7674 3130 		.string	"vt100ClearScreen"
+ 719      3043 6C65 
+ 719      6172 5363 
+ 719      7265 656E 
+ 719      00
+ 720 0061 7401 0000 		.long	0x174
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/cc1Vnkpa.s 			page 14
+
+
+ 721 0065 7674 3130 		.string	"vt100Init"
+ 721      3049 6E69 
+ 721      7400 
+ 722 006f 0000 0000 		.long	0x0
+ 723               		.section	.debug_aranges,"",@progbits
+ 724 0000 1C00 0000 		.long	0x1c
+ 725 0004 0200      		.word	0x2
+ 726 0006 0000 0000 		.long	.Ldebug_info0
+ 727 000a 04        		.byte	0x4
+ 728 000b 00        		.byte	0x0
+ 729 000c 0000      		.word	0x0
+ 730 000e 0000      		.word	0x0
+ 731 0010 0000 0000 		.long	.Ltext0
+ 732 0014 C600 0000 		.long	.Letext0-.Ltext0
+ 733 0018 0000 0000 		.long	0x0
+ 734 001c 0000 0000 		.long	0x0
+ 735               		.section	.debug_line
+ 736 0000 CA00 0000 		.long	.LELT0-.LSLT0
+ 737               	.LSLT0:
+ 738 0004 0200      		.word	0x2
+ 739 0006 3600 0000 		.long	.LELTP0-.LASLTP0
+ 740               	.LASLTP0:
+ 741 000a 01        		.byte	0x1
+ 742 000b 01        		.byte	0x1
+ 743 000c F6        		.byte	0xf6
+ 744 000d F5        		.byte	0xf5
+ 745 000e 0A        		.byte	0xa
+ 746 000f 00        		.byte	0x0
+ 747 0010 01        		.byte	0x1
+ 748 0011 01        		.byte	0x1
+ 749 0012 01        		.byte	0x1
+ 750 0013 01        		.byte	0x1
+ 751 0014 00        		.byte	0x0
+ 752 0015 00        		.byte	0x0
+ 753 0016 00        		.byte	0x0
+ 754 0017 01        		.byte	0x1
+ 755 0018 433A 5C41 		.ascii	"C:\\AVRlib"
+ 755      5652 6C69 
+ 755      62
+ 756 0021 00        		.byte	0
+ 757 0022 00        		.byte	0x0
+ 758 0023 7674 3130 		.string	"vt100.c"
+ 758      302E 6300 
+ 759 002b 01        		.uleb128 0x1
+ 760 002c 00        		.uleb128 0x0
+ 761 002d 00        		.uleb128 0x0
+ 762 002e 6176 726C 		.string	"avrlibtypes.h"
+ 762      6962 7479 
+ 762      7065 732E 
+ 762      6800 
+ 763 003c 01        		.uleb128 0x1
+ 764 003d 00        		.uleb128 0x0
+ 765 003e 00        		.uleb128 0x0
+ 766 003f 00        		.byte	0x0
+ 767               	.LELTP0:
+ 768 0040 00        		.byte	0x0
+ 769 0041 05        		.uleb128 0x5
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/cc1Vnkpa.s 			page 15
+
+
+ 770 0042 02        		.byte	0x2
+ 771 0043 0000 0000 		.long	.LM1
+ 772 0047 54        		.byte	0x54
+ 773 0048 00        		.byte	0x0
+ 774 0049 05        		.uleb128 0x5
+ 775 004a 02        		.byte	0x2
+ 776 004b 0000 0000 		.long	.LM2
+ 777 004f 16        		.byte	0x16
+ 778 0050 00        		.byte	0x0
+ 779 0051 05        		.uleb128 0x5
+ 780 0052 02        		.byte	0x2
+ 781 0053 0000 0000 		.long	.LM3
+ 782 0057 15        		.byte	0x15
+ 783 0058 00        		.byte	0x0
+ 784 0059 05        		.uleb128 0x5
+ 785 005a 02        		.byte	0x2
+ 786 005b 0000 0000 		.long	.LM4
+ 787 005f 03        		.byte	0x3
+ 788 0060 73        		.sleb128 -13
+ 789 0061 01        		.byte	0x1
+ 790 0062 00        		.byte	0x0
+ 791 0063 05        		.uleb128 0x5
+ 792 0064 02        		.byte	0x2
+ 793 0065 0000 0000 		.long	.LM5
+ 794 0069 15        		.byte	0x15
+ 795 006a 00        		.byte	0x0
+ 796 006b 05        		.uleb128 0x5
+ 797 006c 02        		.byte	0x2
+ 798 006d 0000 0000 		.long	.LM6
+ 799 0071 16        		.byte	0x16
+ 800 0072 00        		.byte	0x0
+ 801 0073 05        		.uleb128 0x5
+ 802 0074 02        		.byte	0x2
+ 803 0075 0000 0000 		.long	.LM7
+ 804 0079 17        		.byte	0x17
+ 805 007a 00        		.byte	0x0
+ 806 007b 05        		.uleb128 0x5
+ 807 007c 02        		.byte	0x2
+ 808 007d 0000 0000 		.long	.LM8
+ 809 0081 03        		.byte	0x3
+ 810 0082 74        		.sleb128 -12
+ 811 0083 01        		.byte	0x1
+ 812 0084 00        		.byte	0x0
+ 813 0085 05        		.uleb128 0x5
+ 814 0086 02        		.byte	0x2
+ 815 0087 0000 0000 		.long	.LM9
+ 816 008b 16        		.byte	0x16
+ 817 008c 00        		.byte	0x0
+ 818 008d 05        		.uleb128 0x5
+ 819 008e 02        		.byte	0x2
+ 820 008f 0000 0000 		.long	.LM10
+ 821 0093 15        		.byte	0x15
+ 822 0094 00        		.byte	0x0
+ 823 0095 05        		.uleb128 0x5
+ 824 0096 02        		.byte	0x2
+ 825 0097 0000 0000 		.long	.LM11
+ 826 009b 0B        		.byte	0xb
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/cc1Vnkpa.s 			page 16
+
+
+ 827 009c 00        		.byte	0x0
+ 828 009d 05        		.uleb128 0x5
+ 829 009e 02        		.byte	0x2
+ 830 009f 0000 0000 		.long	.LM12
+ 831 00a3 16        		.byte	0x16
+ 832 00a4 00        		.byte	0x0
+ 833 00a5 05        		.uleb128 0x5
+ 834 00a6 02        		.byte	0x2
+ 835 00a7 0000 0000 		.long	.LM13
+ 836 00ab 15        		.byte	0x15
+ 837 00ac 00        		.byte	0x0
+ 838 00ad 05        		.uleb128 0x5
+ 839 00ae 02        		.byte	0x2
+ 840 00af 0000 0000 		.long	.LM14
+ 841 00b3 0A        		.byte	0xa
+ 842 00b4 00        		.byte	0x0
+ 843 00b5 05        		.uleb128 0x5
+ 844 00b6 02        		.byte	0x2
+ 845 00b7 0000 0000 		.long	.LM15
+ 846 00bb 17        		.byte	0x17
+ 847 00bc 00        		.byte	0x0
+ 848 00bd 05        		.uleb128 0x5
+ 849 00be 02        		.byte	0x2
+ 850 00bf 0000 0000 		.long	.LM16
+ 851 00c3 15        		.byte	0x15
+ 852 00c4 00        		.byte	0x0
+ 853 00c5 05        		.uleb128 0x5
+ 854 00c6 02        		.byte	0x2
+ 855 00c7 0000 0000 		.long	.Letext0
+ 856 00cb 00        		.byte	0x0
+ 857 00cc 01        		.uleb128 0x1
+ 858 00cd 01        		.byte	0x1
+ 859               	.LELT0:
+ 860 00ce 1600 0000 		.section	.debug_str,"MS",@progbits,1
+ 860      0200 1000 
+ 860      0000 0101 
+ 860      FB0E 0A00 
+ 860      0101 0101 
+ 861               	.LASF16:
+ 862 0000 7674 3130 		.string	"vt100ClearScreen"
+ 862      3043 6C65 
+ 862      6172 5363 
+ 862      7265 656E 
+ 862      00
+ 863               	.LASF19:
+ 864 0011 433A 5C41 		.string	"C:\\AVRlib/vt100.c"
+ 864      5652 6C69 
+ 864      622F 7674 
+ 864      3130 302E 
+ 864      6300 
+ 865               	.LASF14:
+ 866 0023 7674 3130 		.string	"vt100SetAttr"
+ 866      3053 6574 
+ 866      4174 7472 
+ 866      00
+ 867               	.LASF11:
+ 868 0030 7674 3130 		.string	"vt100SetCursorPos"
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/cc1Vnkpa.s 			page 17
+
+
+ 868      3053 6574 
+ 868      4375 7273 
+ 868      6F72 506F 
+ 868      7300 
+ 869               	.LASF17:
+ 870 0042 7674 3130 		.string	"vt100Init"
+ 870      3049 6E69 
+ 870      7400 
+ 871               	.LASF12:
+ 872 004c 7674 3130 		.string	"vt100SetCursorMode"
+ 872      3053 6574 
+ 872      4375 7273 
+ 872      6F72 4D6F 
+ 872      6465 00
+ 873               	.LASF1:
+ 874 005f 756E 7369 		.string	"unsigned char"
+ 874      676E 6564 
+ 874      2063 6861 
+ 874      7200 
+ 875               	.LASF4:
+ 876 006d 6C6F 6E67 		.string	"long unsigned int"
+ 876      2075 6E73 
+ 876      6967 6E65 
+ 876      6420 696E 
+ 876      7400 
+ 877               	.LASF7:
+ 878 007f 7368 6F72 		.string	"short unsigned int"
+ 878      7420 756E 
+ 878      7369 676E 
+ 878      6564 2069 
+ 878      6E74 00
+ 879               	.LASF18:
+ 880 0092 474E 5520 		.string	"GNU C 4.3.3"
+ 880      4320 342E 
+ 880      332E 3300 
+ 881               	.LASF15:
+ 882 009e 6174 7472 		.string	"attr"
+ 882      00
+ 883               	.LASF2:
+ 884 00a3 756E 7369 		.string	"unsigned int"
+ 884      676E 6564 
+ 884      2069 6E74 
+ 884      00
+ 885               	.LASF6:
+ 886 00b0 6C6F 6E67 		.string	"long long unsigned int"
+ 886      206C 6F6E 
+ 886      6720 756E 
+ 886      7369 676E 
+ 886      6564 2069 
+ 887               	.LASF10:
+ 888 00c7 6C69 6E65 		.string	"line"
+ 888      00
+ 889               	.LASF5:
+ 890 00cc 6C6F 6E67 		.string	"long long int"
+ 890      206C 6F6E 
+ 890      6720 696E 
+ 890      7400 
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/cc1Vnkpa.s 			page 18
+
+
+ 891               	.LASF9:
+ 892 00da 6368 6172 		.string	"char"
+ 892      00
+ 893               	.LASF8:
+ 894 00df 7368 6F72 		.string	"short int"
+ 894      7420 696E 
+ 894      7400 
+ 895               	.LASF3:
+ 896 00e9 6C6F 6E67 		.string	"long int"
+ 896      2069 6E74 
+ 896      00
+ 897               	.LASF13:
+ 898 00f2 7669 7369 		.string	"visible"
+ 898      626C 6500 
+ 899               	.LASF0:
+ 900 00fa 7369 676E 		.string	"signed char"
+ 900      6564 2063 
+ 900      6861 7200 
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/cc1Vnkpa.s 			page 19
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 vt100.c
+C:\Users\Jason\AppData\Local\Temp/cc1Vnkpa.s:2      *ABS*:0000003f __SREG__
+C:\Users\Jason\AppData\Local\Temp/cc1Vnkpa.s:3      *ABS*:0000003e __SP_H__
+C:\Users\Jason\AppData\Local\Temp/cc1Vnkpa.s:4      *ABS*:0000003d __SP_L__
+C:\Users\Jason\AppData\Local\Temp/cc1Vnkpa.s:5      *ABS*:00000034 __CCP__
+C:\Users\Jason\AppData\Local\Temp/cc1Vnkpa.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\Jason\AppData\Local\Temp/cc1Vnkpa.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\Jason\AppData\Local\Temp/cc1Vnkpa.s:18     .text:00000000 vt100SetCursorPos
+C:\Users\Jason\AppData\Local\Temp/cc1Vnkpa.s:183    .progmem.data:00000000 __c.1414
+C:\Users\Jason\AppData\Local\Temp/cc1Vnkpa.s:68     .text:0000004a vt100SetCursorMode
+C:\Users\Jason\AppData\Local\Temp/cc1Vnkpa.s:191    .progmem.data:00000010 __c.1406
+C:\Users\Jason\AppData\Local\Temp/cc1Vnkpa.s:187    .progmem.data:00000009 __c.1408
+C:\Users\Jason\AppData\Local\Temp/cc1Vnkpa.s:112    .text:00000080 vt100SetAttr
+C:\Users\Jason\AppData\Local\Temp/cc1Vnkpa.s:195    .progmem.data:00000017 __c.1400
+C:\Users\Jason\AppData\Local\Temp/cc1Vnkpa.s:150    .text:000000b2 vt100ClearScreen
+C:\Users\Jason\AppData\Local\Temp/cc1Vnkpa.s:199    .progmem.data:0000001d __c.1395
+C:\Users\Jason\AppData\Local\Temp/cc1Vnkpa.s:166    .text:000000bc vt100Init
+C:\Users\Jason\AppData\Local\Temp/cc1Vnkpa.s:203    .progmem.data:00000022 __c.1390
+
+UNDEFINED SYMBOLS
+rprintf1RamRom
+rprintfProgStr

@@ -1,0 +1,3894 @@
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/ccFNHrQJ.s 			page 1
+
+
+   1               		.file	"rprintf.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+   8               		.section	.debug_abbrev,"",@progbits
+   9               	.Ldebug_abbrev0:
+  10               		.section	.debug_info,"",@progbits
+  11               	.Ldebug_info0:
+  12               		.section	.debug_line,"",@progbits
+  13               	.Ldebug_line0:
+  14               		.text
+  15               	.Ltext0:
+  16               	.global	rprintfInit
+  17               		.type	rprintfInit, @function
+  18               	rprintfInit:
+  19               	.LFB2:
+  20               	.LM1:
+  21               	.LVL0:
+  22               	/* prologue: function */
+  23               	/* frame size = 0 */
+  24               	.LM2:
+  25 0000 9093 0000 		sts (rputchar)+1,r25
+  26 0004 8093 0000 		sts rputchar,r24
+  27               	/* epilogue start */
+  28               	.LM3:
+  29 0008 0895      		ret
+  30               	.LFE2:
+  31               		.size	rprintfInit, .-rprintfInit
+  32               	.global	rprintfChar
+  33               		.type	rprintfChar, @function
+  34               	rprintfChar:
+  35               	.LFB3:
+  36               	.LM4:
+  37               	.LVL1:
+  38 000a 1F93      		push r17
+  39               	/* prologue: function */
+  40               	/* frame size = 0 */
+  41 000c 182F      		mov r17,r24
+  42               	.LM5:
+  43 000e 8A30      		cpi r24,lo8(10)
+  44 0010 01F4      		brne .L4
+  45               	.LM6:
+  46 0012 E091 0000 		lds r30,rputchar
+  47 0016 F091 0000 		lds r31,(rputchar)+1
+  48 001a 8DE0      		ldi r24,lo8(13)
+  49               	.LVL2:
+  50 001c 0995      		icall
+  51               	.LVL3:
+  52               	.L4:
+  53               	.LM7:
+  54 001e E091 0000 		lds r30,rputchar
+  55 0022 F091 0000 		lds r31,(rputchar)+1
+  56 0026 812F      		mov r24,r17
+  57 0028 0995      		icall
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/ccFNHrQJ.s 			page 2
+
+
+  58               	/* epilogue start */
+  59               	.LM8:
+  60 002a 1F91      		pop r17
+  61               	.LVL4:
+  62 002c 0895      		ret
+  63               	.LFE3:
+  64               		.size	rprintfChar, .-rprintfChar
+  65               	.global	rprintfStr
+  66               		.type	rprintfStr, @function
+  67               	rprintfStr:
+  68               	.LFB4:
+  69               	.LM9:
+  70               	.LVL5:
+  71 002e CF93      		push r28
+  72 0030 DF93      		push r29
+  73               	/* prologue: function */
+  74               	/* frame size = 0 */
+  75 0032 EC01      		movw r28,r24
+  76               	.LM10:
+  77 0034 0097      		sbiw r24,0
+  78 0036 01F4      		brne .L11
+  79 0038 00C0      		rjmp .L10
+  80               	.LVL6:
+  81               	.L9:
+  82               	.LM11:
+  83 003a 2196      		adiw r28,1
+  84 003c 0E94 0000 		call rprintfChar
+  85               	.LVL7:
+  86               	.L11:
+  87               	.LM12:
+  88 0040 8881      		ld r24,Y
+  89 0042 8823      		tst r24
+  90 0044 01F4      		brne .L9
+  91               	.LVL8:
+  92               	.L10:
+  93               	/* epilogue start */
+  94               	.LM13:
+  95 0046 DF91      		pop r29
+  96 0048 CF91      		pop r28
+  97               	.LVL9:
+  98 004a 0895      		ret
+  99               	.LFE4:
+ 100               		.size	rprintfStr, .-rprintfStr
+ 101               	.global	rprintfStrLen
+ 102               		.type	rprintfStrLen, @function
+ 103               	rprintfStrLen:
+ 104               	.LFB5:
+ 105               	.LM14:
+ 106               	.LVL10:
+ 107 004c EF92      		push r14
+ 108 004e FF92      		push r15
+ 109 0050 0F93      		push r16
+ 110 0052 1F93      		push r17
+ 111 0054 CF93      		push r28
+ 112 0056 DF93      		push r29
+ 113               	/* prologue: function */
+ 114               	/* frame size = 0 */
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/ccFNHrQJ.s 			page 3
+
+
+ 115 0058 8C01      		movw r16,r24
+ 116 005a 7A01      		movw r14,r20
+ 117               	.LM15:
+ 118 005c 0097      		sbiw r24,0
+ 119 005e 01F0      		breq .L20
+ 120               	.LVL11:
+ 121 0060 20E0      		ldi r18,lo8(0)
+ 122 0062 30E0      		ldi r19,hi8(0)
+ 123               	.LVL12:
+ 124               	.L15:
+ 125               	.LM16:
+ 126 0064 2617      		cp r18,r22
+ 127 0066 3707      		cpc r19,r23
+ 128 0068 00F4      		brsh .L14
+ 129               	.LVL13:
+ 130 006a F801      		movw r30,r16
+ 131 006c 8191      		ld r24,Z+
+ 132               	.LVL14:
+ 133 006e 8F01      		movw r16,r30
+ 134 0070 2F5F      		subi r18,lo8(-(1))
+ 135 0072 3F4F      		sbci r19,hi8(-(1))
+ 136 0074 8823      		tst r24
+ 137 0076 01F4      		brne .L15
+ 138               	.LVL15:
+ 139               	.L14:
+ 140 0078 C0E0      		ldi r28,lo8(0)
+ 141 007a D0E0      		ldi r29,hi8(0)
+ 142               	.LVL16:
+ 143 007c 00C0      		rjmp .L16
+ 144               	.L19:
+ 145               	.LM17:
+ 146 007e F801      		movw r30,r16
+ 147 0080 8081      		ld r24,Z
+ 148 0082 8823      		tst r24
+ 149 0084 01F0      		breq .L17
+ 150               	.LM18:
+ 151 0086 0F5F      		subi r16,lo8(-(1))
+ 152 0088 1F4F      		sbci r17,hi8(-(1))
+ 153 008a 00C0      		rjmp .L22
+ 154               	.L17:
+ 155               	.LM19:
+ 156 008c 80E2      		ldi r24,lo8(32)
+ 157               	.L22:
+ 158 008e 0E94 0000 		call rprintfChar
+ 159               	.LVL17:
+ 160               	.LM20:
+ 161 0092 2196      		adiw r28,1
+ 162               	.LVL18:
+ 163               	.L16:
+ 164 0094 CE15      		cp r28,r14
+ 165 0096 DF05      		cpc r29,r15
+ 166 0098 00F0      		brlo .L19
+ 167               	.L20:
+ 168               	/* epilogue start */
+ 169               	.LM21:
+ 170 009a DF91      		pop r29
+ 171 009c CF91      		pop r28
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/ccFNHrQJ.s 			page 4
+
+
+ 172               	.LVL19:
+ 173 009e 1F91      		pop r17
+ 174 00a0 0F91      		pop r16
+ 175               	.LVL20:
+ 176 00a2 FF90      		pop r15
+ 177 00a4 EF90      		pop r14
+ 178               	.LVL21:
+ 179 00a6 0895      		ret
+ 180               	.LFE5:
+ 181               		.size	rprintfStrLen, .-rprintfStrLen
+ 182               	.global	rprintfProgStr
+ 183               		.type	rprintfProgStr, @function
+ 184               	rprintfProgStr:
+ 185               	.LFB6:
+ 186               	.LM22:
+ 187               	.LVL22:
+ 188 00a8 CF93      		push r28
+ 189 00aa DF93      		push r29
+ 190               	/* prologue: function */
+ 191               	/* frame size = 0 */
+ 192 00ac EC01      		movw r28,r24
+ 193               	.LM23:
+ 194 00ae 0097      		sbiw r24,0
+ 195 00b0 01F4      		brne .L28
+ 196 00b2 00C0      		rjmp .L27
+ 197               	.LVL23:
+ 198               	.L26:
+ 199               	.LM24:
+ 200 00b4 0E94 0000 		call rprintfChar
+ 201               	.LVL24:
+ 202               	.L28:
+ 203 00b8 FE01      		movw r30,r28
+ 204               	.LVL25:
+ 205               	.LBB2:
+ 206               	.LM25:
+ 207 00ba 2196      		adiw r28,1
+ 208               	/* #APP */
+ 209               	 ;  128 "C:\AVRlib/rprintf.c" 1
+ 210 00bc 8491      		lpm r24, Z
+ 211               		
+ 212               	 ;  0 "" 2
+ 213               	.LVL26:
+ 214               	/* #NOAPP */
+ 215               	.LBE2:
+ 216 00be 8823      		tst r24
+ 217 00c0 01F4      		brne .L26
+ 218               	.LVL27:
+ 219               	.L27:
+ 220               	/* epilogue start */
+ 221               	.LM26:
+ 222 00c2 DF91      		pop r29
+ 223 00c4 CF91      		pop r28
+ 224               	.LVL28:
+ 225 00c6 0895      		ret
+ 226               	.LFE6:
+ 227               		.size	rprintfProgStr, .-rprintfProgStr
+ 228               	.global	rprintfCRLF
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/ccFNHrQJ.s 			page 5
+
+
+ 229               		.type	rprintfCRLF, @function
+ 230               	rprintfCRLF:
+ 231               	.LFB7:
+ 232               	.LM27:
+ 233               	/* prologue: function */
+ 234               	/* frame size = 0 */
+ 235               	.LM28:
+ 236 00c8 8AE0      		ldi r24,lo8(10)
+ 237 00ca 0E94 0000 		call rprintfChar
+ 238               	/* epilogue start */
+ 239               	.LM29:
+ 240 00ce 0895      		ret
+ 241               	.LFE7:
+ 242               		.size	rprintfCRLF, .-rprintfCRLF
+ 243               	.global	rprintfu04
+ 244               		.type	rprintfu04, @function
+ 245               	rprintfu04:
+ 246               	.LFB8:
+ 247               	.LM30:
+ 248               	.LVL29:
+ 249               	/* prologue: function */
+ 250               	/* frame size = 0 */
+ 251               	.LBB3:
+ 252               	.LM31:
+ 253 00d0 E82F      		mov r30,r24
+ 254 00d2 F0E0      		ldi r31,lo8(0)
+ 255               	.LVL30:
+ 256 00d4 EF70      		andi r30,lo8(15)
+ 257 00d6 F070      		andi r31,hi8(15)
+ 258               	.LVL31:
+ 259 00d8 E050      		subi r30,lo8(-(HexChars))
+ 260 00da F040      		sbci r31,hi8(-(HexChars))
+ 261               	.LVL32:
+ 262               	/* #APP */
+ 263               	 ;  152 "C:\AVRlib/rprintf.c" 1
+ 264 00dc E491      		lpm r30, Z
+ 265               		
+ 266               	 ;  0 "" 2
+ 267               	.LVL33:
+ 268               	/* #NOAPP */
+ 269               	.LBE3:
+ 270 00de 8E2F      		mov r24,r30
+ 271 00e0 0E94 0000 		call rprintfChar
+ 272               	.LVL34:
+ 273               	/* epilogue start */
+ 274               	.LM32:
+ 275 00e4 0895      		ret
+ 276               	.LFE8:
+ 277               		.size	rprintfu04, .-rprintfu04
+ 278               	.global	rprintfu08
+ 279               		.type	rprintfu08, @function
+ 280               	rprintfu08:
+ 281               	.LFB9:
+ 282               	.LM33:
+ 283               	.LVL35:
+ 284 00e6 1F93      		push r17
+ 285               	/* prologue: function */
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/ccFNHrQJ.s 			page 6
+
+
+ 286               	/* frame size = 0 */
+ 287 00e8 182F      		mov r17,r24
+ 288               	.LM34:
+ 289 00ea 8295      		swap r24
+ 290               	.LVL36:
+ 291 00ec 8F70      		andi r24,lo8(15)
+ 292 00ee 0E94 0000 		call rprintfu04
+ 293               	.LM35:
+ 294 00f2 812F      		mov r24,r17
+ 295 00f4 0E94 0000 		call rprintfu04
+ 296               	/* epilogue start */
+ 297               	.LM36:
+ 298 00f8 1F91      		pop r17
+ 299               	.LVL37:
+ 300 00fa 0895      		ret
+ 301               	.LFE9:
+ 302               		.size	rprintfu08, .-rprintfu08
+ 303               	.global	rprintfu16
+ 304               		.type	rprintfu16, @function
+ 305               	rprintfu16:
+ 306               	.LFB10:
+ 307               	.LM37:
+ 308               	.LVL38:
+ 309 00fc 1F93      		push r17
+ 310               	/* prologue: function */
+ 311               	/* frame size = 0 */
+ 312 00fe 182F      		mov r17,r24
+ 313               	.LM38:
+ 314 0100 892F      		mov r24,r25
+ 315               	.LVL39:
+ 316 0102 0E94 0000 		call rprintfu08
+ 317               	.LVL40:
+ 318               	.LM39:
+ 319 0106 812F      		mov r24,r17
+ 320 0108 0E94 0000 		call rprintfu08
+ 321               	/* epilogue start */
+ 322               	.LM40:
+ 323 010c 1F91      		pop r17
+ 324               	.LVL41:
+ 325 010e 0895      		ret
+ 326               	.LFE10:
+ 327               		.size	rprintfu16, .-rprintfu16
+ 328               	.global	rprintfu32
+ 329               		.type	rprintfu32, @function
+ 330               	rprintfu32:
+ 331               	.LFB11:
+ 332               	.LM41:
+ 333               	.LVL42:
+ 334 0110 EF92      		push r14
+ 335 0112 FF92      		push r15
+ 336 0114 0F93      		push r16
+ 337 0116 1F93      		push r17
+ 338               	/* prologue: function */
+ 339               	/* frame size = 0 */
+ 340 0118 7B01      		movw r14,r22
+ 341 011a 8C01      		movw r16,r24
+ 342               	.LM42:
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/ccFNHrQJ.s 			page 7
+
+
+ 343 011c C801      		movw r24,r16
+ 344 011e AA27      		clr r26
+ 345 0120 BB27      		clr r27
+ 346 0122 0E94 0000 		call rprintfu16
+ 347               	.LVL43:
+ 348               	.LM43:
+ 349 0126 C701      		movw r24,r14
+ 350 0128 0E94 0000 		call rprintfu16
+ 351               	/* epilogue start */
+ 352               	.LM44:
+ 353 012c 1F91      		pop r17
+ 354 012e 0F91      		pop r16
+ 355 0130 FF90      		pop r15
+ 356 0132 EF90      		pop r14
+ 357               	.LVL44:
+ 358 0134 0895      		ret
+ 359               	.LFE11:
+ 360               		.size	rprintfu32, .-rprintfu32
+ 361               	.global	rprintfNum
+ 362               		.type	rprintfNum, @function
+ 363               	rprintfNum:
+ 364               	.LFB12:
+ 365               	.LM45:
+ 366               	.LVL45:
+ 367 0136 2F92      		push r2
+ 368 0138 3F92      		push r3
+ 369 013a 4F92      		push r4
+ 370 013c 5F92      		push r5
+ 371 013e 6F92      		push r6
+ 372 0140 7F92      		push r7
+ 373 0142 8F92      		push r8
+ 374 0144 9F92      		push r9
+ 375 0146 AF92      		push r10
+ 376 0148 BF92      		push r11
+ 377 014a CF92      		push r12
+ 378 014c DF92      		push r13
+ 379 014e EF92      		push r14
+ 380               	.LVL46:
+ 381 0150 FF92      		push r15
+ 382 0152 0F93      		push r16
+ 383 0154 1F93      		push r17
+ 384 0156 DF93      		push r29
+ 385 0158 CF93      		push r28
+ 386 015a CDB7      		in r28,__SP_L__
+ 387 015c DEB7      		in r29,__SP_H__
+ 388 015e A397      		sbiw r28,35
+ 389 0160 0FB6      		in __tmp_reg__,__SREG__
+ 390 0162 F894      		cli
+ 391 0164 DEBF      		out __SP_H__,r29
+ 392 0166 0FBE      		out __SREG__,__tmp_reg__
+ 393 0168 CDBF      		out __SP_L__,r28
+ 394               	/* prologue: function */
+ 395               	/* frame size = 35 */
+ 396 016a 4AA3      		std Y+34,r20
+ 397 016c 2BA3      		std Y+35,r18
+ 398 016e 3701      		movw r6,r14
+ 399 0170 4801      		movw r8,r16
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/ccFNHrQJ.s 			page 8
+
+
+ 400               	.LVL47:
+ 401               	.LM46:
+ 402 0172 4423      		tst r20
+ 403 0174 01F0      		breq .L40
+ 404               	.LVL48:
+ 405 0176 17FF      		sbrs r17,7
+ 406 0178 00C0      		rjmp .L40
+ 407               	.LVL49:
+ 408               	.LM47:
+ 409 017a EE24      		clr r14
+ 410 017c FF24      		clr r15
+ 411 017e 8701      		movw r16,r14
+ 412 0180 E618      		sub r14,r6
+ 413 0182 F708      		sbc r15,r7
+ 414 0184 0809      		sbc r16,r8
+ 415 0186 1909      		sbc r17,r9
+ 416               	.LVL50:
+ 417 0188 00C0      		rjmp .L41
+ 418               	.LVL51:
+ 419               	.L40:
+ 420               	.LM48:
+ 421 018a 8401      		movw r16,r8
+ 422 018c 7301      		movw r14,r6
+ 423               	.LVL52:
+ 424               	.L41:
+ 425               	.LM49:
+ 426 018e 262E      		mov r2,r22
+ 427               	.LVL53:
+ 428 0190 262F      		mov r18,r22
+ 429 0192 2150      		subi r18,lo8(-(-1))
+ 430 0194 90E0      		ldi r25,lo8(0)
+ 431 0196 3AA1      		ldd r19,Y+34
+ 432 0198 3111      		cpse r19,__zero_reg__
+ 433               	.LVL54:
+ 434 019a 91E0      		ldi r25,lo8(1)
+ 435               	.L42:
+ 436 019c 291B      		sub r18,r25
+ 437 019e 29A3      		std Y+33,r18
+ 438               	.LVL55:
+ 439               	.LM50:
+ 440 01a0 18A2      		std Y+32,__zero_reg__
+ 441               	.LBB4:
+ 442               	.LM51:
+ 443 01a2 A82E      		mov r10,r24
+ 444 01a4 BB24      		clr r11
+ 445 01a6 A7FC      		sbrc r10,7
+ 446 01a8 B094      		com r11
+ 447 01aa CB2C      		mov r12,r11
+ 448 01ac DB2C      		mov r13,r11
+ 449 01ae C801      		movw r24,r16
+ 450 01b0 B701      		movw r22,r14
+ 451               	.LVL56:
+ 452 01b2 A601      		movw r20,r12
+ 453 01b4 9501      		movw r18,r10
+ 454 01b6 0E94 0000 		call __udivmodsi4
+ 455 01ba FB01      		movw r30,r22
+ 456 01bc EF70      		andi r30,lo8(15)
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/ccFNHrQJ.s 			page 9
+
+
+ 457 01be F070      		andi r31,hi8(15)
+ 458 01c0 E050      		subi r30,lo8(-(HexChars))
+ 459 01c2 F040      		sbci r31,hi8(-(HexChars))
+ 460               	/* #APP */
+ 461               	 ;  219 "C:\AVRlib/rprintf.c" 1
+ 462 01c4 6491      		lpm r22, Z
+ 463               		
+ 464               	 ;  0 "" 2
+ 465               	.LVL57:
+ 466               	/* #NOAPP */
+ 467               	.LBE4:
+ 468 01c6 6F8F      		std Y+31,r22
+ 469 01c8 C801      		movw r24,r16
+ 470 01ca B701      		movw r22,r14
+ 471               	.LVL58:
+ 472 01cc A601      		movw r20,r12
+ 473 01ce 9501      		movw r18,r10
+ 474 01d0 0E94 0000 		call __udivmodsi4
+ 475 01d4 C901      		movw r24,r18
+ 476               	.LVL59:
+ 477 01d6 DA01      		movw r26,r20
+ 478 01d8 7C01      		movw r14,r24
+ 479 01da 8D01      		movw r16,r26
+ 480 01dc 9EE1      		ldi r25,lo8(30)
+ 481 01de 492E      		mov r4,r25
+ 482 01e0 512C      		mov r5,__zero_reg__
+ 483 01e2 4C0E      		add r4,r28
+ 484 01e4 5D1E      		adc r5,r29
+ 485 01e6 39A0      		ldd r3,Y+33
+ 486 01e8 00C0      		rjmp .L43
+ 487               	.LVL60:
+ 488               	.L46:
+ 489               	.LM52:
+ 490 01ea E114      		cp r14,__zero_reg__
+ 491 01ec F104      		cpc r15,__zero_reg__
+ 492 01ee 0105      		cpc r16,__zero_reg__
+ 493 01f0 1105      		cpc r17,__zero_reg__
+ 494 01f2 01F0      		breq .L44
+ 495               	.LBB5:
+ 496               	.LM53:
+ 497 01f4 C801      		movw r24,r16
+ 498 01f6 B701      		movw r22,r14
+ 499 01f8 A601      		movw r20,r12
+ 500 01fa 9501      		movw r18,r10
+ 501 01fc 0E94 0000 		call __udivmodsi4
+ 502 0200 FB01      		movw r30,r22
+ 503 0202 EF70      		andi r30,lo8(15)
+ 504 0204 F070      		andi r31,hi8(15)
+ 505 0206 E050      		subi r30,lo8(-(HexChars))
+ 506 0208 F040      		sbci r31,hi8(-(HexChars))
+ 507               	/* #APP */
+ 508               	 ;  226 "C:\AVRlib/rprintf.c" 1
+ 509 020a 6491      		lpm r22, Z
+ 510               		
+ 511               	 ;  0 "" 2
+ 512               	.LVL61:
+ 513               	/* #NOAPP */
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/ccFNHrQJ.s 			page 10
+
+
+ 514               	.LBE5:
+ 515 020c F201      		movw r30,r4
+ 516 020e 6083      		st Z,r22
+ 517 0210 C801      		movw r24,r16
+ 518 0212 B701      		movw r22,r14
+ 519               	.LVL62:
+ 520 0214 A601      		movw r20,r12
+ 521 0216 9501      		movw r18,r10
+ 522 0218 0E94 0000 		call __udivmodsi4
+ 523 021c C901      		movw r24,r18
+ 524 021e DA01      		movw r26,r20
+ 525 0220 7C01      		movw r14,r24
+ 526 0222 8D01      		movw r16,r26
+ 527 0224 00C0      		rjmp .L45
+ 528               	.L44:
+ 529               	.LM54:
+ 530 0226 2BA1      		ldd r18,Y+35
+ 531 0228 F201      		movw r30,r4
+ 532 022a 2083      		st Z,r18
+ 533               	.L45:
+ 534 022c 3A94      		dec r3
+ 535 022e 0894      		sec
+ 536 0230 4108      		sbc r4,__zero_reg__
+ 537 0232 5108      		sbc r5,__zero_reg__
+ 538               	.LVL63:
+ 539               	.L43:
+ 540               	.LM55:
+ 541 0234 3320      		tst r3
+ 542 0236 01F4      		brne .L46
+ 543 0238 CE01      		movw r24,r28
+ 544               	.LVL64:
+ 545 023a 4F96      		adiw r24,31
+ 546 023c 8C01      		movw r16,r24
+ 547 023e 39A1      		ldd r19,Y+33
+ 548 0240 031B      		sub r16,r19
+ 549 0242 1109      		sbc r17,__zero_reg__
+ 550               	.LVL65:
+ 551               	.LM56:
+ 552 0244 8AA1      		ldd r24,Y+34
+ 553 0246 8823      		tst r24
+ 554 0248 01F0      		breq .L52
+ 555               	.LVL66:
+ 556               	.LM57:
+ 557 024a 97FE      		sbrs r9,7
+ 558 024c 00C0      		rjmp .L48
+ 559               	.LM58:
+ 560 024e 8DE2      		ldi r24,lo8(45)
+ 561 0250 F801      		movw r30,r16
+ 562 0252 8293      		st -Z,r24
+ 563 0254 8F01      		movw r16,r30
+ 564 0256 00C0      		rjmp .L52
+ 565               	.L48:
+ 566 0258 C801      		movw r24,r16
+ 567 025a 0197      		sbiw r24,1
+ 568               	.LVL67:
+ 569               	.LM59:
+ 570 025c 6114      		cp r6,__zero_reg__
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/ccFNHrQJ.s 			page 11
+
+
+ 571 025e 7104      		cpc r7,__zero_reg__
+ 572 0260 8104      		cpc r8,__zero_reg__
+ 573 0262 9104      		cpc r9,__zero_reg__
+ 574 0264 01F0      		breq .L49
+ 575               	.LM60:
+ 576 0266 8C01      		movw r16,r24
+ 577 0268 8BE2      		ldi r24,lo8(43)
+ 578               	.LVL68:
+ 579 026a 00C0      		rjmp .L53
+ 580               	.LVL69:
+ 581               	.L49:
+ 582               	.LM61:
+ 583 026c 8C01      		movw r16,r24
+ 584 026e 80E2      		ldi r24,lo8(32)
+ 585               	.LVL70:
+ 586               	.L53:
+ 587 0270 F801      		movw r30,r16
+ 588 0272 8083      		st Z,r24
+ 589 0274 00C0      		rjmp .L52
+ 590               	.LVL71:
+ 591               	.L50:
+ 592               	.LM62:
+ 593 0276 F801      		movw r30,r16
+ 594 0278 8191      		ld r24,Z+
+ 595 027a 8F01      		movw r16,r30
+ 596 027c 0E94 0000 		call rprintfChar
+ 597 0280 2A94      		dec r2
+ 598               	.LVL72:
+ 599               	.L52:
+ 600               	.LM63:
+ 601 0282 2220      		tst r2
+ 602 0284 01F4      		brne .L50
+ 603               	.LVL73:
+ 604               	/* epilogue start */
+ 605               	.LM64:
+ 606 0286 A396      		adiw r28,35
+ 607 0288 0FB6      		in __tmp_reg__,__SREG__
+ 608 028a F894      		cli
+ 609 028c DEBF      		out __SP_H__,r29
+ 610 028e 0FBE      		out __SREG__,__tmp_reg__
+ 611 0290 CDBF      		out __SP_L__,r28
+ 612 0292 CF91      		pop r28
+ 613 0294 DF91      		pop r29
+ 614 0296 1F91      		pop r17
+ 615 0298 0F91      		pop r16
+ 616               	.LVL74:
+ 617 029a FF90      		pop r15
+ 618 029c EF90      		pop r14
+ 619               	.LVL75:
+ 620 029e DF90      		pop r13
+ 621 02a0 CF90      		pop r12
+ 622 02a2 BF90      		pop r11
+ 623 02a4 AF90      		pop r10
+ 624 02a6 9F90      		pop r9
+ 625 02a8 8F90      		pop r8
+ 626 02aa 7F90      		pop r7
+ 627 02ac 6F90      		pop r6
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/ccFNHrQJ.s 			page 12
+
+
+ 628               	.LVL76:
+ 629 02ae 5F90      		pop r5
+ 630 02b0 4F90      		pop r4
+ 631 02b2 3F90      		pop r3
+ 632 02b4 2F90      		pop r2
+ 633               	.LVL77:
+ 634 02b6 0895      		ret
+ 635               	.LFE12:
+ 636               		.size	rprintfNum, .-rprintfNum
+ 637               	.global	rprintf1RamRom
+ 638               		.type	rprintf1RamRom, @function
+ 639               	rprintf1RamRom:
+ 640               	.LFB13:
+ 641               	.LM65:
+ 642               	.LVL78:
+ 643 02b8 7F92      		push r7
+ 644 02ba 8F92      		push r8
+ 645 02bc 9F92      		push r9
+ 646 02be AF92      		push r10
+ 647 02c0 BF92      		push r11
+ 648 02c2 CF92      		push r12
+ 649 02c4 DF92      		push r13
+ 650 02c6 EF92      		push r14
+ 651 02c8 FF92      		push r15
+ 652 02ca 0F93      		push r16
+ 653 02cc 1F93      		push r17
+ 654 02ce DF93      		push r29
+ 655 02d0 CF93      		push r28
+ 656 02d2 CDB7      		in r28,__SP_L__
+ 657 02d4 DEB7      		in r29,__SP_H__
+ 658               	/* prologue: function */
+ 659               	/* frame size = 0 */
+ 660 02d6 7888      		ldd r7,Y+16
+ 661 02d8 C988      		ldd r12,Y+17
+ 662 02da DA88      		ldd r13,Y+18
+ 663               	.LM66:
+ 664 02dc 53E1      		ldi r21,lo8(19)
+ 665 02de E52E      		mov r14,r21
+ 666 02e0 F12C      		mov r15,__zero_reg__
+ 667               	.LVL79:
+ 668 02e2 EC0E      		add r14,r28
+ 669 02e4 FD1E      		adc r15,r29
+ 670 02e6 00C0      		rjmp .L74
+ 671               	.LVL80:
+ 672               	.L59:
+ 673               	.LM67:
+ 674 02e8 8823      		tst r24
+ 675 02ea 01F4      		brne .L56
+ 676               	.LM68:
+ 677 02ec 80E0      		ldi r24,lo8(0)
+ 678 02ee 90E0      		ldi r25,hi8(0)
+ 679               	.LVL81:
+ 680               	/* epilogue start */
+ 681 02f0 CF91      		pop r28
+ 682 02f2 DF91      		pop r29
+ 683 02f4 1F91      		pop r17
+ 684 02f6 0F91      		pop r16
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/ccFNHrQJ.s 			page 13
+
+
+ 685 02f8 FF90      		pop r15
+ 686 02fa EF90      		pop r14
+ 687               	.LVL82:
+ 688 02fc DF90      		pop r13
+ 689 02fe CF90      		pop r12
+ 690               	.LVL83:
+ 691 0300 BF90      		pop r11
+ 692 0302 AF90      		pop r10
+ 693               	.LVL84:
+ 694 0304 9F90      		pop r9
+ 695 0306 8F90      		pop r8
+ 696               	.LVL85:
+ 697 0308 7F90      		pop r7
+ 698               	.LVL86:
+ 699 030a 0895      		ret
+ 700               	.LVL87:
+ 701               	.L56:
+ 702               	.LM69:
+ 703 030c 0E94 0000 		call rprintfChar
+ 704               	.LVL88:
+ 705               	.L74:
+ 706 0310 9601      		movw r18,r12
+ 707 0312 2F5F      		subi r18,lo8(-(1))
+ 708 0314 3F4F      		sbci r19,hi8(-(1))
+ 709               	.LVL89:
+ 710               	.LM70:
+ 711 0316 7720      		tst r7
+ 712 0318 01F0      		breq .L57
+ 713               	.LVL90:
+ 714               	.LBB6:
+ 715 031a F601      		movw r30,r12
+ 716               	.LVL91:
+ 717 031c 6901      		movw r12,r18
+ 718               	/* #APP */
+ 719               	 ;  332 "C:\AVRlib/rprintf.c" 1
+ 720 031e 8491      		lpm r24, Z
+ 721               		
+ 722               	 ;  0 "" 2
+ 723               	.LVL92:
+ 724               	/* #NOAPP */
+ 725 0320 00C0      		rjmp .L58
+ 726               	.LVL93:
+ 727               	.L57:
+ 728               	.LBE6:
+ 729 0322 F601      		movw r30,r12
+ 730 0324 8081      		ld r24,Z
+ 731               	.LVL94:
+ 732 0326 6901      		movw r12,r18
+ 733               	.LVL95:
+ 734               	.L58:
+ 735 0328 8532      		cpi r24,lo8(37)
+ 736 032a 01F4      		brne .L59
+ 737 032c 2F5F      		subi r18,lo8(-(1))
+ 738 032e 3F4F      		sbci r19,hi8(-(1))
+ 739               	.LVL96:
+ 740               	.LM71:
+ 741 0330 7720      		tst r7
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/ccFNHrQJ.s 			page 14
+
+
+ 742 0332 01F0      		breq .L60
+ 743               	.LBB7:
+ 744 0334 F601      		movw r30,r12
+ 745               	.LVL97:
+ 746 0336 6901      		movw r12,r18
+ 747               	/* #APP */
+ 748               	 ;  342 "C:\AVRlib/rprintf.c" 1
+ 749 0338 8491      		lpm r24, Z
+ 750               		
+ 751               	 ;  0 "" 2
+ 752               	.LVL98:
+ 753               	/* #NOAPP */
+ 754 033a 00C0      		rjmp .L61
+ 755               	.LVL99:
+ 756               	.L60:
+ 757               	.LBE7:
+ 758 033c F601      		movw r30,r12
+ 759               	.LVL100:
+ 760 033e 8081      		ld r24,Z
+ 761               	.LVL101:
+ 762 0340 6901      		movw r12,r18
+ 763               	.LVL102:
+ 764               	.L61:
+ 765 0342 8436      		cpi r24,lo8(100)
+ 766 0344 01F0      		breq .L64
+ 767 0346 8837      		cpi r24,lo8(120)
+ 768 0348 01F0      		breq .L65
+ 769 034a 8336      		cpi r24,lo8(99)
+ 770 034c 01F4      		brne .L56
+ 771 034e 00C0      		rjmp .L75
+ 772               	.L64:
+ 773 0350 00E1      		ldi r16,lo8(10000)
+ 774 0352 17E2      		ldi r17,hi8(10000)
+ 775               	.LVL103:
+ 776 0354 4AE0      		ldi r20,lo8(10)
+ 777 0356 A42E      		mov r10,r20
+ 778 0358 B12C      		mov r11,__zero_reg__
+ 779 035a 00C0      		rjmp .L66
+ 780               	.LVL104:
+ 781               	.L75:
+ 782               	.LM72:
+ 783 035c F701      		movw r30,r14
+ 784               	.LVL105:
+ 785 035e 8081      		ld r24,Z
+ 786 0360 22E0      		ldi r18,lo8(2)
+ 787 0362 30E0      		ldi r19,hi8(2)
+ 788 0364 E20E      		add r14,r18
+ 789 0366 F31E      		adc r15,r19
+ 790 0368 00C0      		rjmp .L56
+ 791               	.LVL106:
+ 792               	.L65:
+ 793               	.LM73:
+ 794 036a 00E0      		ldi r16,lo8(4096)
+ 795 036c 10E1      		ldi r17,hi8(4096)
+ 796               	.LVL107:
+ 797 036e 30E1      		ldi r19,lo8(16)
+ 798 0370 A32E      		mov r10,r19
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/ccFNHrQJ.s 			page 15
+
+
+ 799 0372 B12C      		mov r11,__zero_reg__
+ 800               	.L66:
+ 801               	.LM74:
+ 802 0374 22E0      		ldi r18,lo8(2)
+ 803 0376 822E      		mov r8,r18
+ 804 0378 912C      		mov r9,__zero_reg__
+ 805               	.LVL108:
+ 806 037a 8E0C      		add r8,r14
+ 807 037c 9F1C      		adc r9,r15
+ 808 037e F701      		movw r30,r14
+ 809               	.LVL109:
+ 810 0380 E080      		ld r14,Z
+ 811 0382 F180      		ldd r15,Z+1
+ 812               	.LVL110:
+ 813               	.LM75:
+ 814 0384 8436      		cpi r24,lo8(100)
+ 815 0386 01F4      		brne .L71
+ 816               	.LM76:
+ 817 0388 F7FE      		sbrs r15,7
+ 818 038a 00C0      		rjmp .L73
+ 819               	.LM77:
+ 820 038c F094      		com r15
+ 821 038e E194      		neg r14
+ 822 0390 F108      		sbc r15,__zero_reg__
+ 823 0392 F394      		inc r15
+ 824               	.LM78:
+ 825 0394 8DE2      		ldi r24,lo8(45)
+ 826               	.LVL111:
+ 827 0396 0E94 0000 		call rprintfChar
+ 828 039a 00C0      		rjmp .L73
+ 829               	.LVL112:
+ 830               	.L69:
+ 831               	.LM79:
+ 832 039c C801      		movw r24,r16
+ 833               	.LVL113:
+ 834 039e 6AE0      		ldi r22,lo8(10)
+ 835 03a0 70E0      		ldi r23,hi8(10)
+ 836 03a2 0E94 0000 		call __udivmodhi4
+ 837 03a6 8B01      		movw r16,r22
+ 838 03a8 6230      		cpi r22,2
+ 839 03aa 7105      		cpc r23,__zero_reg__
+ 840 03ac 00F0      		brlo .L71
+ 841               	.LVL114:
+ 842               	.L73:
+ 843 03ae E016      		cp r14,r16
+ 844 03b0 F106      		cpc r15,r17
+ 845 03b2 00F0      		brlo .L69
+ 846               	.L71:
+ 847               	.LM80:
+ 848 03b4 C701      		movw r24,r14
+ 849               	.LVL115:
+ 850 03b6 B801      		movw r22,r16
+ 851 03b8 0E94 0000 		call __udivmodhi4
+ 852 03bc 862F      		mov r24,r22
+ 853 03be 0E94 0000 		call rprintfu04
+ 854               	.LM81:
+ 855 03c2 C701      		movw r24,r14
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/ccFNHrQJ.s 			page 16
+
+
+ 856 03c4 B801      		movw r22,r16
+ 857 03c6 0E94 0000 		call __udivmodhi4
+ 858 03ca 7C01      		movw r14,r24
+ 859               	.LM82:
+ 860 03cc C801      		movw r24,r16
+ 861 03ce B501      		movw r22,r10
+ 862 03d0 0E94 0000 		call __udivmodhi4
+ 863 03d4 8B01      		movw r16,r22
+ 864               	.LM83:
+ 865 03d6 6115      		cp r22,__zero_reg__
+ 866 03d8 7105      		cpc r23,__zero_reg__
+ 867 03da 01F4      		brne .L71
+ 868               	.LVL116:
+ 869 03dc 7401      		movw r14,r8
+ 870               	.LVL117:
+ 871 03de 00C0      		rjmp .L74
+ 872               	.LFE13:
+ 873               		.size	rprintf1RamRom, .-rprintf1RamRom
+ 874               		.section	.progmem.data,"a",@progbits
+ 875               		.type	HexChars, @object
+ 876               		.size	HexChars, 17
+ 877               	HexChars:
+ 878 0000 3031 3233 		.string	"0123456789ABCDEF"
+ 878      3435 3637 
+ 878      3839 4142 
+ 878      4344 4546 
+ 878      00
+ 879               		.lcomm rputchar,2
+ 880               		.section	.debug_frame,"",@progbits
+ 881               	.Lframe0:
+ 882 0000 0C00 0000 		.long	.LECIE0-.LSCIE0
+ 883               	.LSCIE0:
+ 884 0004 FFFF FFFF 		.long	0xffffffff
+ 885 0008 01        		.byte	0x1
+ 886 0009 00        		.string	""
+ 887 000a 01        		.uleb128 0x1
+ 888 000b 7F        		.sleb128 -1
+ 889 000c 24        		.byte	0x24
+ 890 000d 0C        		.byte	0xc
+ 891 000e 20        		.uleb128 0x20
+ 892 000f 00        		.uleb128 0x0
+ 893               		.p2align	2
+ 894               	.LECIE0:
+ 895               	.LSFDE0:
+ 896 0010 0C00 0000 		.long	.LEFDE0-.LASFDE0
+ 897               	.LASFDE0:
+ 898 0014 0000 0000 		.long	.Lframe0
+ 899 0018 0000 0000 		.long	.LFB2
+ 900 001c 0A00 0000 		.long	.LFE2-.LFB2
+ 901               		.p2align	2
+ 902               	.LEFDE0:
+ 903               	.LSFDE2:
+ 904 0020 0C00 0000 		.long	.LEFDE2-.LASFDE2
+ 905               	.LASFDE2:
+ 906 0024 0000 0000 		.long	.Lframe0
+ 907 0028 0000 0000 		.long	.LFB3
+ 908 002c 2400 0000 		.long	.LFE3-.LFB3
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/ccFNHrQJ.s 			page 17
+
+
+ 909               		.p2align	2
+ 910               	.LEFDE2:
+ 911               	.LSFDE4:
+ 912 0030 0C00 0000 		.long	.LEFDE4-.LASFDE4
+ 913               	.LASFDE4:
+ 914 0034 0000 0000 		.long	.Lframe0
+ 915 0038 0000 0000 		.long	.LFB4
+ 916 003c 1E00 0000 		.long	.LFE4-.LFB4
+ 917               		.p2align	2
+ 918               	.LEFDE4:
+ 919               	.LSFDE6:
+ 920 0040 0C00 0000 		.long	.LEFDE6-.LASFDE6
+ 921               	.LASFDE6:
+ 922 0044 0000 0000 		.long	.Lframe0
+ 923 0048 0000 0000 		.long	.LFB5
+ 924 004c 5C00 0000 		.long	.LFE5-.LFB5
+ 925               		.p2align	2
+ 926               	.LEFDE6:
+ 927               	.LSFDE8:
+ 928 0050 0C00 0000 		.long	.LEFDE8-.LASFDE8
+ 929               	.LASFDE8:
+ 930 0054 0000 0000 		.long	.Lframe0
+ 931 0058 0000 0000 		.long	.LFB6
+ 932 005c 2000 0000 		.long	.LFE6-.LFB6
+ 933               		.p2align	2
+ 934               	.LEFDE8:
+ 935               	.LSFDE10:
+ 936 0060 0C00 0000 		.long	.LEFDE10-.LASFDE10
+ 937               	.LASFDE10:
+ 938 0064 0000 0000 		.long	.Lframe0
+ 939 0068 0000 0000 		.long	.LFB7
+ 940 006c 0800 0000 		.long	.LFE7-.LFB7
+ 941               		.p2align	2
+ 942               	.LEFDE10:
+ 943               	.LSFDE12:
+ 944 0070 0C00 0000 		.long	.LEFDE12-.LASFDE12
+ 945               	.LASFDE12:
+ 946 0074 0000 0000 		.long	.Lframe0
+ 947 0078 0000 0000 		.long	.LFB8
+ 948 007c 1600 0000 		.long	.LFE8-.LFB8
+ 949               		.p2align	2
+ 950               	.LEFDE12:
+ 951               	.LSFDE14:
+ 952 0080 0C00 0000 		.long	.LEFDE14-.LASFDE14
+ 953               	.LASFDE14:
+ 954 0084 0000 0000 		.long	.Lframe0
+ 955 0088 0000 0000 		.long	.LFB9
+ 956 008c 1600 0000 		.long	.LFE9-.LFB9
+ 957               		.p2align	2
+ 958               	.LEFDE14:
+ 959               	.LSFDE16:
+ 960 0090 0C00 0000 		.long	.LEFDE16-.LASFDE16
+ 961               	.LASFDE16:
+ 962 0094 0000 0000 		.long	.Lframe0
+ 963 0098 0000 0000 		.long	.LFB10
+ 964 009c 1400 0000 		.long	.LFE10-.LFB10
+ 965               		.p2align	2
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/ccFNHrQJ.s 			page 18
+
+
+ 966               	.LEFDE16:
+ 967               	.LSFDE18:
+ 968 00a0 0C00 0000 		.long	.LEFDE18-.LASFDE18
+ 969               	.LASFDE18:
+ 970 00a4 0000 0000 		.long	.Lframe0
+ 971 00a8 0000 0000 		.long	.LFB11
+ 972 00ac 2600 0000 		.long	.LFE11-.LFB11
+ 973               		.p2align	2
+ 974               	.LEFDE18:
+ 975               	.LSFDE20:
+ 976 00b0 0C00 0000 		.long	.LEFDE20-.LASFDE20
+ 977               	.LASFDE20:
+ 978 00b4 0000 0000 		.long	.Lframe0
+ 979 00b8 0000 0000 		.long	.LFB12
+ 980 00bc 8201 0000 		.long	.LFE12-.LFB12
+ 981               		.p2align	2
+ 982               	.LEFDE20:
+ 983               	.LSFDE22:
+ 984 00c0 0C00 0000 		.long	.LEFDE22-.LASFDE22
+ 985               	.LASFDE22:
+ 986 00c4 0000 0000 		.long	.Lframe0
+ 987 00c8 0000 0000 		.long	.LFB13
+ 988 00cc 2801 0000 		.long	.LFE13-.LFB13
+ 989               		.p2align	2
+ 990               	.LEFDE22:
+ 991               		.text
+ 992               	.Letext0:
+ 993               		.section	.debug_loc,"",@progbits
+ 994               	.Ldebug_loc0:
+ 995               	.LLST2:
+ 996 0000 0A00 0000 		.long	.LVL1-.Ltext0
+ 997 0004 1C00 0000 		.long	.LVL2-.Ltext0
+ 998 0008 0100      		.word	0x1
+ 999 000a 68        		.byte	0x68
+ 1000 000b 1C00 0000 		.long	.LVL2-.Ltext0
+ 1001 000f 2C00 0000 		.long	.LVL4-.Ltext0
+ 1002 0013 0100      		.word	0x1
+ 1003 0015 61        		.byte	0x61
+ 1004 0016 0000 0000 		.long	0x0
+ 1005 001a 0000 0000 		.long	0x0
+ 1006               	.LLST4:
+ 1007 001e 2E00 0000 		.long	.LVL5-.Ltext0
+ 1008 0022 3A00 0000 		.long	.LVL6-.Ltext0
+ 1009 0026 0600      		.word	0x6
+ 1010 0028 68        		.byte	0x68
+ 1011 0029 93        		.byte	0x93
+ 1012 002a 01        		.uleb128 0x1
+ 1013 002b 69        		.byte	0x69
+ 1014 002c 93        		.byte	0x93
+ 1015 002d 01        		.uleb128 0x1
+ 1016 002e 3A00 0000 		.long	.LVL6-.Ltext0
+ 1017 0032 4A00 0000 		.long	.LVL9-.Ltext0
+ 1018 0036 0600      		.word	0x6
+ 1019 0038 6C        		.byte	0x6c
+ 1020 0039 93        		.byte	0x93
+ 1021 003a 01        		.uleb128 0x1
+ 1022 003b 6D        		.byte	0x6d
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/ccFNHrQJ.s 			page 19
+
+
+ 1023 003c 93        		.byte	0x93
+ 1024 003d 01        		.uleb128 0x1
+ 1025 003e 4A00 0000 		.long	.LVL9-.Ltext0
+ 1026 0042 4C00 0000 		.long	.LFE4-.Ltext0
+ 1027 0046 0600      		.word	0x6
+ 1028 0048 68        		.byte	0x68
+ 1029 0049 93        		.byte	0x93
+ 1030 004a 01        		.uleb128 0x1
+ 1031 004b 69        		.byte	0x69
+ 1032 004c 93        		.byte	0x93
+ 1033 004d 01        		.uleb128 0x1
+ 1034 004e 0000 0000 		.long	0x0
+ 1035 0052 0000 0000 		.long	0x0
+ 1036               	.LLST6:
+ 1037 0056 4C00 0000 		.long	.LVL10-.Ltext0
+ 1038 005a 6400 0000 		.long	.LVL12-.Ltext0
+ 1039 005e 0600      		.word	0x6
+ 1040 0060 68        		.byte	0x68
+ 1041 0061 93        		.byte	0x93
+ 1042 0062 01        		.uleb128 0x1
+ 1043 0063 69        		.byte	0x69
+ 1044 0064 93        		.byte	0x93
+ 1045 0065 01        		.uleb128 0x1
+ 1046 0066 6400 0000 		.long	.LVL12-.Ltext0
+ 1047 006a 6A00 0000 		.long	.LVL13-.Ltext0
+ 1048 006e 0600      		.word	0x6
+ 1049 0070 60        		.byte	0x60
+ 1050 0071 93        		.byte	0x93
+ 1051 0072 01        		.uleb128 0x1
+ 1052 0073 61        		.byte	0x61
+ 1053 0074 93        		.byte	0x93
+ 1054 0075 01        		.uleb128 0x1
+ 1055 0076 6A00 0000 		.long	.LVL13-.Ltext0
+ 1056 007a 6E00 0000 		.long	.LVL14-.Ltext0
+ 1057 007e 0600      		.word	0x6
+ 1058 0080 68        		.byte	0x68
+ 1059 0081 93        		.byte	0x93
+ 1060 0082 01        		.uleb128 0x1
+ 1061 0083 69        		.byte	0x69
+ 1062 0084 93        		.byte	0x93
+ 1063 0085 01        		.uleb128 0x1
+ 1064 0086 6E00 0000 		.long	.LVL14-.Ltext0
+ 1065 008a A200 0000 		.long	.LVL20-.Ltext0
+ 1066 008e 0600      		.word	0x6
+ 1067 0090 60        		.byte	0x60
+ 1068 0091 93        		.byte	0x93
+ 1069 0092 01        		.uleb128 0x1
+ 1070 0093 61        		.byte	0x61
+ 1071 0094 93        		.byte	0x93
+ 1072 0095 01        		.uleb128 0x1
+ 1073 0096 A200 0000 		.long	.LVL20-.Ltext0
+ 1074 009a A800 0000 		.long	.LFE5-.Ltext0
+ 1075 009e 0600      		.word	0x6
+ 1076 00a0 68        		.byte	0x68
+ 1077 00a1 93        		.byte	0x93
+ 1078 00a2 01        		.uleb128 0x1
+ 1079 00a3 69        		.byte	0x69
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/ccFNHrQJ.s 			page 20
+
+
+ 1080 00a4 93        		.byte	0x93
+ 1081 00a5 01        		.uleb128 0x1
+ 1082 00a6 0000 0000 		.long	0x0
+ 1083 00aa 0000 0000 		.long	0x0
+ 1084               	.LLST7:
+ 1085 00ae 4C00 0000 		.long	.LVL10-.Ltext0
+ 1086 00b2 9200 0000 		.long	.LVL17-.Ltext0
+ 1087 00b6 0600      		.word	0x6
+ 1088 00b8 66        		.byte	0x66
+ 1089 00b9 93        		.byte	0x93
+ 1090 00ba 01        		.uleb128 0x1
+ 1091 00bb 67        		.byte	0x67
+ 1092 00bc 93        		.byte	0x93
+ 1093 00bd 01        		.uleb128 0x1
+ 1094 00be 9400 0000 		.long	.LVL18-.Ltext0
+ 1095 00c2 A800 0000 		.long	.LFE5-.Ltext0
+ 1096 00c6 0600      		.word	0x6
+ 1097 00c8 66        		.byte	0x66
+ 1098 00c9 93        		.byte	0x93
+ 1099 00ca 01        		.uleb128 0x1
+ 1100 00cb 67        		.byte	0x67
+ 1101 00cc 93        		.byte	0x93
+ 1102 00cd 01        		.uleb128 0x1
+ 1103 00ce 0000 0000 		.long	0x0
+ 1104 00d2 0000 0000 		.long	0x0
+ 1105               	.LLST8:
+ 1106 00d6 4C00 0000 		.long	.LVL10-.Ltext0
+ 1107 00da 6000 0000 		.long	.LVL11-.Ltext0
+ 1108 00de 0600      		.word	0x6
+ 1109 00e0 64        		.byte	0x64
+ 1110 00e1 93        		.byte	0x93
+ 1111 00e2 01        		.uleb128 0x1
+ 1112 00e3 65        		.byte	0x65
+ 1113 00e4 93        		.byte	0x93
+ 1114 00e5 01        		.uleb128 0x1
+ 1115 00e6 6000 0000 		.long	.LVL11-.Ltext0
+ 1116 00ea A600 0000 		.long	.LVL21-.Ltext0
+ 1117 00ee 0600      		.word	0x6
+ 1118 00f0 5E        		.byte	0x5e
+ 1119 00f1 93        		.byte	0x93
+ 1120 00f2 01        		.uleb128 0x1
+ 1121 00f3 5F        		.byte	0x5f
+ 1122 00f4 93        		.byte	0x93
+ 1123 00f5 01        		.uleb128 0x1
+ 1124 00f6 A600 0000 		.long	.LVL21-.Ltext0
+ 1125 00fa A800 0000 		.long	.LFE5-.Ltext0
+ 1126 00fe 0600      		.word	0x6
+ 1127 0100 64        		.byte	0x64
+ 1128 0101 93        		.byte	0x93
+ 1129 0102 01        		.uleb128 0x1
+ 1130 0103 65        		.byte	0x65
+ 1131 0104 93        		.byte	0x93
+ 1132 0105 01        		.uleb128 0x1
+ 1133 0106 0000 0000 		.long	0x0
+ 1134 010a 0000 0000 		.long	0x0
+ 1135               	.LLST9:
+ 1136 010e 7C00 0000 		.long	.LVL16-.Ltext0
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/ccFNHrQJ.s 			page 21
+
+
+ 1137 0112 9E00 0000 		.long	.LVL19-.Ltext0
+ 1138 0116 0600      		.word	0x6
+ 1139 0118 6C        		.byte	0x6c
+ 1140 0119 93        		.byte	0x93
+ 1141 011a 01        		.uleb128 0x1
+ 1142 011b 6D        		.byte	0x6d
+ 1143 011c 93        		.byte	0x93
+ 1144 011d 01        		.uleb128 0x1
+ 1145 011e 0000 0000 		.long	0x0
+ 1146 0122 0000 0000 		.long	0x0
+ 1147               	.LLST11:
+ 1148 0126 A800 0000 		.long	.LVL22-.Ltext0
+ 1149 012a B400 0000 		.long	.LVL23-.Ltext0
+ 1150 012e 0600      		.word	0x6
+ 1151 0130 68        		.byte	0x68
+ 1152 0131 93        		.byte	0x93
+ 1153 0132 01        		.uleb128 0x1
+ 1154 0133 69        		.byte	0x69
+ 1155 0134 93        		.byte	0x93
+ 1156 0135 01        		.uleb128 0x1
+ 1157 0136 B400 0000 		.long	.LVL23-.Ltext0
+ 1158 013a C600 0000 		.long	.LVL28-.Ltext0
+ 1159 013e 0600      		.word	0x6
+ 1160 0140 6C        		.byte	0x6c
+ 1161 0141 93        		.byte	0x93
+ 1162 0142 01        		.uleb128 0x1
+ 1163 0143 6D        		.byte	0x6d
+ 1164 0144 93        		.byte	0x93
+ 1165 0145 01        		.uleb128 0x1
+ 1166 0146 C600 0000 		.long	.LVL28-.Ltext0
+ 1167 014a C800 0000 		.long	.LFE6-.Ltext0
+ 1168 014e 0600      		.word	0x6
+ 1169 0150 68        		.byte	0x68
+ 1170 0151 93        		.byte	0x93
+ 1171 0152 01        		.uleb128 0x1
+ 1172 0153 69        		.byte	0x69
+ 1173 0154 93        		.byte	0x93
+ 1174 0155 01        		.uleb128 0x1
+ 1175 0156 0000 0000 		.long	0x0
+ 1176 015a 0000 0000 		.long	0x0
+ 1177               	.LLST12:
+ 1178 015e B400 0000 		.long	.LVL23-.Ltext0
+ 1179 0162 B800 0000 		.long	.LVL24-.Ltext0
+ 1180 0166 0600      		.word	0x6
+ 1181 0168 6E        		.byte	0x6e
+ 1182 0169 93        		.byte	0x93
+ 1183 016a 01        		.uleb128 0x1
+ 1184 016b 6F        		.byte	0x6f
+ 1185 016c 93        		.byte	0x93
+ 1186 016d 01        		.uleb128 0x1
+ 1187 016e BA00 0000 		.long	.LVL25-.Ltext0
+ 1188 0172 C800 0000 		.long	.LFE6-.Ltext0
+ 1189 0176 0600      		.word	0x6
+ 1190 0178 6E        		.byte	0x6e
+ 1191 0179 93        		.byte	0x93
+ 1192 017a 01        		.uleb128 0x1
+ 1193 017b 6F        		.byte	0x6f
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/ccFNHrQJ.s 			page 22
+
+
+ 1194 017c 93        		.byte	0x93
+ 1195 017d 01        		.uleb128 0x1
+ 1196 017e 0000 0000 		.long	0x0
+ 1197 0182 0000 0000 		.long	0x0
+ 1198               	.LLST13:
+ 1199 0186 B400 0000 		.long	.LVL23-.Ltext0
+ 1200 018a B800 0000 		.long	.LVL24-.Ltext0
+ 1201 018e 0100      		.word	0x1
+ 1202 0190 68        		.byte	0x68
+ 1203 0191 BE00 0000 		.long	.LVL26-.Ltext0
+ 1204 0195 C800 0000 		.long	.LFE6-.Ltext0
+ 1205 0199 0100      		.word	0x1
+ 1206 019b 68        		.byte	0x68
+ 1207 019c 0000 0000 		.long	0x0
+ 1208 01a0 0000 0000 		.long	0x0
+ 1209               	.LLST16:
+ 1210 01a4 D000 0000 		.long	.LVL29-.Ltext0
+ 1211 01a8 D400 0000 		.long	.LVL30-.Ltext0
+ 1212 01ac 0100      		.word	0x1
+ 1213 01ae 68        		.byte	0x68
+ 1214 01af D400 0000 		.long	.LVL30-.Ltext0
+ 1215 01b3 DE00 0000 		.long	.LVL33-.Ltext0
+ 1216 01b7 0600      		.word	0x6
+ 1217 01b9 6E        		.byte	0x6e
+ 1218 01ba 93        		.byte	0x93
+ 1219 01bb 01        		.uleb128 0x1
+ 1220 01bc 6F        		.byte	0x6f
+ 1221 01bd 93        		.byte	0x93
+ 1222 01be 01        		.uleb128 0x1
+ 1223 01bf 0000 0000 		.long	0x0
+ 1224 01c3 0000 0000 		.long	0x0
+ 1225               	.LLST17:
+ 1226 01c7 DE00 0000 		.long	.LVL33-.Ltext0
+ 1227 01cb E400 0000 		.long	.LVL34-.Ltext0
+ 1228 01cf 0100      		.word	0x1
+ 1229 01d1 6E        		.byte	0x6e
+ 1230 01d2 0000 0000 		.long	0x0
+ 1231 01d6 0000 0000 		.long	0x0
+ 1232               	.LLST19:
+ 1233 01da E600 0000 		.long	.LVL35-.Ltext0
+ 1234 01de EC00 0000 		.long	.LVL36-.Ltext0
+ 1235 01e2 0100      		.word	0x1
+ 1236 01e4 68        		.byte	0x68
+ 1237 01e5 EC00 0000 		.long	.LVL36-.Ltext0
+ 1238 01e9 FA00 0000 		.long	.LVL37-.Ltext0
+ 1239 01ed 0100      		.word	0x1
+ 1240 01ef 61        		.byte	0x61
+ 1241 01f0 0000 0000 		.long	0x0
+ 1242 01f4 0000 0000 		.long	0x0
+ 1243               	.LLST21:
+ 1244 01f8 FC00 0000 		.long	.LVL38-.Ltext0
+ 1245 01fc 0201 0000 		.long	.LVL39-.Ltext0
+ 1246 0200 0600      		.word	0x6
+ 1247 0202 68        		.byte	0x68
+ 1248 0203 93        		.byte	0x93
+ 1249 0204 01        		.uleb128 0x1
+ 1250 0205 69        		.byte	0x69
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/ccFNHrQJ.s 			page 23
+
+
+ 1251 0206 93        		.byte	0x93
+ 1252 0207 01        		.uleb128 0x1
+ 1253 0208 0201 0000 		.long	.LVL39-.Ltext0
+ 1254 020c 0601 0000 		.long	.LVL40-.Ltext0
+ 1255 0210 0600      		.word	0x6
+ 1256 0212 61        		.byte	0x61
+ 1257 0213 93        		.byte	0x93
+ 1258 0214 01        		.uleb128 0x1
+ 1259 0215 69        		.byte	0x69
+ 1260 0216 93        		.byte	0x93
+ 1261 0217 01        		.uleb128 0x1
+ 1262 0218 0000 0000 		.long	0x0
+ 1263 021c 0000 0000 		.long	0x0
+ 1264               	.LLST23:
+ 1265 0220 1001 0000 		.long	.LVL42-.Ltext0
+ 1266 0224 2601 0000 		.long	.LVL43-.Ltext0
+ 1267 0228 0C00      		.word	0xc
+ 1268 022a 66        		.byte	0x66
+ 1269 022b 93        		.byte	0x93
+ 1270 022c 01        		.uleb128 0x1
+ 1271 022d 67        		.byte	0x67
+ 1272 022e 93        		.byte	0x93
+ 1273 022f 01        		.uleb128 0x1
+ 1274 0230 68        		.byte	0x68
+ 1275 0231 93        		.byte	0x93
+ 1276 0232 01        		.uleb128 0x1
+ 1277 0233 69        		.byte	0x69
+ 1278 0234 93        		.byte	0x93
+ 1279 0235 01        		.uleb128 0x1
+ 1280 0236 2601 0000 		.long	.LVL43-.Ltext0
+ 1281 023a 3401 0000 		.long	.LVL44-.Ltext0
+ 1282 023e 0C00      		.word	0xc
+ 1283 0240 5E        		.byte	0x5e
+ 1284 0241 93        		.byte	0x93
+ 1285 0242 01        		.uleb128 0x1
+ 1286 0243 5F        		.byte	0x5f
+ 1287 0244 93        		.byte	0x93
+ 1288 0245 01        		.uleb128 0x1
+ 1289 0246 60        		.byte	0x60
+ 1290 0247 93        		.byte	0x93
+ 1291 0248 01        		.uleb128 0x1
+ 1292 0249 61        		.byte	0x61
+ 1293 024a 93        		.byte	0x93
+ 1294 024b 01        		.uleb128 0x1
+ 1295 024c 0000 0000 		.long	0x0
+ 1296 0250 0000 0000 		.long	0x0
+ 1297               	.LLST25:
+ 1298 0254 3601 0000 		.long	.LVL45-.Ltext0
+ 1299 0258 D601 0000 		.long	.LVL59-.Ltext0
+ 1300 025c 0100      		.word	0x1
+ 1301 025e 68        		.byte	0x68
+ 1302 025f 0000 0000 		.long	0x0
+ 1303 0263 0000 0000 		.long	0x0
+ 1304               	.LLST26:
+ 1305 0267 3601 0000 		.long	.LVL45-.Ltext0
+ 1306 026b B201 0000 		.long	.LVL56-.Ltext0
+ 1307 026f 0100      		.word	0x1
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/ccFNHrQJ.s 			page 24
+
+
+ 1308 0271 66        		.byte	0x66
+ 1309 0272 0000 0000 		.long	0x0
+ 1310 0276 0000 0000 		.long	0x0
+ 1311               	.LLST27:
+ 1312 027a 3601 0000 		.long	.LVL45-.Ltext0
+ 1313 027e 9A01 0000 		.long	.LVL54-.Ltext0
+ 1314 0282 0100      		.word	0x1
+ 1315 0284 64        		.byte	0x64
+ 1316 0285 9A01 0000 		.long	.LVL54-.Ltext0
+ 1317 0289 B802 0000 		.long	.LFE12-.Ltext0
+ 1318 028d 0200      		.word	0x2
+ 1319 028f 8C        		.byte	0x8c
+ 1320 0290 22        		.sleb128 34
+ 1321 0291 0000 0000 		.long	0x0
+ 1322 0295 0000 0000 		.long	0x0
+ 1323               	.LLST28:
+ 1324 0299 3601 0000 		.long	.LVL45-.Ltext0
+ 1325 029d 7601 0000 		.long	.LVL48-.Ltext0
+ 1326 02a1 0100      		.word	0x1
+ 1327 02a3 62        		.byte	0x62
+ 1328 02a4 7601 0000 		.long	.LVL48-.Ltext0
+ 1329 02a8 B802 0000 		.long	.LFE12-.Ltext0
+ 1330 02ac 0200      		.word	0x2
+ 1331 02ae 8C        		.byte	0x8c
+ 1332 02af 23        		.sleb128 35
+ 1333 02b0 0000 0000 		.long	0x0
+ 1334 02b4 0000 0000 		.long	0x0
+ 1335               	.LLST29:
+ 1336 02b8 3601 0000 		.long	.LVL45-.Ltext0
+ 1337 02bc 5001 0000 		.long	.LVL46-.Ltext0
+ 1338 02c0 0C00      		.word	0xc
+ 1339 02c2 5E        		.byte	0x5e
+ 1340 02c3 93        		.byte	0x93
+ 1341 02c4 01        		.uleb128 0x1
+ 1342 02c5 5F        		.byte	0x5f
+ 1343 02c6 93        		.byte	0x93
+ 1344 02c7 01        		.uleb128 0x1
+ 1345 02c8 60        		.byte	0x60
+ 1346 02c9 93        		.byte	0x93
+ 1347 02ca 01        		.uleb128 0x1
+ 1348 02cb 61        		.byte	0x61
+ 1349 02cc 93        		.byte	0x93
+ 1350 02cd 01        		.uleb128 0x1
+ 1351 02ce 7201 0000 		.long	.LVL47-.Ltext0
+ 1352 02d2 7601 0000 		.long	.LVL48-.Ltext0
+ 1353 02d6 0C00      		.word	0xc
+ 1354 02d8 5E        		.byte	0x5e
+ 1355 02d9 93        		.byte	0x93
+ 1356 02da 01        		.uleb128 0x1
+ 1357 02db 5F        		.byte	0x5f
+ 1358 02dc 93        		.byte	0x93
+ 1359 02dd 01        		.uleb128 0x1
+ 1360 02de 60        		.byte	0x60
+ 1361 02df 93        		.byte	0x93
+ 1362 02e0 01        		.uleb128 0x1
+ 1363 02e1 61        		.byte	0x61
+ 1364 02e2 93        		.byte	0x93
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/ccFNHrQJ.s 			page 25
+
+
+ 1365 02e3 01        		.uleb128 0x1
+ 1366 02e4 7601 0000 		.long	.LVL48-.Ltext0
+ 1367 02e8 7A01 0000 		.long	.LVL49-.Ltext0
+ 1368 02ec 0C00      		.word	0xc
+ 1369 02ee 56        		.byte	0x56
+ 1370 02ef 93        		.byte	0x93
+ 1371 02f0 01        		.uleb128 0x1
+ 1372 02f1 57        		.byte	0x57
+ 1373 02f2 93        		.byte	0x93
+ 1374 02f3 01        		.uleb128 0x1
+ 1375 02f4 58        		.byte	0x58
+ 1376 02f5 93        		.byte	0x93
+ 1377 02f6 01        		.uleb128 0x1
+ 1378 02f7 59        		.byte	0x59
+ 1379 02f8 93        		.byte	0x93
+ 1380 02f9 01        		.uleb128 0x1
+ 1381 02fa 7A01 0000 		.long	.LVL49-.Ltext0
+ 1382 02fe 8801 0000 		.long	.LVL50-.Ltext0
+ 1383 0302 0C00      		.word	0xc
+ 1384 0304 5E        		.byte	0x5e
+ 1385 0305 93        		.byte	0x93
+ 1386 0306 01        		.uleb128 0x1
+ 1387 0307 5F        		.byte	0x5f
+ 1388 0308 93        		.byte	0x93
+ 1389 0309 01        		.uleb128 0x1
+ 1390 030a 60        		.byte	0x60
+ 1391 030b 93        		.byte	0x93
+ 1392 030c 01        		.uleb128 0x1
+ 1393 030d 61        		.byte	0x61
+ 1394 030e 93        		.byte	0x93
+ 1395 030f 01        		.uleb128 0x1
+ 1396 0310 8801 0000 		.long	.LVL50-.Ltext0
+ 1397 0314 AE02 0000 		.long	.LVL76-.Ltext0
+ 1398 0318 0C00      		.word	0xc
+ 1399 031a 56        		.byte	0x56
+ 1400 031b 93        		.byte	0x93
+ 1401 031c 01        		.uleb128 0x1
+ 1402 031d 57        		.byte	0x57
+ 1403 031e 93        		.byte	0x93
+ 1404 031f 01        		.uleb128 0x1
+ 1405 0320 58        		.byte	0x58
+ 1406 0321 93        		.byte	0x93
+ 1407 0322 01        		.uleb128 0x1
+ 1408 0323 59        		.byte	0x59
+ 1409 0324 93        		.byte	0x93
+ 1410 0325 01        		.uleb128 0x1
+ 1411 0326 0000 0000 		.long	0x0
+ 1412 032a 0000 0000 		.long	0x0
+ 1413               	.LLST30:
+ 1414 032e 3A02 0000 		.long	.LVL64-.Ltext0
+ 1415 0332 4402 0000 		.long	.LVL65-.Ltext0
+ 1416 0336 0600      		.word	0x6
+ 1417 0338 68        		.byte	0x68
+ 1418 0339 93        		.byte	0x93
+ 1419 033a 01        		.uleb128 0x1
+ 1420 033b 69        		.byte	0x69
+ 1421 033c 93        		.byte	0x93
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/ccFNHrQJ.s 			page 26
+
+
+ 1422 033d 01        		.uleb128 0x1
+ 1423 033e 4402 0000 		.long	.LVL65-.Ltext0
+ 1424 0342 5C02 0000 		.long	.LVL67-.Ltext0
+ 1425 0346 0600      		.word	0x6
+ 1426 0348 60        		.byte	0x60
+ 1427 0349 93        		.byte	0x93
+ 1428 034a 01        		.uleb128 0x1
+ 1429 034b 61        		.byte	0x61
+ 1430 034c 93        		.byte	0x93
+ 1431 034d 01        		.uleb128 0x1
+ 1432 034e 5C02 0000 		.long	.LVL67-.Ltext0
+ 1433 0352 6A02 0000 		.long	.LVL68-.Ltext0
+ 1434 0356 0600      		.word	0x6
+ 1435 0358 68        		.byte	0x68
+ 1436 0359 93        		.byte	0x93
+ 1437 035a 01        		.uleb128 0x1
+ 1438 035b 69        		.byte	0x69
+ 1439 035c 93        		.byte	0x93
+ 1440 035d 01        		.uleb128 0x1
+ 1441 035e 6A02 0000 		.long	.LVL68-.Ltext0
+ 1442 0362 6C02 0000 		.long	.LVL69-.Ltext0
+ 1443 0366 0600      		.word	0x6
+ 1444 0368 60        		.byte	0x60
+ 1445 0369 93        		.byte	0x93
+ 1446 036a 01        		.uleb128 0x1
+ 1447 036b 61        		.byte	0x61
+ 1448 036c 93        		.byte	0x93
+ 1449 036d 01        		.uleb128 0x1
+ 1450 036e 6C02 0000 		.long	.LVL69-.Ltext0
+ 1451 0372 7002 0000 		.long	.LVL70-.Ltext0
+ 1452 0376 0600      		.word	0x6
+ 1453 0378 68        		.byte	0x68
+ 1454 0379 93        		.byte	0x93
+ 1455 037a 01        		.uleb128 0x1
+ 1456 037b 69        		.byte	0x69
+ 1457 037c 93        		.byte	0x93
+ 1458 037d 01        		.uleb128 0x1
+ 1459 037e 7002 0000 		.long	.LVL70-.Ltext0
+ 1460 0382 9A02 0000 		.long	.LVL74-.Ltext0
+ 1461 0386 0600      		.word	0x6
+ 1462 0388 60        		.byte	0x60
+ 1463 0389 93        		.byte	0x93
+ 1464 038a 01        		.uleb128 0x1
+ 1465 038b 61        		.byte	0x61
+ 1466 038c 93        		.byte	0x93
+ 1467 038d 01        		.uleb128 0x1
+ 1468 038e 0000 0000 		.long	0x0
+ 1469 0392 0000 0000 		.long	0x0
+ 1470               	.LLST31:
+ 1471 0396 8801 0000 		.long	.LVL50-.Ltext0
+ 1472 039a 8A01 0000 		.long	.LVL51-.Ltext0
+ 1473 039e 0C00      		.word	0xc
+ 1474 03a0 5E        		.byte	0x5e
+ 1475 03a1 93        		.byte	0x93
+ 1476 03a2 01        		.uleb128 0x1
+ 1477 03a3 5F        		.byte	0x5f
+ 1478 03a4 93        		.byte	0x93
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/ccFNHrQJ.s 			page 27
+
+
+ 1479 03a5 01        		.uleb128 0x1
+ 1480 03a6 60        		.byte	0x60
+ 1481 03a7 93        		.byte	0x93
+ 1482 03a8 01        		.uleb128 0x1
+ 1483 03a9 61        		.byte	0x61
+ 1484 03aa 93        		.byte	0x93
+ 1485 03ab 01        		.uleb128 0x1
+ 1486 03ac 8E01 0000 		.long	.LVL52-.Ltext0
+ 1487 03b0 9E02 0000 		.long	.LVL75-.Ltext0
+ 1488 03b4 0C00      		.word	0xc
+ 1489 03b6 5E        		.byte	0x5e
+ 1490 03b7 93        		.byte	0x93
+ 1491 03b8 01        		.uleb128 0x1
+ 1492 03b9 5F        		.byte	0x5f
+ 1493 03ba 93        		.byte	0x93
+ 1494 03bb 01        		.uleb128 0x1
+ 1495 03bc 60        		.byte	0x60
+ 1496 03bd 93        		.byte	0x93
+ 1497 03be 01        		.uleb128 0x1
+ 1498 03bf 61        		.byte	0x61
+ 1499 03c0 93        		.byte	0x93
+ 1500 03c1 01        		.uleb128 0x1
+ 1501 03c2 0000 0000 		.long	0x0
+ 1502 03c6 0000 0000 		.long	0x0
+ 1503               	.LLST32:
+ 1504 03ca 9001 0000 		.long	.LVL53-.Ltext0
+ 1505 03ce 9A01 0000 		.long	.LVL54-.Ltext0
+ 1506 03d2 0100      		.word	0x1
+ 1507 03d4 52        		.byte	0x52
+ 1508 03d5 9A01 0000 		.long	.LVL54-.Ltext0
+ 1509 03d9 A001 0000 		.long	.LVL55-.Ltext0
+ 1510 03dd 0100      		.word	0x1
+ 1511 03df 66        		.byte	0x66
+ 1512 03e0 A001 0000 		.long	.LVL55-.Ltext0
+ 1513 03e4 EA01 0000 		.long	.LVL60-.Ltext0
+ 1514 03e8 0200      		.word	0x2
+ 1515 03ea 8C        		.byte	0x8c
+ 1516 03eb 21        		.sleb128 33
+ 1517 03ec EA01 0000 		.long	.LVL60-.Ltext0
+ 1518 03f0 4A02 0000 		.long	.LVL66-.Ltext0
+ 1519 03f4 0100      		.word	0x1
+ 1520 03f6 53        		.byte	0x53
+ 1521 03f7 4A02 0000 		.long	.LVL66-.Ltext0
+ 1522 03fb 7602 0000 		.long	.LVL71-.Ltext0
+ 1523 03ff 0200      		.word	0x2
+ 1524 0401 8C        		.byte	0x8c
+ 1525 0402 21        		.sleb128 33
+ 1526 0403 7602 0000 		.long	.LVL71-.Ltext0
+ 1527 0407 8202 0000 		.long	.LVL72-.Ltext0
+ 1528 040b 0100      		.word	0x1
+ 1529 040d 52        		.byte	0x52
+ 1530 040e 8202 0000 		.long	.LVL72-.Ltext0
+ 1531 0412 8602 0000 		.long	.LVL73-.Ltext0
+ 1532 0416 0200      		.word	0x2
+ 1533 0418 8C        		.byte	0x8c
+ 1534 0419 21        		.sleb128 33
+ 1535 041a 8602 0000 		.long	.LVL73-.Ltext0
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/ccFNHrQJ.s 			page 28
+
+
+ 1536 041e B602 0000 		.long	.LVL77-.Ltext0
+ 1537 0422 0100      		.word	0x1
+ 1538 0424 52        		.byte	0x52
+ 1539 0425 B602 0000 		.long	.LVL77-.Ltext0
+ 1540 0429 B802 0000 		.long	.LFE12-.Ltext0
+ 1541 042d 0200      		.word	0x2
+ 1542 042f 8C        		.byte	0x8c
+ 1543 0430 21        		.sleb128 33
+ 1544 0431 0000 0000 		.long	0x0
+ 1545 0435 0000 0000 		.long	0x0
+ 1546               	.LLST33:
+ 1547 0439 C601 0000 		.long	.LVL57-.Ltext0
+ 1548 043d CC01 0000 		.long	.LVL58-.Ltext0
+ 1549 0441 0100      		.word	0x1
+ 1550 0443 66        		.byte	0x66
+ 1551 0444 0000 0000 		.long	0x0
+ 1552 0448 0000 0000 		.long	0x0
+ 1553               	.LLST34:
+ 1554 044c 0C02 0000 		.long	.LVL61-.Ltext0
+ 1555 0450 1402 0000 		.long	.LVL62-.Ltext0
+ 1556 0454 0100      		.word	0x1
+ 1557 0456 66        		.byte	0x66
+ 1558 0457 0000 0000 		.long	0x0
+ 1559 045b 0000 0000 		.long	0x0
+ 1560               	.LLST36:
+ 1561 045f B802 0000 		.long	.LVL78-.Ltext0
+ 1562 0463 E802 0000 		.long	.LVL80-.Ltext0
+ 1563 0467 0200      		.word	0x2
+ 1564 0469 91        		.byte	0x91
+ 1565 046a 10        		.sleb128 16
+ 1566 046b E802 0000 		.long	.LVL80-.Ltext0
+ 1567 046f 0A03 0000 		.long	.LVL86-.Ltext0
+ 1568 0473 0100      		.word	0x1
+ 1569 0475 57        		.byte	0x57
+ 1570 0476 0A03 0000 		.long	.LVL86-.Ltext0
+ 1571 047a 0C03 0000 		.long	.LVL87-.Ltext0
+ 1572 047e 0200      		.word	0x2
+ 1573 0480 8C        		.byte	0x8c
+ 1574 0481 10        		.sleb128 16
+ 1575 0482 0C03 0000 		.long	.LVL87-.Ltext0
+ 1576 0486 E003 0000 		.long	.LFE13-.Ltext0
+ 1577 048a 0100      		.word	0x1
+ 1578 048c 57        		.byte	0x57
+ 1579 048d 0000 0000 		.long	0x0
+ 1580 0491 0000 0000 		.long	0x0
+ 1581               	.LLST37:
+ 1582 0495 B802 0000 		.long	.LVL78-.Ltext0
+ 1583 0499 E802 0000 		.long	.LVL80-.Ltext0
+ 1584 049d 0200      		.word	0x2
+ 1585 049f 91        		.byte	0x91
+ 1586 04a0 11        		.sleb128 17
+ 1587 04a1 E802 0000 		.long	.LVL80-.Ltext0
+ 1588 04a5 0003 0000 		.long	.LVL83-.Ltext0
+ 1589 04a9 0600      		.word	0x6
+ 1590 04ab 5C        		.byte	0x5c
+ 1591 04ac 93        		.byte	0x93
+ 1592 04ad 01        		.uleb128 0x1
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/ccFNHrQJ.s 			page 29
+
+
+ 1593 04ae 5D        		.byte	0x5d
+ 1594 04af 93        		.byte	0x93
+ 1595 04b0 01        		.uleb128 0x1
+ 1596 04b1 0003 0000 		.long	.LVL83-.Ltext0
+ 1597 04b5 0C03 0000 		.long	.LVL87-.Ltext0
+ 1598 04b9 0600      		.word	0x6
+ 1599 04bb 62        		.byte	0x62
+ 1600 04bc 93        		.byte	0x93
+ 1601 04bd 01        		.uleb128 0x1
+ 1602 04be 63        		.byte	0x63
+ 1603 04bf 93        		.byte	0x93
+ 1604 04c0 01        		.uleb128 0x1
+ 1605 04c1 0C03 0000 		.long	.LVL87-.Ltext0
+ 1606 04c5 1603 0000 		.long	.LVL89-.Ltext0
+ 1607 04c9 0600      		.word	0x6
+ 1608 04cb 5C        		.byte	0x5c
+ 1609 04cc 93        		.byte	0x93
+ 1610 04cd 01        		.uleb128 0x1
+ 1611 04ce 5D        		.byte	0x5d
+ 1612 04cf 93        		.byte	0x93
+ 1613 04d0 01        		.uleb128 0x1
+ 1614 04d1 1603 0000 		.long	.LVL89-.Ltext0
+ 1615 04d5 2803 0000 		.long	.LVL95-.Ltext0
+ 1616 04d9 0600      		.word	0x6
+ 1617 04db 62        		.byte	0x62
+ 1618 04dc 93        		.byte	0x93
+ 1619 04dd 01        		.uleb128 0x1
+ 1620 04de 63        		.byte	0x63
+ 1621 04df 93        		.byte	0x93
+ 1622 04e0 01        		.uleb128 0x1
+ 1623 04e1 2803 0000 		.long	.LVL95-.Ltext0
+ 1624 04e5 3003 0000 		.long	.LVL96-.Ltext0
+ 1625 04e9 0600      		.word	0x6
+ 1626 04eb 5C        		.byte	0x5c
+ 1627 04ec 93        		.byte	0x93
+ 1628 04ed 01        		.uleb128 0x1
+ 1629 04ee 5D        		.byte	0x5d
+ 1630 04ef 93        		.byte	0x93
+ 1631 04f0 01        		.uleb128 0x1
+ 1632 04f1 3003 0000 		.long	.LVL96-.Ltext0
+ 1633 04f5 4203 0000 		.long	.LVL102-.Ltext0
+ 1634 04f9 0600      		.word	0x6
+ 1635 04fb 62        		.byte	0x62
+ 1636 04fc 93        		.byte	0x93
+ 1637 04fd 01        		.uleb128 0x1
+ 1638 04fe 63        		.byte	0x63
+ 1639 04ff 93        		.byte	0x93
+ 1640 0500 01        		.uleb128 0x1
+ 1641 0501 4203 0000 		.long	.LVL102-.Ltext0
+ 1642 0505 E003 0000 		.long	.LFE13-.Ltext0
+ 1643 0509 0600      		.word	0x6
+ 1644 050b 5C        		.byte	0x5c
+ 1645 050c 93        		.byte	0x93
+ 1646 050d 01        		.uleb128 0x1
+ 1647 050e 5D        		.byte	0x5d
+ 1648 050f 93        		.byte	0x93
+ 1649 0510 01        		.uleb128 0x1
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/ccFNHrQJ.s 			page 30
+
+
+ 1650 0511 0000 0000 		.long	0x0
+ 1651 0515 0000 0000 		.long	0x0
+ 1652               	.LLST38:
+ 1653 0519 E802 0000 		.long	.LVL80-.Ltext0
+ 1654 051d F002 0000 		.long	.LVL81-.Ltext0
+ 1655 0521 0100      		.word	0x1
+ 1656 0523 68        		.byte	0x68
+ 1657 0524 0C03 0000 		.long	.LVL87-.Ltext0
+ 1658 0528 1003 0000 		.long	.LVL88-.Ltext0
+ 1659 052c 0100      		.word	0x1
+ 1660 052e 68        		.byte	0x68
+ 1661 052f 2003 0000 		.long	.LVL92-.Ltext0
+ 1662 0533 2203 0000 		.long	.LVL93-.Ltext0
+ 1663 0537 0100      		.word	0x1
+ 1664 0539 68        		.byte	0x68
+ 1665 053a 2603 0000 		.long	.LVL94-.Ltext0
+ 1666 053e 9603 0000 		.long	.LVL111-.Ltext0
+ 1667 0542 0100      		.word	0x1
+ 1668 0544 68        		.byte	0x68
+ 1669 0545 9C03 0000 		.long	.LVL112-.Ltext0
+ 1670 0549 9E03 0000 		.long	.LVL113-.Ltext0
+ 1671 054d 0100      		.word	0x1
+ 1672 054f 68        		.byte	0x68
+ 1673 0550 AE03 0000 		.long	.LVL114-.Ltext0
+ 1674 0554 B603 0000 		.long	.LVL115-.Ltext0
+ 1675 0558 0100      		.word	0x1
+ 1676 055a 68        		.byte	0x68
+ 1677 055b 0000 0000 		.long	0x0
+ 1678 055f 0000 0000 		.long	0x0
+ 1679               	.LLST39:
+ 1680 0563 8403 0000 		.long	.LVL110-.Ltext0
+ 1681 0567 DE03 0000 		.long	.LVL117-.Ltext0
+ 1682 056b 0600      		.word	0x6
+ 1683 056d 5E        		.byte	0x5e
+ 1684 056e 93        		.byte	0x93
+ 1685 056f 01        		.uleb128 0x1
+ 1686 0570 5F        		.byte	0x5f
+ 1687 0571 93        		.byte	0x93
+ 1688 0572 01        		.uleb128 0x1
+ 1689 0573 0000 0000 		.long	0x0
+ 1690 0577 0000 0000 		.long	0x0
+ 1691               	.LLST40:
+ 1692 057b E802 0000 		.long	.LVL80-.Ltext0
+ 1693 057f 1003 0000 		.long	.LVL88-.Ltext0
+ 1694 0583 0600      		.word	0x6
+ 1695 0585 66        		.byte	0x66
+ 1696 0586 93        		.byte	0x93
+ 1697 0587 01        		.uleb128 0x1
+ 1698 0588 67        		.byte	0x67
+ 1699 0589 93        		.byte	0x93
+ 1700 058a 01        		.uleb128 0x1
+ 1701 058b 1003 0000 		.long	.LVL88-.Ltext0
+ 1702 058f 1A03 0000 		.long	.LVL90-.Ltext0
+ 1703 0593 0600      		.word	0x6
+ 1704 0595 60        		.byte	0x60
+ 1705 0596 93        		.byte	0x93
+ 1706 0597 01        		.uleb128 0x1
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/ccFNHrQJ.s 			page 31
+
+
+ 1707 0598 61        		.byte	0x61
+ 1708 0599 93        		.byte	0x93
+ 1709 059a 01        		.uleb128 0x1
+ 1710 059b 1A03 0000 		.long	.LVL90-.Ltext0
+ 1711 059f 5403 0000 		.long	.LVL103-.Ltext0
+ 1712 05a3 0600      		.word	0x6
+ 1713 05a5 66        		.byte	0x66
+ 1714 05a6 93        		.byte	0x93
+ 1715 05a7 01        		.uleb128 0x1
+ 1716 05a8 67        		.byte	0x67
+ 1717 05a9 93        		.byte	0x93
+ 1718 05aa 01        		.uleb128 0x1
+ 1719 05ab 5403 0000 		.long	.LVL103-.Ltext0
+ 1720 05af 5C03 0000 		.long	.LVL104-.Ltext0
+ 1721 05b3 0600      		.word	0x6
+ 1722 05b5 60        		.byte	0x60
+ 1723 05b6 93        		.byte	0x93
+ 1724 05b7 01        		.uleb128 0x1
+ 1725 05b8 61        		.byte	0x61
+ 1726 05b9 93        		.byte	0x93
+ 1727 05ba 01        		.uleb128 0x1
+ 1728 05bb 5C03 0000 		.long	.LVL104-.Ltext0
+ 1729 05bf 6E03 0000 		.long	.LVL107-.Ltext0
+ 1730 05c3 0600      		.word	0x6
+ 1731 05c5 66        		.byte	0x66
+ 1732 05c6 93        		.byte	0x93
+ 1733 05c7 01        		.uleb128 0x1
+ 1734 05c8 67        		.byte	0x67
+ 1735 05c9 93        		.byte	0x93
+ 1736 05ca 01        		.uleb128 0x1
+ 1737 05cb 6E03 0000 		.long	.LVL107-.Ltext0
+ 1738 05cf DC03 0000 		.long	.LVL116-.Ltext0
+ 1739 05d3 0600      		.word	0x6
+ 1740 05d5 60        		.byte	0x60
+ 1741 05d6 93        		.byte	0x93
+ 1742 05d7 01        		.uleb128 0x1
+ 1743 05d8 61        		.byte	0x61
+ 1744 05d9 93        		.byte	0x93
+ 1745 05da 01        		.uleb128 0x1
+ 1746 05db DC03 0000 		.long	.LVL116-.Ltext0
+ 1747 05df E003 0000 		.long	.LFE13-.Ltext0
+ 1748 05e3 0600      		.word	0x6
+ 1749 05e5 66        		.byte	0x66
+ 1750 05e6 93        		.byte	0x93
+ 1751 05e7 01        		.uleb128 0x1
+ 1752 05e8 67        		.byte	0x67
+ 1753 05e9 93        		.byte	0x93
+ 1754 05ea 01        		.uleb128 0x1
+ 1755 05eb 0000 0000 		.long	0x0
+ 1756 05ef 0000 0000 		.long	0x0
+ 1757               	.LLST41:
+ 1758 05f3 E802 0000 		.long	.LVL80-.Ltext0
+ 1759 05f7 0403 0000 		.long	.LVL84-.Ltext0
+ 1760 05fb 0600      		.word	0x6
+ 1761 05fd 5A        		.byte	0x5a
+ 1762 05fe 93        		.byte	0x93
+ 1763 05ff 01        		.uleb128 0x1
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/ccFNHrQJ.s 			page 32
+
+
+ 1764 0600 5B        		.byte	0x5b
+ 1765 0601 93        		.byte	0x93
+ 1766 0602 01        		.uleb128 0x1
+ 1767 0603 0C03 0000 		.long	.LVL87-.Ltext0
+ 1768 0607 E003 0000 		.long	.LFE13-.Ltext0
+ 1769 060b 0600      		.word	0x6
+ 1770 060d 5A        		.byte	0x5a
+ 1771 060e 93        		.byte	0x93
+ 1772 060f 01        		.uleb128 0x1
+ 1773 0610 5B        		.byte	0x5b
+ 1774 0611 93        		.byte	0x93
+ 1775 0612 01        		.uleb128 0x1
+ 1776 0613 0000 0000 		.long	0x0
+ 1777 0617 0000 0000 		.long	0x0
+ 1778               	.LLST42:
+ 1779 061b E202 0000 		.long	.LVL79-.Ltext0
+ 1780 061f FC02 0000 		.long	.LVL82-.Ltext0
+ 1781 0623 0600      		.word	0x6
+ 1782 0625 5E        		.byte	0x5e
+ 1783 0626 93        		.byte	0x93
+ 1784 0627 01        		.uleb128 0x1
+ 1785 0628 5F        		.byte	0x5f
+ 1786 0629 93        		.byte	0x93
+ 1787 062a 01        		.uleb128 0x1
+ 1788 062b FC02 0000 		.long	.LVL82-.Ltext0
+ 1789 062f 0803 0000 		.long	.LVL85-.Ltext0
+ 1790 0633 0600      		.word	0x6
+ 1791 0635 58        		.byte	0x58
+ 1792 0636 93        		.byte	0x93
+ 1793 0637 01        		.uleb128 0x1
+ 1794 0638 59        		.byte	0x59
+ 1795 0639 93        		.byte	0x93
+ 1796 063a 01        		.uleb128 0x1
+ 1797 063b 0C03 0000 		.long	.LVL87-.Ltext0
+ 1798 063f 7A03 0000 		.long	.LVL108-.Ltext0
+ 1799 0643 0600      		.word	0x6
+ 1800 0645 5E        		.byte	0x5e
+ 1801 0646 93        		.byte	0x93
+ 1802 0647 01        		.uleb128 0x1
+ 1803 0648 5F        		.byte	0x5f
+ 1804 0649 93        		.byte	0x93
+ 1805 064a 01        		.uleb128 0x1
+ 1806 064b 7A03 0000 		.long	.LVL108-.Ltext0
+ 1807 064f E003 0000 		.long	.LFE13-.Ltext0
+ 1808 0653 0600      		.word	0x6
+ 1809 0655 58        		.byte	0x58
+ 1810 0656 93        		.byte	0x93
+ 1811 0657 01        		.uleb128 0x1
+ 1812 0658 59        		.byte	0x59
+ 1813 0659 93        		.byte	0x93
+ 1814 065a 01        		.uleb128 0x1
+ 1815 065b 0000 0000 		.long	0x0
+ 1816 065f 0000 0000 		.long	0x0
+ 1817               	.LLST43:
+ 1818 0663 E802 0000 		.long	.LVL80-.Ltext0
+ 1819 0667 1003 0000 		.long	.LVL88-.Ltext0
+ 1820 066b 0600      		.word	0x6
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/ccFNHrQJ.s 			page 33
+
+
+ 1821 066d 6E        		.byte	0x6e
+ 1822 066e 93        		.byte	0x93
+ 1823 066f 01        		.uleb128 0x1
+ 1824 0670 6F        		.byte	0x6f
+ 1825 0671 93        		.byte	0x93
+ 1826 0672 01        		.uleb128 0x1
+ 1827 0673 1C03 0000 		.long	.LVL91-.Ltext0
+ 1828 0677 2203 0000 		.long	.LVL93-.Ltext0
+ 1829 067b 0600      		.word	0x6
+ 1830 067d 6E        		.byte	0x6e
+ 1831 067e 93        		.byte	0x93
+ 1832 067f 01        		.uleb128 0x1
+ 1833 0680 6F        		.byte	0x6f
+ 1834 0681 93        		.byte	0x93
+ 1835 0682 01        		.uleb128 0x1
+ 1836 0683 2803 0000 		.long	.LVL95-.Ltext0
+ 1837 0687 3603 0000 		.long	.LVL97-.Ltext0
+ 1838 068b 0600      		.word	0x6
+ 1839 068d 6E        		.byte	0x6e
+ 1840 068e 93        		.byte	0x93
+ 1841 068f 01        		.uleb128 0x1
+ 1842 0690 6F        		.byte	0x6f
+ 1843 0691 93        		.byte	0x93
+ 1844 0692 01        		.uleb128 0x1
+ 1845 0693 3C03 0000 		.long	.LVL99-.Ltext0
+ 1846 0697 3E03 0000 		.long	.LVL100-.Ltext0
+ 1847 069b 0600      		.word	0x6
+ 1848 069d 6E        		.byte	0x6e
+ 1849 069e 93        		.byte	0x93
+ 1850 069f 01        		.uleb128 0x1
+ 1851 06a0 6F        		.byte	0x6f
+ 1852 06a1 93        		.byte	0x93
+ 1853 06a2 01        		.uleb128 0x1
+ 1854 06a3 0000 0000 		.long	0x0
+ 1855 06a7 0000 0000 		.long	0x0
+ 1856               	.LLST44:
+ 1857 06ab 0C03 0000 		.long	.LVL87-.Ltext0
+ 1858 06af 1003 0000 		.long	.LVL88-.Ltext0
+ 1859 06b3 0600      		.word	0x6
+ 1860 06b5 6E        		.byte	0x6e
+ 1861 06b6 93        		.byte	0x93
+ 1862 06b7 01        		.uleb128 0x1
+ 1863 06b8 6F        		.byte	0x6f
+ 1864 06b9 93        		.byte	0x93
+ 1865 06ba 01        		.uleb128 0x1
+ 1866 06bb 3603 0000 		.long	.LVL97-.Ltext0
+ 1867 06bf 3C03 0000 		.long	.LVL99-.Ltext0
+ 1868 06c3 0600      		.word	0x6
+ 1869 06c5 6E        		.byte	0x6e
+ 1870 06c6 93        		.byte	0x93
+ 1871 06c7 01        		.uleb128 0x1
+ 1872 06c8 6F        		.byte	0x6f
+ 1873 06c9 93        		.byte	0x93
+ 1874 06ca 01        		.uleb128 0x1
+ 1875 06cb 4203 0000 		.long	.LVL102-.Ltext0
+ 1876 06cf 5E03 0000 		.long	.LVL105-.Ltext0
+ 1877 06d3 0600      		.word	0x6
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/ccFNHrQJ.s 			page 34
+
+
+ 1878 06d5 6E        		.byte	0x6e
+ 1879 06d6 93        		.byte	0x93
+ 1880 06d7 01        		.uleb128 0x1
+ 1881 06d8 6F        		.byte	0x6f
+ 1882 06d9 93        		.byte	0x93
+ 1883 06da 01        		.uleb128 0x1
+ 1884 06db 6A03 0000 		.long	.LVL106-.Ltext0
+ 1885 06df 8003 0000 		.long	.LVL109-.Ltext0
+ 1886 06e3 0600      		.word	0x6
+ 1887 06e5 6E        		.byte	0x6e
+ 1888 06e6 93        		.byte	0x93
+ 1889 06e7 01        		.uleb128 0x1
+ 1890 06e8 6F        		.byte	0x6f
+ 1891 06e9 93        		.byte	0x93
+ 1892 06ea 01        		.uleb128 0x1
+ 1893 06eb 0000 0000 		.long	0x0
+ 1894 06ef 0000 0000 		.long	0x0
+ 1895               		.section	.debug_info
+ 1896 0000 F204 0000 		.long	0x4f2
+ 1897 0004 0200      		.word	0x2
+ 1898 0006 0000 0000 		.long	.Ldebug_abbrev0
+ 1899 000a 04        		.byte	0x4
+ 1900 000b 01        		.uleb128 0x1
+ 1901 000c 0000 0000 		.long	.LASF42
+ 1902 0010 01        		.byte	0x1
+ 1903 0011 0000 0000 		.long	.LASF43
+ 1904 0015 0000 0000 		.long	.Ltext0
+ 1905 0019 0000 0000 		.long	.Letext0
+ 1906 001d 0000 0000 		.long	.Ldebug_line0
+ 1907 0021 02        		.uleb128 0x2
+ 1908 0022 01        		.byte	0x1
+ 1909 0023 06        		.byte	0x6
+ 1910 0024 0000 0000 		.long	.LASF0
+ 1911 0028 03        		.uleb128 0x3
+ 1912 0029 0000 0000 		.long	.LASF2
+ 1913 002d 02        		.byte	0x2
+ 1914 002e 7A        		.byte	0x7a
+ 1915 002f 3300 0000 		.long	0x33
+ 1916 0033 02        		.uleb128 0x2
+ 1917 0034 01        		.byte	0x1
+ 1918 0035 08        		.byte	0x8
+ 1919 0036 0000 0000 		.long	.LASF1
+ 1920 003a 04        		.uleb128 0x4
+ 1921 003b 02        		.byte	0x2
+ 1922 003c 05        		.byte	0x5
+ 1923 003d 696E 7400 		.string	"int"
+ 1924 0041 03        		.uleb128 0x3
+ 1925 0042 0000 0000 		.long	.LASF3
+ 1926 0046 02        		.byte	0x2
+ 1927 0047 7C        		.byte	0x7c
+ 1928 0048 4C00 0000 		.long	0x4c
+ 1929 004c 02        		.uleb128 0x2
+ 1930 004d 02        		.byte	0x2
+ 1931 004e 07        		.byte	0x7
+ 1932 004f 0000 0000 		.long	.LASF4
+ 1933 0053 02        		.uleb128 0x2
+ 1934 0054 04        		.byte	0x4
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/ccFNHrQJ.s 			page 35
+
+
+ 1935 0055 05        		.byte	0x5
+ 1936 0056 0000 0000 		.long	.LASF5
+ 1937 005a 02        		.uleb128 0x2
+ 1938 005b 04        		.byte	0x4
+ 1939 005c 07        		.byte	0x7
+ 1940 005d 0000 0000 		.long	.LASF6
+ 1941 0061 02        		.uleb128 0x2
+ 1942 0062 08        		.byte	0x8
+ 1943 0063 05        		.byte	0x5
+ 1944 0064 0000 0000 		.long	.LASF7
+ 1945 0068 02        		.uleb128 0x2
+ 1946 0069 08        		.byte	0x8
+ 1947 006a 07        		.byte	0x7
+ 1948 006b 0000 0000 		.long	.LASF8
+ 1949 006f 03        		.uleb128 0x3
+ 1950 0070 0000 0000 		.long	.LASF9
+ 1951 0074 03        		.byte	0x3
+ 1952 0075 D4        		.byte	0xd4
+ 1953 0076 7A00 0000 		.long	0x7a
+ 1954 007a 05        		.uleb128 0x5
+ 1955 007b 01        		.byte	0x1
+ 1956 007c 06        		.byte	0x6
+ 1957 007d 05        		.uleb128 0x5
+ 1958 007e 01        		.byte	0x1
+ 1959 007f 08        		.byte	0x8
+ 1960 0080 03        		.uleb128 0x3
+ 1961 0081 0000 0000 		.long	.LASF10
+ 1962 0085 04        		.byte	0x4
+ 1963 0086 2B        		.byte	0x2b
+ 1964 0087 8B00 0000 		.long	0x8b
+ 1965 008b 06        		.uleb128 0x6
+ 1966 008c 02        		.byte	0x2
+ 1967 008d 0000 0000 		.long	.LASF44
+ 1968 0091 03        		.uleb128 0x3
+ 1969 0092 0000 0000 		.long	.LASF11
+ 1970 0096 04        		.byte	0x4
+ 1971 0097 69        		.byte	0x69
+ 1972 0098 8000 0000 		.long	0x80
+ 1973 009c 02        		.uleb128 0x2
+ 1974 009d 02        		.byte	0x2
+ 1975 009e 07        		.byte	0x7
+ 1976 009f 0000 0000 		.long	.LASF12
+ 1977 00a3 02        		.uleb128 0x2
+ 1978 00a4 02        		.byte	0x2
+ 1979 00a5 05        		.byte	0x5
+ 1980 00a6 0000 0000 		.long	.LASF13
+ 1981 00aa 02        		.uleb128 0x2
+ 1982 00ab 01        		.byte	0x1
+ 1983 00ac 06        		.byte	0x6
+ 1984 00ad 0000 0000 		.long	.LASF14
+ 1985 00b1 07        		.uleb128 0x7
+ 1986 00b2 01        		.byte	0x1
+ 1987 00b3 0000 0000 		.long	.LASF15
+ 1988 00b7 01        		.byte	0x1
+ 1989 00b8 39        		.byte	0x39
+ 1990 00b9 01        		.byte	0x1
+ 1991 00ba 0000 0000 		.long	.LFB2
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/ccFNHrQJ.s 			page 36
+
+
+ 1992 00be 0000 0000 		.long	.LFE2
+ 1993 00c2 02        		.byte	0x2
+ 1994 00c3 90        		.byte	0x90
+ 1995 00c4 20        		.uleb128 0x20
+ 1996 00c5 DC00 0000 		.long	0xdc
+ 1997 00c9 08        		.uleb128 0x8
+ 1998 00ca 0000 0000 		.long	.LASF17
+ 1999 00ce 01        		.byte	0x1
+ 2000 00cf 38        		.byte	0x38
+ 2001 00d0 E800 0000 		.long	0xe8
+ 2002 00d4 06        		.byte	0x6
+ 2003 00d5 68        		.byte	0x68
+ 2004 00d6 93        		.byte	0x93
+ 2005 00d7 01        		.uleb128 0x1
+ 2006 00d8 69        		.byte	0x69
+ 2007 00d9 93        		.byte	0x93
+ 2008 00da 01        		.uleb128 0x1
+ 2009 00db 00        		.byte	0x0
+ 2010 00dc 09        		.uleb128 0x9
+ 2011 00dd 01        		.byte	0x1
+ 2012 00de E800 0000 		.long	0xe8
+ 2013 00e2 0A        		.uleb128 0xa
+ 2014 00e3 3300 0000 		.long	0x33
+ 2015 00e7 00        		.byte	0x0
+ 2016 00e8 0B        		.uleb128 0xb
+ 2017 00e9 02        		.byte	0x2
+ 2018 00ea DC00 0000 		.long	0xdc
+ 2019 00ee 07        		.uleb128 0x7
+ 2020 00ef 01        		.byte	0x1
+ 2021 00f0 0000 0000 		.long	.LASF16
+ 2022 00f4 01        		.byte	0x1
+ 2023 00f5 40        		.byte	0x40
+ 2024 00f6 01        		.byte	0x1
+ 2025 00f7 0000 0000 		.long	.LFB3
+ 2026 00fb 0000 0000 		.long	.LFE3
+ 2027 00ff 02        		.byte	0x2
+ 2028 0100 90        		.byte	0x90
+ 2029 0101 20        		.uleb128 0x20
+ 2030 0102 1401 0000 		.long	0x114
+ 2031 0106 0C        		.uleb128 0xc
+ 2032 0107 6300      		.string	"c"
+ 2033 0109 01        		.byte	0x1
+ 2034 010a 3F        		.byte	0x3f
+ 2035 010b 3300 0000 		.long	0x33
+ 2036 010f 0000 0000 		.long	.LLST2
+ 2037 0113 00        		.byte	0x0
+ 2038 0114 07        		.uleb128 0x7
+ 2039 0115 01        		.byte	0x1
+ 2040 0116 0000 0000 		.long	.LASF18
+ 2041 011a 01        		.byte	0x1
+ 2042 011b 4B        		.byte	0x4b
+ 2043 011c 01        		.byte	0x1
+ 2044 011d 0000 0000 		.long	.LFB4
+ 2045 0121 0000 0000 		.long	.LFE4
+ 2046 0125 02        		.byte	0x2
+ 2047 0126 90        		.byte	0x90
+ 2048 0127 20        		.uleb128 0x20
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/ccFNHrQJ.s 			page 37
+
+
+ 2049 0128 3C01 0000 		.long	0x13c
+ 2050 012c 0C        		.uleb128 0xc
+ 2051 012d 7374 7200 		.string	"str"
+ 2052 0131 01        		.byte	0x1
+ 2053 0132 4A        		.byte	0x4a
+ 2054 0133 3C01 0000 		.long	0x13c
+ 2055 0137 0000 0000 		.long	.LLST4
+ 2056 013b 00        		.byte	0x0
+ 2057 013c 0B        		.uleb128 0xb
+ 2058 013d 02        		.byte	0x2
+ 2059 013e AA00 0000 		.long	0xaa
+ 2060 0142 07        		.uleb128 0x7
+ 2061 0143 01        		.byte	0x1
+ 2062 0144 0000 0000 		.long	.LASF19
+ 2063 0148 01        		.byte	0x1
+ 2064 0149 5A        		.byte	0x5a
+ 2065 014a 01        		.byte	0x1
+ 2066 014b 0000 0000 		.long	.LFB5
+ 2067 014f 0000 0000 		.long	.LFE5
+ 2068 0153 02        		.byte	0x2
+ 2069 0154 90        		.byte	0x90
+ 2070 0155 20        		.uleb128 0x20
+ 2071 0156 9501 0000 		.long	0x195
+ 2072 015a 0C        		.uleb128 0xc
+ 2073 015b 7374 7200 		.string	"str"
+ 2074 015f 01        		.byte	0x1
+ 2075 0160 59        		.byte	0x59
+ 2076 0161 3C01 0000 		.long	0x13c
+ 2077 0165 0000 0000 		.long	.LLST6
+ 2078 0169 0D        		.uleb128 0xd
+ 2079 016a 0000 0000 		.long	.LASF20
+ 2080 016e 01        		.byte	0x1
+ 2081 016f 59        		.byte	0x59
+ 2082 0170 4C00 0000 		.long	0x4c
+ 2083 0174 0000 0000 		.long	.LLST7
+ 2084 0178 0C        		.uleb128 0xc
+ 2085 0179 6C65 6E00 		.string	"len"
+ 2086 017d 01        		.byte	0x1
+ 2087 017e 59        		.byte	0x59
+ 2088 017f 4C00 0000 		.long	0x4c
+ 2089 0183 0000 0000 		.long	.LLST8
+ 2090 0187 0E        		.uleb128 0xe
+ 2091 0188 6900      		.string	"i"
+ 2092 018a 01        		.byte	0x1
+ 2093 018b 5B        		.byte	0x5b
+ 2094 018c 3A00 0000 		.long	0x3a
+ 2095 0190 0000 0000 		.long	.LLST9
+ 2096 0194 00        		.byte	0x0
+ 2097 0195 07        		.uleb128 0x7
+ 2098 0196 01        		.byte	0x1
+ 2099 0197 0000 0000 		.long	.LASF21
+ 2100 019b 01        		.byte	0x1
+ 2101 019c 78        		.byte	0x78
+ 2102 019d 01        		.byte	0x1
+ 2103 019e 0000 0000 		.long	.LFB6
+ 2104 01a2 0000 0000 		.long	.LFE6
+ 2105 01a6 02        		.byte	0x2
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/ccFNHrQJ.s 			page 38
+
+
+ 2106 01a7 90        		.byte	0x90
+ 2107 01a8 20        		.uleb128 0x20
+ 2108 01a9 EE01 0000 		.long	0x1ee
+ 2109 01ad 0C        		.uleb128 0xc
+ 2110 01ae 7374 7200 		.string	"str"
+ 2111 01b2 01        		.byte	0x1
+ 2112 01b3 77        		.byte	0x77
+ 2113 01b4 EE01 0000 		.long	0x1ee
+ 2114 01b8 0000 0000 		.long	.LLST11
+ 2115 01bc 0F        		.uleb128 0xf
+ 2116 01bd 6300      		.string	"c"
+ 2117 01bf 01        		.byte	0x1
+ 2118 01c0 7A        		.byte	0x7a
+ 2119 01c1 AA00 0000 		.long	0xaa
+ 2120 01c5 10        		.uleb128 0x10
+ 2121 01c6 0000 0000 		.long	.LBB2
+ 2122 01ca 0000 0000 		.long	.LBE2
+ 2123 01ce 11        		.uleb128 0x11
+ 2124 01cf 0000 0000 		.long	.LASF22
+ 2125 01d3 01        		.byte	0x1
+ 2126 01d4 80        		.byte	0x80
+ 2127 01d5 4100 0000 		.long	0x41
+ 2128 01d9 0000 0000 		.long	.LLST12
+ 2129 01dd 11        		.uleb128 0x11
+ 2130 01de 0000 0000 		.long	.LASF23
+ 2131 01e2 01        		.byte	0x1
+ 2132 01e3 80        		.byte	0x80
+ 2133 01e4 2800 0000 		.long	0x28
+ 2134 01e8 0000 0000 		.long	.LLST13
+ 2135 01ec 00        		.byte	0x0
+ 2136 01ed 00        		.byte	0x0
+ 2137 01ee 0B        		.uleb128 0xb
+ 2138 01ef 02        		.byte	0x2
+ 2139 01f0 F401 0000 		.long	0x1f4
+ 2140 01f4 12        		.uleb128 0x12
+ 2141 01f5 6F00 0000 		.long	0x6f
+ 2142 01f9 13        		.uleb128 0x13
+ 2143 01fa 01        		.byte	0x1
+ 2144 01fb 0000 0000 		.long	.LASF45
+ 2145 01ff 01        		.byte	0x1
+ 2146 0200 87        		.byte	0x87
+ 2147 0201 01        		.byte	0x1
+ 2148 0202 0000 0000 		.long	.LFB7
+ 2149 0206 0000 0000 		.long	.LFE7
+ 2150 020a 02        		.byte	0x2
+ 2151 020b 90        		.byte	0x90
+ 2152 020c 20        		.uleb128 0x20
+ 2153 020d 07        		.uleb128 0x7
+ 2154 020e 01        		.byte	0x1
+ 2155 020f 0000 0000 		.long	.LASF24
+ 2156 0213 01        		.byte	0x1
+ 2157 0214 91        		.byte	0x91
+ 2158 0215 01        		.byte	0x1
+ 2159 0216 0000 0000 		.long	.LFB8
+ 2160 021a 0000 0000 		.long	.LFE8
+ 2161 021e 02        		.byte	0x2
+ 2162 021f 90        		.byte	0x90
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/ccFNHrQJ.s 			page 39
+
+
+ 2163 0220 20        		.uleb128 0x20
+ 2164 0221 5902 0000 		.long	0x259
+ 2165 0225 0D        		.uleb128 0xd
+ 2166 0226 0000 0000 		.long	.LASF25
+ 2167 022a 01        		.byte	0x1
+ 2168 022b 90        		.byte	0x90
+ 2169 022c 3300 0000 		.long	0x33
+ 2170 0230 0000 0000 		.long	.LLST16
+ 2171 0234 10        		.uleb128 0x10
+ 2172 0235 0000 0000 		.long	.LBB3
+ 2173 0239 0000 0000 		.long	.LBE3
+ 2174 023d 14        		.uleb128 0x14
+ 2175 023e 0000 0000 		.long	.LASF22
+ 2176 0242 01        		.byte	0x1
+ 2177 0243 98        		.byte	0x98
+ 2178 0244 4100 0000 		.long	0x41
+ 2179 0248 11        		.uleb128 0x11
+ 2180 0249 0000 0000 		.long	.LASF23
+ 2181 024d 01        		.byte	0x1
+ 2182 024e 98        		.byte	0x98
+ 2183 024f 2800 0000 		.long	0x28
+ 2184 0253 0000 0000 		.long	.LLST17
+ 2185 0257 00        		.byte	0x0
+ 2186 0258 00        		.byte	0x0
+ 2187 0259 07        		.uleb128 0x7
+ 2188 025a 01        		.byte	0x1
+ 2189 025b 0000 0000 		.long	.LASF26
+ 2190 025f 01        		.byte	0x1
+ 2191 0260 9E        		.byte	0x9e
+ 2192 0261 01        		.byte	0x1
+ 2193 0262 0000 0000 		.long	.LFB9
+ 2194 0266 0000 0000 		.long	.LFE9
+ 2195 026a 02        		.byte	0x2
+ 2196 026b 90        		.byte	0x90
+ 2197 026c 20        		.uleb128 0x20
+ 2198 026d 8102 0000 		.long	0x281
+ 2199 0271 0D        		.uleb128 0xd
+ 2200 0272 0000 0000 		.long	.LASF25
+ 2201 0276 01        		.byte	0x1
+ 2202 0277 9D        		.byte	0x9d
+ 2203 0278 3300 0000 		.long	0x33
+ 2204 027c 0000 0000 		.long	.LLST19
+ 2205 0280 00        		.byte	0x0
+ 2206 0281 07        		.uleb128 0x7
+ 2207 0282 01        		.byte	0x1
+ 2208 0283 0000 0000 		.long	.LASF27
+ 2209 0287 01        		.byte	0x1
+ 2210 0288 A7        		.byte	0xa7
+ 2211 0289 01        		.byte	0x1
+ 2212 028a 0000 0000 		.long	.LFB10
+ 2213 028e 0000 0000 		.long	.LFE10
+ 2214 0292 02        		.byte	0x2
+ 2215 0293 90        		.byte	0x90
+ 2216 0294 20        		.uleb128 0x20
+ 2217 0295 A902 0000 		.long	0x2a9
+ 2218 0299 0D        		.uleb128 0xd
+ 2219 029a 0000 0000 		.long	.LASF25
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/ccFNHrQJ.s 			page 40
+
+
+ 2220 029e 01        		.byte	0x1
+ 2221 029f A6        		.byte	0xa6
+ 2222 02a0 9C00 0000 		.long	0x9c
+ 2223 02a4 0000 0000 		.long	.LLST21
+ 2224 02a8 00        		.byte	0x0
+ 2225 02a9 07        		.uleb128 0x7
+ 2226 02aa 01        		.byte	0x1
+ 2227 02ab 0000 0000 		.long	.LASF28
+ 2228 02af 01        		.byte	0x1
+ 2229 02b0 B0        		.byte	0xb0
+ 2230 02b1 01        		.byte	0x1
+ 2231 02b2 0000 0000 		.long	.LFB11
+ 2232 02b6 0000 0000 		.long	.LFE11
+ 2233 02ba 02        		.byte	0x2
+ 2234 02bb 90        		.byte	0x90
+ 2235 02bc 20        		.uleb128 0x20
+ 2236 02bd D102 0000 		.long	0x2d1
+ 2237 02c1 0D        		.uleb128 0xd
+ 2238 02c2 0000 0000 		.long	.LASF25
+ 2239 02c6 01        		.byte	0x1
+ 2240 02c7 AF        		.byte	0xaf
+ 2241 02c8 5A00 0000 		.long	0x5a
+ 2242 02cc 0000 0000 		.long	.LLST23
+ 2243 02d0 00        		.byte	0x0
+ 2244 02d1 07        		.uleb128 0x7
+ 2245 02d2 01        		.byte	0x1
+ 2246 02d3 0000 0000 		.long	.LASF29
+ 2247 02d7 01        		.byte	0x1
+ 2248 02d8 C3        		.byte	0xc3
+ 2249 02d9 01        		.byte	0x1
+ 2250 02da 0000 0000 		.long	.LFB12
+ 2251 02de 0000 0000 		.long	.LFE12
+ 2252 02e2 02        		.byte	0x2
+ 2253 02e3 90        		.byte	0x90
+ 2254 02e4 20        		.uleb128 0x20
+ 2255 02e5 B603 0000 		.long	0x3b6
+ 2256 02e9 0D        		.uleb128 0xd
+ 2257 02ea 0000 0000 		.long	.LASF30
+ 2258 02ee 01        		.byte	0x1
+ 2259 02ef C2        		.byte	0xc2
+ 2260 02f0 AA00 0000 		.long	0xaa
+ 2261 02f4 0000 0000 		.long	.LLST25
+ 2262 02f8 0D        		.uleb128 0xd
+ 2263 02f9 0000 0000 		.long	.LASF31
+ 2264 02fd 01        		.byte	0x1
+ 2265 02fe C2        		.byte	0xc2
+ 2266 02ff AA00 0000 		.long	0xaa
+ 2267 0303 0000 0000 		.long	.LLST26
+ 2268 0307 0D        		.uleb128 0xd
+ 2269 0308 0000 0000 		.long	.LASF32
+ 2270 030c 01        		.byte	0x1
+ 2271 030d C2        		.byte	0xc2
+ 2272 030e AA00 0000 		.long	0xaa
+ 2273 0312 0000 0000 		.long	.LLST27
+ 2274 0316 0D        		.uleb128 0xd
+ 2275 0317 0000 0000 		.long	.LASF33
+ 2276 031b 01        		.byte	0x1
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/ccFNHrQJ.s 			page 41
+
+
+ 2277 031c C2        		.byte	0xc2
+ 2278 031d AA00 0000 		.long	0xaa
+ 2279 0321 0000 0000 		.long	.LLST28
+ 2280 0325 0C        		.uleb128 0xc
+ 2281 0326 6E00      		.string	"n"
+ 2282 0328 01        		.byte	0x1
+ 2283 0329 C2        		.byte	0xc2
+ 2284 032a 5300 0000 		.long	0x53
+ 2285 032e 0000 0000 		.long	.LLST29
+ 2286 0332 0E        		.uleb128 0xe
+ 2287 0333 7000      		.string	"p"
+ 2288 0335 01        		.byte	0x1
+ 2289 0336 C6        		.byte	0xc6
+ 2290 0337 3C01 0000 		.long	0x13c
+ 2291 033b 0000 0000 		.long	.LLST30
+ 2292 033f 15        		.uleb128 0x15
+ 2293 0340 6275 6600 		.string	"buf"
+ 2294 0344 01        		.byte	0x1
+ 2295 0345 C6        		.byte	0xc6
+ 2296 0346 B603 0000 		.long	0x3b6
+ 2297 034a 02        		.byte	0x2
+ 2298 034b 8C        		.byte	0x8c
+ 2299 034c 01        		.sleb128 1
+ 2300 034d 0E        		.uleb128 0xe
+ 2301 034e 7800      		.string	"x"
+ 2302 0350 01        		.byte	0x1
+ 2303 0351 C7        		.byte	0xc7
+ 2304 0352 5A00 0000 		.long	0x5a
+ 2305 0356 0000 0000 		.long	.LLST31
+ 2306 035a 11        		.uleb128 0x11
+ 2307 035b 0000 0000 		.long	.LASF34
+ 2308 035f 01        		.byte	0x1
+ 2309 0360 C8        		.byte	0xc8
+ 2310 0361 3300 0000 		.long	0x33
+ 2311 0365 0000 0000 		.long	.LLST32
+ 2312 0369 16        		.uleb128 0x16
+ 2313 036a 0000 0000 		.long	.LBB4
+ 2314 036e 0000 0000 		.long	.LBE4
+ 2315 0372 9103 0000 		.long	0x391
+ 2316 0376 14        		.uleb128 0x14
+ 2317 0377 0000 0000 		.long	.LASF22
+ 2318 037b 01        		.byte	0x1
+ 2319 037c DB        		.byte	0xdb
+ 2320 037d 4100 0000 		.long	0x41
+ 2321 0381 11        		.uleb128 0x11
+ 2322 0382 0000 0000 		.long	.LASF23
+ 2323 0386 01        		.byte	0x1
+ 2324 0387 DB        		.byte	0xdb
+ 2325 0388 2800 0000 		.long	0x28
+ 2326 038c 0000 0000 		.long	.LLST33
+ 2327 0390 00        		.byte	0x0
+ 2328 0391 10        		.uleb128 0x10
+ 2329 0392 0000 0000 		.long	.LBB5
+ 2330 0396 0000 0000 		.long	.LBE5
+ 2331 039a 14        		.uleb128 0x14
+ 2332 039b 0000 0000 		.long	.LASF22
+ 2333 039f 01        		.byte	0x1
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/ccFNHrQJ.s 			page 42
+
+
+ 2334 03a0 E2        		.byte	0xe2
+ 2335 03a1 4100 0000 		.long	0x41
+ 2336 03a5 11        		.uleb128 0x11
+ 2337 03a6 0000 0000 		.long	.LASF23
+ 2338 03aa 01        		.byte	0x1
+ 2339 03ab E2        		.byte	0xe2
+ 2340 03ac 2800 0000 		.long	0x28
+ 2341 03b0 0000 0000 		.long	.LLST34
+ 2342 03b4 00        		.byte	0x0
+ 2343 03b5 00        		.byte	0x0
+ 2344 03b6 17        		.uleb128 0x17
+ 2345 03b7 AA00 0000 		.long	0xaa
+ 2346 03bb C603 0000 		.long	0x3c6
+ 2347 03bf 18        		.uleb128 0x18
+ 2348 03c0 C603 0000 		.long	0x3c6
+ 2349 03c4 1F        		.byte	0x1f
+ 2350 03c5 00        		.byte	0x0
+ 2351 03c6 05        		.uleb128 0x5
+ 2352 03c7 02        		.byte	0x2
+ 2353 03c8 07        		.byte	0x7
+ 2354 03c9 19        		.uleb128 0x19
+ 2355 03ca 01        		.byte	0x1
+ 2356 03cb 0000 0000 		.long	.LASF46
+ 2357 03cf 01        		.byte	0x1
+ 2358 03d0 4101      		.word	0x141
+ 2359 03d2 01        		.byte	0x1
+ 2360 03d3 3A00 0000 		.long	0x3a
+ 2361 03d7 0000 0000 		.long	.LFB13
+ 2362 03db 0000 0000 		.long	.LFE13
+ 2363 03df 02        		.byte	0x2
+ 2364 03e0 90        		.byte	0x90
+ 2365 03e1 20        		.uleb128 0x20
+ 2366 03e2 B304 0000 		.long	0x4b3
+ 2367 03e6 1A        		.uleb128 0x1a
+ 2368 03e7 0000 0000 		.long	.LASF35
+ 2369 03eb 01        		.byte	0x1
+ 2370 03ec 4001      		.word	0x140
+ 2371 03ee 3300 0000 		.long	0x33
+ 2372 03f2 0000 0000 		.long	.LLST36
+ 2373 03f6 1A        		.uleb128 0x1a
+ 2374 03f7 0000 0000 		.long	.LASF36
+ 2375 03fb 01        		.byte	0x1
+ 2376 03fc 4001      		.word	0x140
+ 2377 03fe B304 0000 		.long	0x4b3
+ 2378 0402 0000 0000 		.long	.LLST37
+ 2379 0406 1B        		.uleb128 0x1b
+ 2380 0407 1C        		.uleb128 0x1c
+ 2381 0408 0000 0000 		.long	.LASF37
+ 2382 040c 01        		.byte	0x1
+ 2383 040d 4501      		.word	0x145
+ 2384 040f AA00 0000 		.long	0xaa
+ 2385 0413 0000 0000 		.long	.LLST38
+ 2386 0417 1C        		.uleb128 0x1c
+ 2387 0418 0000 0000 		.long	.LASF38
+ 2388 041c 01        		.byte	0x1
+ 2389 041d 4601      		.word	0x146
+ 2390 041f 4C00 0000 		.long	0x4c
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/ccFNHrQJ.s 			page 43
+
+
+ 2391 0423 0000 0000 		.long	.LLST39
+ 2392 0427 1C        		.uleb128 0x1c
+ 2393 0428 0000 0000 		.long	.LASF39
+ 2394 042c 01        		.byte	0x1
+ 2395 042d 4601      		.word	0x146
+ 2396 042f 4C00 0000 		.long	0x4c
+ 2397 0433 0000 0000 		.long	.LLST40
+ 2398 0437 1C        		.uleb128 0x1c
+ 2399 0438 0000 0000 		.long	.LASF30
+ 2400 043c 01        		.byte	0x1
+ 2401 043d 4601      		.word	0x146
+ 2402 043f 4C00 0000 		.long	0x4c
+ 2403 0443 0000 0000 		.long	.LLST41
+ 2404 0447 1D        		.uleb128 0x1d
+ 2405 0448 6170 00   		.string	"ap"
+ 2406 044b 01        		.byte	0x1
+ 2407 044c 4701      		.word	0x147
+ 2408 044e 9100 0000 		.long	0x91
+ 2409 0452 0000 0000 		.long	.LLST42
+ 2410 0456 1E        		.uleb128 0x1e
+ 2411 0457 0000 0000 		.long	.LASF47
+ 2412 045b 01        		.byte	0x1
+ 2413 045c 5E01      		.word	0x15e
+ 2414 045e 0000 0000 		.long	.L66
+ 2415 0462 16        		.uleb128 0x16
+ 2416 0463 0000 0000 		.long	.LBB6
+ 2417 0467 0000 0000 		.long	.LBE6
+ 2418 046b 8C04 0000 		.long	0x48c
+ 2419 046f 1C        		.uleb128 0x1c
+ 2420 0470 0000 0000 		.long	.LASF22
+ 2421 0474 01        		.byte	0x1
+ 2422 0475 4C01      		.word	0x14c
+ 2423 0477 4100 0000 		.long	0x41
+ 2424 047b 0000 0000 		.long	.LLST43
+ 2425 047f 1F        		.uleb128 0x1f
+ 2426 0480 0000 0000 		.long	.LASF23
+ 2427 0484 01        		.byte	0x1
+ 2428 0485 4C01      		.word	0x14c
+ 2429 0487 2800 0000 		.long	0x28
+ 2430 048b 00        		.byte	0x0
+ 2431 048c 10        		.uleb128 0x10
+ 2432 048d 0000 0000 		.long	.LBB7
+ 2433 0491 0000 0000 		.long	.LBE7
+ 2434 0495 1C        		.uleb128 0x1c
+ 2435 0496 0000 0000 		.long	.LASF22
+ 2436 049a 01        		.byte	0x1
+ 2437 049b 5601      		.word	0x156
+ 2438 049d 4100 0000 		.long	0x41
+ 2439 04a1 0000 0000 		.long	.LLST44
+ 2440 04a5 1F        		.uleb128 0x1f
+ 2441 04a6 0000 0000 		.long	.LASF23
+ 2442 04aa 01        		.byte	0x1
+ 2443 04ab 5601      		.word	0x156
+ 2444 04ad 2800 0000 		.long	0x28
+ 2445 04b1 00        		.byte	0x0
+ 2446 04b2 00        		.byte	0x0
+ 2447 04b3 0B        		.uleb128 0xb
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/ccFNHrQJ.s 			page 44
+
+
+ 2448 04b4 02        		.byte	0x2
+ 2449 04b5 B904 0000 		.long	0x4b9
+ 2450 04b9 12        		.uleb128 0x12
+ 2451 04ba AA00 0000 		.long	0xaa
+ 2452 04be 17        		.uleb128 0x17
+ 2453 04bf AA00 0000 		.long	0xaa
+ 2454 04c3 CE04 0000 		.long	0x4ce
+ 2455 04c7 18        		.uleb128 0x18
+ 2456 04c8 C603 0000 		.long	0x3c6
+ 2457 04cc 10        		.byte	0x10
+ 2458 04cd 00        		.byte	0x0
+ 2459 04ce 20        		.uleb128 0x20
+ 2460 04cf 0000 0000 		.long	.LASF40
+ 2461 04d3 01        		.byte	0x1
+ 2462 04d4 2D        		.byte	0x2d
+ 2463 04d5 DF04 0000 		.long	0x4df
+ 2464 04d9 05        		.byte	0x5
+ 2465 04da 03        		.byte	0x3
+ 2466 04db 0000 0000 		.long	HexChars
+ 2467 04df 12        		.uleb128 0x12
+ 2468 04e0 BE04 0000 		.long	0x4be
+ 2469 04e4 20        		.uleb128 0x20
+ 2470 04e5 0000 0000 		.long	.LASF41
+ 2471 04e9 01        		.byte	0x1
+ 2472 04ea 33        		.byte	0x33
+ 2473 04eb E800 0000 		.long	0xe8
+ 2474 04ef 05        		.byte	0x5
+ 2475 04f0 03        		.byte	0x3
+ 2476 04f1 0000 0000 		.long	rputchar
+ 2477 04f5 00        		.byte	0x0
+ 2478               		.section	.debug_abbrev
+ 2479 0000 01        		.uleb128 0x1
+ 2480 0001 11        		.uleb128 0x11
+ 2481 0002 01        		.byte	0x1
+ 2482 0003 25        		.uleb128 0x25
+ 2483 0004 0E        		.uleb128 0xe
+ 2484 0005 13        		.uleb128 0x13
+ 2485 0006 0B        		.uleb128 0xb
+ 2486 0007 03        		.uleb128 0x3
+ 2487 0008 0E        		.uleb128 0xe
+ 2488 0009 11        		.uleb128 0x11
+ 2489 000a 01        		.uleb128 0x1
+ 2490 000b 12        		.uleb128 0x12
+ 2491 000c 01        		.uleb128 0x1
+ 2492 000d 10        		.uleb128 0x10
+ 2493 000e 06        		.uleb128 0x6
+ 2494 000f 00        		.byte	0x0
+ 2495 0010 00        		.byte	0x0
+ 2496 0011 02        		.uleb128 0x2
+ 2497 0012 24        		.uleb128 0x24
+ 2498 0013 00        		.byte	0x0
+ 2499 0014 0B        		.uleb128 0xb
+ 2500 0015 0B        		.uleb128 0xb
+ 2501 0016 3E        		.uleb128 0x3e
+ 2502 0017 0B        		.uleb128 0xb
+ 2503 0018 03        		.uleb128 0x3
+ 2504 0019 0E        		.uleb128 0xe
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/ccFNHrQJ.s 			page 45
+
+
+ 2505 001a 00        		.byte	0x0
+ 2506 001b 00        		.byte	0x0
+ 2507 001c 03        		.uleb128 0x3
+ 2508 001d 16        		.uleb128 0x16
+ 2509 001e 00        		.byte	0x0
+ 2510 001f 03        		.uleb128 0x3
+ 2511 0020 0E        		.uleb128 0xe
+ 2512 0021 3A        		.uleb128 0x3a
+ 2513 0022 0B        		.uleb128 0xb
+ 2514 0023 3B        		.uleb128 0x3b
+ 2515 0024 0B        		.uleb128 0xb
+ 2516 0025 49        		.uleb128 0x49
+ 2517 0026 13        		.uleb128 0x13
+ 2518 0027 00        		.byte	0x0
+ 2519 0028 00        		.byte	0x0
+ 2520 0029 04        		.uleb128 0x4
+ 2521 002a 24        		.uleb128 0x24
+ 2522 002b 00        		.byte	0x0
+ 2523 002c 0B        		.uleb128 0xb
+ 2524 002d 0B        		.uleb128 0xb
+ 2525 002e 3E        		.uleb128 0x3e
+ 2526 002f 0B        		.uleb128 0xb
+ 2527 0030 03        		.uleb128 0x3
+ 2528 0031 08        		.uleb128 0x8
+ 2529 0032 00        		.byte	0x0
+ 2530 0033 00        		.byte	0x0
+ 2531 0034 05        		.uleb128 0x5
+ 2532 0035 24        		.uleb128 0x24
+ 2533 0036 00        		.byte	0x0
+ 2534 0037 0B        		.uleb128 0xb
+ 2535 0038 0B        		.uleb128 0xb
+ 2536 0039 3E        		.uleb128 0x3e
+ 2537 003a 0B        		.uleb128 0xb
+ 2538 003b 00        		.byte	0x0
+ 2539 003c 00        		.byte	0x0
+ 2540 003d 06        		.uleb128 0x6
+ 2541 003e 0F        		.uleb128 0xf
+ 2542 003f 00        		.byte	0x0
+ 2543 0040 0B        		.uleb128 0xb
+ 2544 0041 0B        		.uleb128 0xb
+ 2545 0042 03        		.uleb128 0x3
+ 2546 0043 0E        		.uleb128 0xe
+ 2547 0044 00        		.byte	0x0
+ 2548 0045 00        		.byte	0x0
+ 2549 0046 07        		.uleb128 0x7
+ 2550 0047 2E        		.uleb128 0x2e
+ 2551 0048 01        		.byte	0x1
+ 2552 0049 3F        		.uleb128 0x3f
+ 2553 004a 0C        		.uleb128 0xc
+ 2554 004b 03        		.uleb128 0x3
+ 2555 004c 0E        		.uleb128 0xe
+ 2556 004d 3A        		.uleb128 0x3a
+ 2557 004e 0B        		.uleb128 0xb
+ 2558 004f 3B        		.uleb128 0x3b
+ 2559 0050 0B        		.uleb128 0xb
+ 2560 0051 27        		.uleb128 0x27
+ 2561 0052 0C        		.uleb128 0xc
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/ccFNHrQJ.s 			page 46
+
+
+ 2562 0053 11        		.uleb128 0x11
+ 2563 0054 01        		.uleb128 0x1
+ 2564 0055 12        		.uleb128 0x12
+ 2565 0056 01        		.uleb128 0x1
+ 2566 0057 40        		.uleb128 0x40
+ 2567 0058 0A        		.uleb128 0xa
+ 2568 0059 01        		.uleb128 0x1
+ 2569 005a 13        		.uleb128 0x13
+ 2570 005b 00        		.byte	0x0
+ 2571 005c 00        		.byte	0x0
+ 2572 005d 08        		.uleb128 0x8
+ 2573 005e 05        		.uleb128 0x5
+ 2574 005f 00        		.byte	0x0
+ 2575 0060 03        		.uleb128 0x3
+ 2576 0061 0E        		.uleb128 0xe
+ 2577 0062 3A        		.uleb128 0x3a
+ 2578 0063 0B        		.uleb128 0xb
+ 2579 0064 3B        		.uleb128 0x3b
+ 2580 0065 0B        		.uleb128 0xb
+ 2581 0066 49        		.uleb128 0x49
+ 2582 0067 13        		.uleb128 0x13
+ 2583 0068 02        		.uleb128 0x2
+ 2584 0069 0A        		.uleb128 0xa
+ 2585 006a 00        		.byte	0x0
+ 2586 006b 00        		.byte	0x0
+ 2587 006c 09        		.uleb128 0x9
+ 2588 006d 15        		.uleb128 0x15
+ 2589 006e 01        		.byte	0x1
+ 2590 006f 27        		.uleb128 0x27
+ 2591 0070 0C        		.uleb128 0xc
+ 2592 0071 01        		.uleb128 0x1
+ 2593 0072 13        		.uleb128 0x13
+ 2594 0073 00        		.byte	0x0
+ 2595 0074 00        		.byte	0x0
+ 2596 0075 0A        		.uleb128 0xa
+ 2597 0076 05        		.uleb128 0x5
+ 2598 0077 00        		.byte	0x0
+ 2599 0078 49        		.uleb128 0x49
+ 2600 0079 13        		.uleb128 0x13
+ 2601 007a 00        		.byte	0x0
+ 2602 007b 00        		.byte	0x0
+ 2603 007c 0B        		.uleb128 0xb
+ 2604 007d 0F        		.uleb128 0xf
+ 2605 007e 00        		.byte	0x0
+ 2606 007f 0B        		.uleb128 0xb
+ 2607 0080 0B        		.uleb128 0xb
+ 2608 0081 49        		.uleb128 0x49
+ 2609 0082 13        		.uleb128 0x13
+ 2610 0083 00        		.byte	0x0
+ 2611 0084 00        		.byte	0x0
+ 2612 0085 0C        		.uleb128 0xc
+ 2613 0086 05        		.uleb128 0x5
+ 2614 0087 00        		.byte	0x0
+ 2615 0088 03        		.uleb128 0x3
+ 2616 0089 08        		.uleb128 0x8
+ 2617 008a 3A        		.uleb128 0x3a
+ 2618 008b 0B        		.uleb128 0xb
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/ccFNHrQJ.s 			page 47
+
+
+ 2619 008c 3B        		.uleb128 0x3b
+ 2620 008d 0B        		.uleb128 0xb
+ 2621 008e 49        		.uleb128 0x49
+ 2622 008f 13        		.uleb128 0x13
+ 2623 0090 02        		.uleb128 0x2
+ 2624 0091 06        		.uleb128 0x6
+ 2625 0092 00        		.byte	0x0
+ 2626 0093 00        		.byte	0x0
+ 2627 0094 0D        		.uleb128 0xd
+ 2628 0095 05        		.uleb128 0x5
+ 2629 0096 00        		.byte	0x0
+ 2630 0097 03        		.uleb128 0x3
+ 2631 0098 0E        		.uleb128 0xe
+ 2632 0099 3A        		.uleb128 0x3a
+ 2633 009a 0B        		.uleb128 0xb
+ 2634 009b 3B        		.uleb128 0x3b
+ 2635 009c 0B        		.uleb128 0xb
+ 2636 009d 49        		.uleb128 0x49
+ 2637 009e 13        		.uleb128 0x13
+ 2638 009f 02        		.uleb128 0x2
+ 2639 00a0 06        		.uleb128 0x6
+ 2640 00a1 00        		.byte	0x0
+ 2641 00a2 00        		.byte	0x0
+ 2642 00a3 0E        		.uleb128 0xe
+ 2643 00a4 34        		.uleb128 0x34
+ 2644 00a5 00        		.byte	0x0
+ 2645 00a6 03        		.uleb128 0x3
+ 2646 00a7 08        		.uleb128 0x8
+ 2647 00a8 3A        		.uleb128 0x3a
+ 2648 00a9 0B        		.uleb128 0xb
+ 2649 00aa 3B        		.uleb128 0x3b
+ 2650 00ab 0B        		.uleb128 0xb
+ 2651 00ac 49        		.uleb128 0x49
+ 2652 00ad 13        		.uleb128 0x13
+ 2653 00ae 02        		.uleb128 0x2
+ 2654 00af 06        		.uleb128 0x6
+ 2655 00b0 00        		.byte	0x0
+ 2656 00b1 00        		.byte	0x0
+ 2657 00b2 0F        		.uleb128 0xf
+ 2658 00b3 34        		.uleb128 0x34
+ 2659 00b4 00        		.byte	0x0
+ 2660 00b5 03        		.uleb128 0x3
+ 2661 00b6 08        		.uleb128 0x8
+ 2662 00b7 3A        		.uleb128 0x3a
+ 2663 00b8 0B        		.uleb128 0xb
+ 2664 00b9 3B        		.uleb128 0x3b
+ 2665 00ba 0B        		.uleb128 0xb
+ 2666 00bb 49        		.uleb128 0x49
+ 2667 00bc 13        		.uleb128 0x13
+ 2668 00bd 00        		.byte	0x0
+ 2669 00be 00        		.byte	0x0
+ 2670 00bf 10        		.uleb128 0x10
+ 2671 00c0 0B        		.uleb128 0xb
+ 2672 00c1 01        		.byte	0x1
+ 2673 00c2 11        		.uleb128 0x11
+ 2674 00c3 01        		.uleb128 0x1
+ 2675 00c4 12        		.uleb128 0x12
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/ccFNHrQJ.s 			page 48
+
+
+ 2676 00c5 01        		.uleb128 0x1
+ 2677 00c6 00        		.byte	0x0
+ 2678 00c7 00        		.byte	0x0
+ 2679 00c8 11        		.uleb128 0x11
+ 2680 00c9 34        		.uleb128 0x34
+ 2681 00ca 00        		.byte	0x0
+ 2682 00cb 03        		.uleb128 0x3
+ 2683 00cc 0E        		.uleb128 0xe
+ 2684 00cd 3A        		.uleb128 0x3a
+ 2685 00ce 0B        		.uleb128 0xb
+ 2686 00cf 3B        		.uleb128 0x3b
+ 2687 00d0 0B        		.uleb128 0xb
+ 2688 00d1 49        		.uleb128 0x49
+ 2689 00d2 13        		.uleb128 0x13
+ 2690 00d3 02        		.uleb128 0x2
+ 2691 00d4 06        		.uleb128 0x6
+ 2692 00d5 00        		.byte	0x0
+ 2693 00d6 00        		.byte	0x0
+ 2694 00d7 12        		.uleb128 0x12
+ 2695 00d8 26        		.uleb128 0x26
+ 2696 00d9 00        		.byte	0x0
+ 2697 00da 49        		.uleb128 0x49
+ 2698 00db 13        		.uleb128 0x13
+ 2699 00dc 00        		.byte	0x0
+ 2700 00dd 00        		.byte	0x0
+ 2701 00de 13        		.uleb128 0x13
+ 2702 00df 2E        		.uleb128 0x2e
+ 2703 00e0 00        		.byte	0x0
+ 2704 00e1 3F        		.uleb128 0x3f
+ 2705 00e2 0C        		.uleb128 0xc
+ 2706 00e3 03        		.uleb128 0x3
+ 2707 00e4 0E        		.uleb128 0xe
+ 2708 00e5 3A        		.uleb128 0x3a
+ 2709 00e6 0B        		.uleb128 0xb
+ 2710 00e7 3B        		.uleb128 0x3b
+ 2711 00e8 0B        		.uleb128 0xb
+ 2712 00e9 27        		.uleb128 0x27
+ 2713 00ea 0C        		.uleb128 0xc
+ 2714 00eb 11        		.uleb128 0x11
+ 2715 00ec 01        		.uleb128 0x1
+ 2716 00ed 12        		.uleb128 0x12
+ 2717 00ee 01        		.uleb128 0x1
+ 2718 00ef 40        		.uleb128 0x40
+ 2719 00f0 0A        		.uleb128 0xa
+ 2720 00f1 00        		.byte	0x0
+ 2721 00f2 00        		.byte	0x0
+ 2722 00f3 14        		.uleb128 0x14
+ 2723 00f4 34        		.uleb128 0x34
+ 2724 00f5 00        		.byte	0x0
+ 2725 00f6 03        		.uleb128 0x3
+ 2726 00f7 0E        		.uleb128 0xe
+ 2727 00f8 3A        		.uleb128 0x3a
+ 2728 00f9 0B        		.uleb128 0xb
+ 2729 00fa 3B        		.uleb128 0x3b
+ 2730 00fb 0B        		.uleb128 0xb
+ 2731 00fc 49        		.uleb128 0x49
+ 2732 00fd 13        		.uleb128 0x13
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/ccFNHrQJ.s 			page 49
+
+
+ 2733 00fe 00        		.byte	0x0
+ 2734 00ff 00        		.byte	0x0
+ 2735 0100 15        		.uleb128 0x15
+ 2736 0101 34        		.uleb128 0x34
+ 2737 0102 00        		.byte	0x0
+ 2738 0103 03        		.uleb128 0x3
+ 2739 0104 08        		.uleb128 0x8
+ 2740 0105 3A        		.uleb128 0x3a
+ 2741 0106 0B        		.uleb128 0xb
+ 2742 0107 3B        		.uleb128 0x3b
+ 2743 0108 0B        		.uleb128 0xb
+ 2744 0109 49        		.uleb128 0x49
+ 2745 010a 13        		.uleb128 0x13
+ 2746 010b 02        		.uleb128 0x2
+ 2747 010c 0A        		.uleb128 0xa
+ 2748 010d 00        		.byte	0x0
+ 2749 010e 00        		.byte	0x0
+ 2750 010f 16        		.uleb128 0x16
+ 2751 0110 0B        		.uleb128 0xb
+ 2752 0111 01        		.byte	0x1
+ 2753 0112 11        		.uleb128 0x11
+ 2754 0113 01        		.uleb128 0x1
+ 2755 0114 12        		.uleb128 0x12
+ 2756 0115 01        		.uleb128 0x1
+ 2757 0116 01        		.uleb128 0x1
+ 2758 0117 13        		.uleb128 0x13
+ 2759 0118 00        		.byte	0x0
+ 2760 0119 00        		.byte	0x0
+ 2761 011a 17        		.uleb128 0x17
+ 2762 011b 01        		.uleb128 0x1
+ 2763 011c 01        		.byte	0x1
+ 2764 011d 49        		.uleb128 0x49
+ 2765 011e 13        		.uleb128 0x13
+ 2766 011f 01        		.uleb128 0x1
+ 2767 0120 13        		.uleb128 0x13
+ 2768 0121 00        		.byte	0x0
+ 2769 0122 00        		.byte	0x0
+ 2770 0123 18        		.uleb128 0x18
+ 2771 0124 21        		.uleb128 0x21
+ 2772 0125 00        		.byte	0x0
+ 2773 0126 49        		.uleb128 0x49
+ 2774 0127 13        		.uleb128 0x13
+ 2775 0128 2F        		.uleb128 0x2f
+ 2776 0129 0B        		.uleb128 0xb
+ 2777 012a 00        		.byte	0x0
+ 2778 012b 00        		.byte	0x0
+ 2779 012c 19        		.uleb128 0x19
+ 2780 012d 2E        		.uleb128 0x2e
+ 2781 012e 01        		.byte	0x1
+ 2782 012f 3F        		.uleb128 0x3f
+ 2783 0130 0C        		.uleb128 0xc
+ 2784 0131 03        		.uleb128 0x3
+ 2785 0132 0E        		.uleb128 0xe
+ 2786 0133 3A        		.uleb128 0x3a
+ 2787 0134 0B        		.uleb128 0xb
+ 2788 0135 3B        		.uleb128 0x3b
+ 2789 0136 05        		.uleb128 0x5
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/ccFNHrQJ.s 			page 50
+
+
+ 2790 0137 27        		.uleb128 0x27
+ 2791 0138 0C        		.uleb128 0xc
+ 2792 0139 49        		.uleb128 0x49
+ 2793 013a 13        		.uleb128 0x13
+ 2794 013b 11        		.uleb128 0x11
+ 2795 013c 01        		.uleb128 0x1
+ 2796 013d 12        		.uleb128 0x12
+ 2797 013e 01        		.uleb128 0x1
+ 2798 013f 40        		.uleb128 0x40
+ 2799 0140 0A        		.uleb128 0xa
+ 2800 0141 01        		.uleb128 0x1
+ 2801 0142 13        		.uleb128 0x13
+ 2802 0143 00        		.byte	0x0
+ 2803 0144 00        		.byte	0x0
+ 2804 0145 1A        		.uleb128 0x1a
+ 2805 0146 05        		.uleb128 0x5
+ 2806 0147 00        		.byte	0x0
+ 2807 0148 03        		.uleb128 0x3
+ 2808 0149 0E        		.uleb128 0xe
+ 2809 014a 3A        		.uleb128 0x3a
+ 2810 014b 0B        		.uleb128 0xb
+ 2811 014c 3B        		.uleb128 0x3b
+ 2812 014d 05        		.uleb128 0x5
+ 2813 014e 49        		.uleb128 0x49
+ 2814 014f 13        		.uleb128 0x13
+ 2815 0150 02        		.uleb128 0x2
+ 2816 0151 06        		.uleb128 0x6
+ 2817 0152 00        		.byte	0x0
+ 2818 0153 00        		.byte	0x0
+ 2819 0154 1B        		.uleb128 0x1b
+ 2820 0155 18        		.uleb128 0x18
+ 2821 0156 00        		.byte	0x0
+ 2822 0157 00        		.byte	0x0
+ 2823 0158 00        		.byte	0x0
+ 2824 0159 1C        		.uleb128 0x1c
+ 2825 015a 34        		.uleb128 0x34
+ 2826 015b 00        		.byte	0x0
+ 2827 015c 03        		.uleb128 0x3
+ 2828 015d 0E        		.uleb128 0xe
+ 2829 015e 3A        		.uleb128 0x3a
+ 2830 015f 0B        		.uleb128 0xb
+ 2831 0160 3B        		.uleb128 0x3b
+ 2832 0161 05        		.uleb128 0x5
+ 2833 0162 49        		.uleb128 0x49
+ 2834 0163 13        		.uleb128 0x13
+ 2835 0164 02        		.uleb128 0x2
+ 2836 0165 06        		.uleb128 0x6
+ 2837 0166 00        		.byte	0x0
+ 2838 0167 00        		.byte	0x0
+ 2839 0168 1D        		.uleb128 0x1d
+ 2840 0169 34        		.uleb128 0x34
+ 2841 016a 00        		.byte	0x0
+ 2842 016b 03        		.uleb128 0x3
+ 2843 016c 08        		.uleb128 0x8
+ 2844 016d 3A        		.uleb128 0x3a
+ 2845 016e 0B        		.uleb128 0xb
+ 2846 016f 3B        		.uleb128 0x3b
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/ccFNHrQJ.s 			page 51
+
+
+ 2847 0170 05        		.uleb128 0x5
+ 2848 0171 49        		.uleb128 0x49
+ 2849 0172 13        		.uleb128 0x13
+ 2850 0173 02        		.uleb128 0x2
+ 2851 0174 06        		.uleb128 0x6
+ 2852 0175 00        		.byte	0x0
+ 2853 0176 00        		.byte	0x0
+ 2854 0177 1E        		.uleb128 0x1e
+ 2855 0178 0A        		.uleb128 0xa
+ 2856 0179 00        		.byte	0x0
+ 2857 017a 03        		.uleb128 0x3
+ 2858 017b 0E        		.uleb128 0xe
+ 2859 017c 3A        		.uleb128 0x3a
+ 2860 017d 0B        		.uleb128 0xb
+ 2861 017e 3B        		.uleb128 0x3b
+ 2862 017f 05        		.uleb128 0x5
+ 2863 0180 11        		.uleb128 0x11
+ 2864 0181 01        		.uleb128 0x1
+ 2865 0182 00        		.byte	0x0
+ 2866 0183 00        		.byte	0x0
+ 2867 0184 1F        		.uleb128 0x1f
+ 2868 0185 34        		.uleb128 0x34
+ 2869 0186 00        		.byte	0x0
+ 2870 0187 03        		.uleb128 0x3
+ 2871 0188 0E        		.uleb128 0xe
+ 2872 0189 3A        		.uleb128 0x3a
+ 2873 018a 0B        		.uleb128 0xb
+ 2874 018b 3B        		.uleb128 0x3b
+ 2875 018c 05        		.uleb128 0x5
+ 2876 018d 49        		.uleb128 0x49
+ 2877 018e 13        		.uleb128 0x13
+ 2878 018f 00        		.byte	0x0
+ 2879 0190 00        		.byte	0x0
+ 2880 0191 20        		.uleb128 0x20
+ 2881 0192 34        		.uleb128 0x34
+ 2882 0193 00        		.byte	0x0
+ 2883 0194 03        		.uleb128 0x3
+ 2884 0195 0E        		.uleb128 0xe
+ 2885 0196 3A        		.uleb128 0x3a
+ 2886 0197 0B        		.uleb128 0xb
+ 2887 0198 3B        		.uleb128 0x3b
+ 2888 0199 0B        		.uleb128 0xb
+ 2889 019a 49        		.uleb128 0x49
+ 2890 019b 13        		.uleb128 0x13
+ 2891 019c 02        		.uleb128 0x2
+ 2892 019d 0A        		.uleb128 0xa
+ 2893 019e 00        		.byte	0x0
+ 2894 019f 00        		.byte	0x0
+ 2895 01a0 00        		.byte	0x0
+ 2896               		.section	.debug_pubnames,"",@progbits
+ 2897 0000 D000 0000 		.long	0xd0
+ 2898 0004 0200      		.word	0x2
+ 2899 0006 0000 0000 		.long	.Ldebug_info0
+ 2900 000a F604 0000 		.long	0x4f6
+ 2901 000e B100 0000 		.long	0xb1
+ 2902 0012 7270 7269 		.string	"rprintfInit"
+ 2902      6E74 6649 
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/ccFNHrQJ.s 			page 52
+
+
+ 2902      6E69 7400 
+ 2903 001e EE00 0000 		.long	0xee
+ 2904 0022 7270 7269 		.string	"rprintfChar"
+ 2904      6E74 6643 
+ 2904      6861 7200 
+ 2905 002e 1401 0000 		.long	0x114
+ 2906 0032 7270 7269 		.string	"rprintfStr"
+ 2906      6E74 6653 
+ 2906      7472 00
+ 2907 003d 4201 0000 		.long	0x142
+ 2908 0041 7270 7269 		.string	"rprintfStrLen"
+ 2908      6E74 6653 
+ 2908      7472 4C65 
+ 2908      6E00 
+ 2909 004f 9501 0000 		.long	0x195
+ 2910 0053 7270 7269 		.string	"rprintfProgStr"
+ 2910      6E74 6650 
+ 2910      726F 6753 
+ 2910      7472 00
+ 2911 0062 F901 0000 		.long	0x1f9
+ 2912 0066 7270 7269 		.string	"rprintfCRLF"
+ 2912      6E74 6643 
+ 2912      524C 4600 
+ 2913 0072 0D02 0000 		.long	0x20d
+ 2914 0076 7270 7269 		.string	"rprintfu04"
+ 2914      6E74 6675 
+ 2914      3034 00
+ 2915 0081 5902 0000 		.long	0x259
+ 2916 0085 7270 7269 		.string	"rprintfu08"
+ 2916      6E74 6675 
+ 2916      3038 00
+ 2917 0090 8102 0000 		.long	0x281
+ 2918 0094 7270 7269 		.string	"rprintfu16"
+ 2918      6E74 6675 
+ 2918      3136 00
+ 2919 009f A902 0000 		.long	0x2a9
+ 2920 00a3 7270 7269 		.string	"rprintfu32"
+ 2920      6E74 6675 
+ 2920      3332 00
+ 2921 00ae D102 0000 		.long	0x2d1
+ 2922 00b2 7270 7269 		.string	"rprintfNum"
+ 2922      6E74 664E 
+ 2922      756D 00
+ 2923 00bd C903 0000 		.long	0x3c9
+ 2924 00c1 7270 7269 		.string	"rprintf1RamRom"
+ 2924      6E74 6631 
+ 2924      5261 6D52 
+ 2924      6F6D 00
+ 2925 00d0 0000 0000 		.long	0x0
+ 2926               		.section	.debug_aranges,"",@progbits
+ 2927 0000 1C00 0000 		.long	0x1c
+ 2928 0004 0200      		.word	0x2
+ 2929 0006 0000 0000 		.long	.Ldebug_info0
+ 2930 000a 04        		.byte	0x4
+ 2931 000b 00        		.byte	0x0
+ 2932 000c 0000      		.word	0x0
+ 2933 000e 0000      		.word	0x0
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/ccFNHrQJ.s 			page 53
+
+
+ 2934 0010 0000 0000 		.long	.Ltext0
+ 2935 0014 E003 0000 		.long	.Letext0-.Ltext0
+ 2936 0018 0000 0000 		.long	0x0
+ 2937 001c 0000 0000 		.long	0x0
+ 2938               		.section	.debug_line
+ 2939 0000 8D03 0000 		.long	.LELT0-.LSLT0
+ 2940               	.LSLT0:
+ 2941 0004 0200      		.word	0x2
+ 2942 0006 E300 0000 		.long	.LELTP0-.LASLTP0
+ 2943               	.LASLTP0:
+ 2944 000a 01        		.byte	0x1
+ 2945 000b 01        		.byte	0x1
+ 2946 000c F6        		.byte	0xf6
+ 2947 000d F5        		.byte	0xf5
+ 2948 000e 0A        		.byte	0xa
+ 2949 000f 00        		.byte	0x0
+ 2950 0010 01        		.byte	0x1
+ 2951 0011 01        		.byte	0x1
+ 2952 0012 01        		.byte	0x1
+ 2953 0013 01        		.byte	0x1
+ 2954 0014 00        		.byte	0x0
+ 2955 0015 00        		.byte	0x0
+ 2956 0016 00        		.byte	0x0
+ 2957 0017 01        		.byte	0x1
+ 2958 0018 633A 2F77 		.ascii	"c:/winavr-20100110/lib/gcc/../../avr/include"
+ 2958      696E 6176 
+ 2958      722D 3230 
+ 2958      3130 3031 
+ 2958      3130 2F6C 
+ 2959 0044 00        		.byte	0
+ 2960 0045 633A 2F77 		.ascii	"c:/winavr-20100110/lib/gcc/../../avr/include/avr"
+ 2960      696E 6176 
+ 2960      722D 3230 
+ 2960      3130 3031 
+ 2960      3130 2F6C 
+ 2961 0075 00        		.byte	0
+ 2962 0076 433A 5C41 		.ascii	"C:\\AVRlib"
+ 2962      5652 6C69 
+ 2962      62
+ 2963 007f 00        		.byte	0
+ 2964 0080 633A 5C77 		.ascii	"c:\\winavr-20100110\\bin\\../lib/gcc/avr/4.3.3/include"
+ 2964      696E 6176 
+ 2964      722D 3230 
+ 2964      3130 3031 
+ 2964      3130 5C62 
+ 2965 00b3 00        		.byte	0
+ 2966 00b4 00        		.byte	0x0
+ 2967 00b5 7270 7269 		.string	"rprintf.c"
+ 2967      6E74 662E 
+ 2967      6300 
+ 2968 00bf 03        		.uleb128 0x3
+ 2969 00c0 00        		.uleb128 0x0
+ 2970 00c1 00        		.uleb128 0x0
+ 2971 00c2 7374 6469 		.string	"stdint.h"
+ 2971      6E74 2E68 
+ 2971      00
+ 2972 00cb 01        		.uleb128 0x1
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/ccFNHrQJ.s 			page 54
+
+
+ 2973 00cc 00        		.uleb128 0x0
+ 2974 00cd 00        		.uleb128 0x0
+ 2975 00ce 6176 722F 		.string	"avr/pgmspace.h"
+ 2975      7067 6D73 
+ 2975      7061 6365 
+ 2975      2E68 00
+ 2976 00dd 01        		.uleb128 0x1
+ 2977 00de 00        		.uleb128 0x0
+ 2978 00df 00        		.uleb128 0x0
+ 2979 00e0 7374 6461 		.string	"stdarg.h"
+ 2979      7267 2E68 
+ 2979      00
+ 2980 00e9 04        		.uleb128 0x4
+ 2981 00ea 00        		.uleb128 0x0
+ 2982 00eb 00        		.uleb128 0x0
+ 2983 00ec 00        		.byte	0x0
+ 2984               	.LELTP0:
+ 2985 00ed 00        		.byte	0x0
+ 2986 00ee 05        		.uleb128 0x5
+ 2987 00ef 02        		.byte	0x2
+ 2988 00f0 0000 0000 		.long	.LM1
+ 2989 00f4 4C        		.byte	0x4c
+ 2990 00f5 00        		.byte	0x0
+ 2991 00f6 05        		.uleb128 0x5
+ 2992 00f7 02        		.byte	0x2
+ 2993 00f8 0000 0000 		.long	.LM2
+ 2994 00fc 15        		.byte	0x15
+ 2995 00fd 00        		.byte	0x0
+ 2996 00fe 05        		.uleb128 0x5
+ 2997 00ff 02        		.byte	0x2
+ 2998 0100 0000 0000 		.long	.LM3
+ 2999 0104 15        		.byte	0x15
+ 3000 0105 00        		.byte	0x0
+ 3001 0106 05        		.uleb128 0x5
+ 3002 0107 02        		.byte	0x2
+ 3003 0108 0000 0000 		.long	.LM4
+ 3004 010c 19        		.byte	0x19
+ 3005 010d 00        		.byte	0x0
+ 3006 010e 05        		.uleb128 0x5
+ 3007 010f 02        		.byte	0x2
+ 3008 0110 0000 0000 		.long	.LM5
+ 3009 0114 16        		.byte	0x16
+ 3010 0115 00        		.byte	0x0
+ 3011 0116 05        		.uleb128 0x5
+ 3012 0117 02        		.byte	0x2
+ 3013 0118 0000 0000 		.long	.LM6
+ 3014 011c 15        		.byte	0x15
+ 3015 011d 00        		.byte	0x0
+ 3016 011e 05        		.uleb128 0x5
+ 3017 011f 02        		.byte	0x2
+ 3018 0120 0000 0000 		.long	.LM7
+ 3019 0124 16        		.byte	0x16
+ 3020 0125 00        		.byte	0x0
+ 3021 0126 05        		.uleb128 0x5
+ 3022 0127 02        		.byte	0x2
+ 3023 0128 0000 0000 		.long	.LM8
+ 3024 012c 15        		.byte	0x15
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/ccFNHrQJ.s 			page 55
+
+
+ 3025 012d 00        		.byte	0x0
+ 3026 012e 05        		.uleb128 0x5
+ 3027 012f 02        		.byte	0x2
+ 3028 0130 0000 0000 		.long	.LM9
+ 3029 0134 19        		.byte	0x19
+ 3030 0135 00        		.byte	0x0
+ 3031 0136 05        		.uleb128 0x5
+ 3032 0137 02        		.byte	0x2
+ 3033 0138 0000 0000 		.long	.LM10
+ 3034 013c 17        		.byte	0x17
+ 3035 013d 00        		.byte	0x0
+ 3036 013e 05        		.uleb128 0x5
+ 3037 013f 02        		.byte	0x2
+ 3038 0140 0000 0000 		.long	.LM11
+ 3039 0144 18        		.byte	0x18
+ 3040 0145 00        		.byte	0x0
+ 3041 0146 05        		.uleb128 0x5
+ 3042 0147 02        		.byte	0x2
+ 3043 0148 0000 0000 		.long	.LM12
+ 3044 014c 13        		.byte	0x13
+ 3045 014d 00        		.byte	0x0
+ 3046 014e 05        		.uleb128 0x5
+ 3047 014f 02        		.byte	0x2
+ 3048 0150 0000 0000 		.long	.LM13
+ 3049 0154 16        		.byte	0x16
+ 3050 0155 00        		.byte	0x0
+ 3051 0156 05        		.uleb128 0x5
+ 3052 0157 02        		.byte	0x2
+ 3053 0158 0000 0000 		.long	.LM14
+ 3054 015c 1B        		.byte	0x1b
+ 3055 015d 00        		.byte	0x0
+ 3056 015e 05        		.uleb128 0x5
+ 3057 015f 02        		.byte	0x2
+ 3058 0160 0000 0000 		.long	.LM15
+ 3059 0164 18        		.byte	0x18
+ 3060 0165 00        		.byte	0x0
+ 3061 0166 05        		.uleb128 0x5
+ 3062 0167 02        		.byte	0x2
+ 3063 0168 0000 0000 		.long	.LM16
+ 3064 016c 17        		.byte	0x17
+ 3065 016d 00        		.byte	0x0
+ 3066 016e 05        		.uleb128 0x5
+ 3067 016f 02        		.byte	0x2
+ 3068 0170 0000 0000 		.long	.LM17
+ 3069 0174 20        		.byte	0x20
+ 3070 0175 00        		.byte	0x0
+ 3071 0176 05        		.uleb128 0x5
+ 3072 0177 02        		.byte	0x2
+ 3073 0178 0000 0000 		.long	.LM18
+ 3074 017c 15        		.byte	0x15
+ 3075 017d 00        		.byte	0x0
+ 3076 017e 05        		.uleb128 0x5
+ 3077 017f 02        		.byte	0x2
+ 3078 0180 0000 0000 		.long	.LM19
+ 3079 0184 16        		.byte	0x16
+ 3080 0185 00        		.byte	0x0
+ 3081 0186 05        		.uleb128 0x5
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/ccFNHrQJ.s 			page 56
+
+
+ 3082 0187 02        		.byte	0x2
+ 3083 0188 0000 0000 		.long	.LM20
+ 3084 018c 0D        		.byte	0xd
+ 3085 018d 00        		.byte	0x0
+ 3086 018e 05        		.uleb128 0x5
+ 3087 018f 02        		.byte	0x2
+ 3088 0190 0000 0000 		.long	.LM21
+ 3089 0194 1E        		.byte	0x1e
+ 3090 0195 00        		.byte	0x0
+ 3091 0196 05        		.uleb128 0x5
+ 3092 0197 02        		.byte	0x2
+ 3093 0198 0000 0000 		.long	.LM22
+ 3094 019c 19        		.byte	0x19
+ 3095 019d 00        		.byte	0x0
+ 3096 019e 05        		.uleb128 0x5
+ 3097 019f 02        		.byte	0x2
+ 3098 01a0 0000 0000 		.long	.LM23
+ 3099 01a4 19        		.byte	0x19
+ 3100 01a5 00        		.byte	0x0
+ 3101 01a6 05        		.uleb128 0x5
+ 3102 01a7 02        		.byte	0x2
+ 3103 01a8 0000 0000 		.long	.LM24
+ 3104 01ac 18        		.byte	0x18
+ 3105 01ad 00        		.byte	0x0
+ 3106 01ae 05        		.uleb128 0x5
+ 3107 01af 02        		.byte	0x2
+ 3108 01b0 0000 0000 		.long	.LM25
+ 3109 01b4 13        		.byte	0x13
+ 3110 01b5 00        		.byte	0x0
+ 3111 01b6 05        		.uleb128 0x5
+ 3112 01b7 02        		.byte	0x2
+ 3113 01b8 0000 0000 		.long	.LM26
+ 3114 01bc 16        		.byte	0x16
+ 3115 01bd 00        		.byte	0x0
+ 3116 01be 05        		.uleb128 0x5
+ 3117 01bf 02        		.byte	0x2
+ 3118 01c0 0000 0000 		.long	.LM27
+ 3119 01c4 19        		.byte	0x19
+ 3120 01c5 00        		.byte	0x0
+ 3121 01c6 05        		.uleb128 0x5
+ 3122 01c7 02        		.byte	0x2
+ 3123 01c8 0000 0000 		.long	.LM28
+ 3124 01cc 18        		.byte	0x18
+ 3125 01cd 00        		.byte	0x0
+ 3126 01ce 05        		.uleb128 0x5
+ 3127 01cf 02        		.byte	0x2
+ 3128 01d0 0000 0000 		.long	.LM29
+ 3129 01d4 15        		.byte	0x15
+ 3130 01d5 00        		.byte	0x0
+ 3131 01d6 05        		.uleb128 0x5
+ 3132 01d7 02        		.byte	0x2
+ 3133 01d8 0000 0000 		.long	.LM30
+ 3134 01dc 19        		.byte	0x19
+ 3135 01dd 00        		.byte	0x0
+ 3136 01de 05        		.uleb128 0x5
+ 3137 01df 02        		.byte	0x2
+ 3138 01e0 0000 0000 		.long	.LM31
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/ccFNHrQJ.s 			page 57
+
+
+ 3139 01e4 1B        		.byte	0x1b
+ 3140 01e5 00        		.byte	0x0
+ 3141 01e6 05        		.uleb128 0x5
+ 3142 01e7 02        		.byte	0x2
+ 3143 01e8 0000 0000 		.long	.LM32
+ 3144 01ec 15        		.byte	0x15
+ 3145 01ed 00        		.byte	0x0
+ 3146 01ee 05        		.uleb128 0x5
+ 3147 01ef 02        		.byte	0x2
+ 3148 01f0 0000 0000 		.long	.LM33
+ 3149 01f4 19        		.byte	0x19
+ 3150 01f5 00        		.byte	0x0
+ 3151 01f6 05        		.uleb128 0x5
+ 3152 01f7 02        		.byte	0x2
+ 3153 01f8 0000 0000 		.long	.LM34
+ 3154 01fc 16        		.byte	0x16
+ 3155 01fd 00        		.byte	0x0
+ 3156 01fe 05        		.uleb128 0x5
+ 3157 01ff 02        		.byte	0x2
+ 3158 0200 0000 0000 		.long	.LM35
+ 3159 0204 15        		.byte	0x15
+ 3160 0205 00        		.byte	0x0
+ 3161 0206 05        		.uleb128 0x5
+ 3162 0207 02        		.byte	0x2
+ 3163 0208 0000 0000 		.long	.LM36
+ 3164 020c 15        		.byte	0x15
+ 3165 020d 00        		.byte	0x0
+ 3166 020e 05        		.uleb128 0x5
+ 3167 020f 02        		.byte	0x2
+ 3168 0210 0000 0000 		.long	.LM37
+ 3169 0214 19        		.byte	0x19
+ 3170 0215 00        		.byte	0x0
+ 3171 0216 05        		.uleb128 0x5
+ 3172 0217 02        		.byte	0x2
+ 3173 0218 0000 0000 		.long	.LM38
+ 3174 021c 16        		.byte	0x16
+ 3175 021d 00        		.byte	0x0
+ 3176 021e 05        		.uleb128 0x5
+ 3177 021f 02        		.byte	0x2
+ 3178 0220 0000 0000 		.long	.LM39
+ 3179 0224 15        		.byte	0x15
+ 3180 0225 00        		.byte	0x0
+ 3181 0226 05        		.uleb128 0x5
+ 3182 0227 02        		.byte	0x2
+ 3183 0228 0000 0000 		.long	.LM40
+ 3184 022c 15        		.byte	0x15
+ 3185 022d 00        		.byte	0x0
+ 3186 022e 05        		.uleb128 0x5
+ 3187 022f 02        		.byte	0x2
+ 3188 0230 0000 0000 		.long	.LM41
+ 3189 0234 19        		.byte	0x19
+ 3190 0235 00        		.byte	0x0
+ 3191 0236 05        		.uleb128 0x5
+ 3192 0237 02        		.byte	0x2
+ 3193 0238 0000 0000 		.long	.LM42
+ 3194 023c 16        		.byte	0x16
+ 3195 023d 00        		.byte	0x0
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/ccFNHrQJ.s 			page 58
+
+
+ 3196 023e 05        		.uleb128 0x5
+ 3197 023f 02        		.byte	0x2
+ 3198 0240 0000 0000 		.long	.LM43
+ 3199 0244 15        		.byte	0x15
+ 3200 0245 00        		.byte	0x0
+ 3201 0246 05        		.uleb128 0x5
+ 3202 0247 02        		.byte	0x2
+ 3203 0248 0000 0000 		.long	.LM44
+ 3204 024c 15        		.byte	0x15
+ 3205 024d 00        		.byte	0x0
+ 3206 024e 05        		.uleb128 0x5
+ 3207 024f 02        		.byte	0x2
+ 3208 0250 0000 0000 		.long	.LM45
+ 3209 0254 23        		.byte	0x23
+ 3210 0255 00        		.byte	0x0
+ 3211 0256 05        		.uleb128 0x5
+ 3212 0257 02        		.byte	0x2
+ 3213 0258 0000 0000 		.long	.LM46
+ 3214 025c 1C        		.byte	0x1c
+ 3215 025d 00        		.byte	0x0
+ 3216 025e 05        		.uleb128 0x5
+ 3217 025f 02        		.byte	0x2
+ 3218 0260 0000 0000 		.long	.LM47
+ 3219 0264 16        		.byte	0x16
+ 3220 0265 00        		.byte	0x0
+ 3221 0266 05        		.uleb128 0x5
+ 3222 0267 02        		.byte	0x2
+ 3223 0268 0000 0000 		.long	.LM48
+ 3224 026c 18        		.byte	0x18
+ 3225 026d 00        		.byte	0x0
+ 3226 026e 05        		.uleb128 0x5
+ 3227 026f 02        		.byte	0x2
+ 3228 0270 0000 0000 		.long	.LM49
+ 3229 0274 18        		.byte	0x18
+ 3230 0275 00        		.byte	0x0
+ 3231 0276 05        		.uleb128 0x5
+ 3232 0277 02        		.byte	0x2
+ 3233 0278 0000 0000 		.long	.LM50
+ 3234 027c 16        		.byte	0x16
+ 3235 027d 00        		.byte	0x0
+ 3236 027e 05        		.uleb128 0x5
+ 3237 027f 02        		.byte	0x2
+ 3238 0280 0000 0000 		.long	.LM51
+ 3239 0284 18        		.byte	0x18
+ 3240 0285 00        		.byte	0x0
+ 3241 0286 05        		.uleb128 0x5
+ 3242 0287 02        		.byte	0x2
+ 3243 0288 0000 0000 		.long	.LM52
+ 3244 028c 18        		.byte	0x18
+ 3245 028d 00        		.byte	0x0
+ 3246 028e 05        		.uleb128 0x5
+ 3247 028f 02        		.byte	0x2
+ 3248 0290 0000 0000 		.long	.LM53
+ 3249 0294 17        		.byte	0x17
+ 3250 0295 00        		.byte	0x0
+ 3251 0296 05        		.uleb128 0x5
+ 3252 0297 02        		.byte	0x2
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/ccFNHrQJ.s 			page 59
+
+
+ 3253 0298 0000 0000 		.long	.LM54
+ 3254 029c 19        		.byte	0x19
+ 3255 029d 00        		.byte	0x0
+ 3256 029e 05        		.uleb128 0x5
+ 3257 029f 02        		.byte	0x2
+ 3258 02a0 0000 0000 		.long	.LM55
+ 3259 02a4 0A        		.byte	0xa
+ 3260 02a5 00        		.byte	0x0
+ 3261 02a6 05        		.uleb128 0x5
+ 3262 02a7 02        		.byte	0x2
+ 3263 02a8 0000 0000 		.long	.LM56
+ 3264 02ac 23        		.byte	0x23
+ 3265 02ad 00        		.byte	0x0
+ 3266 02ae 05        		.uleb128 0x5
+ 3267 02af 02        		.byte	0x2
+ 3268 02b0 0000 0000 		.long	.LM57
+ 3269 02b4 16        		.byte	0x16
+ 3270 02b5 00        		.byte	0x0
+ 3271 02b6 05        		.uleb128 0x5
+ 3272 02b7 02        		.byte	0x2
+ 3273 02b8 0000 0000 		.long	.LM58
+ 3274 02bc 16        		.byte	0x16
+ 3275 02bd 00        		.byte	0x0
+ 3276 02be 05        		.uleb128 0x5
+ 3277 02bf 02        		.byte	0x2
+ 3278 02c0 0000 0000 		.long	.LM59
+ 3279 02c4 16        		.byte	0x16
+ 3280 02c5 00        		.byte	0x0
+ 3281 02c6 05        		.uleb128 0x5
+ 3282 02c7 02        		.byte	0x2
+ 3283 02c8 0000 0000 		.long	.LM60
+ 3284 02cc 16        		.byte	0x16
+ 3285 02cd 00        		.byte	0x0
+ 3286 02ce 05        		.uleb128 0x5
+ 3287 02cf 02        		.byte	0x2
+ 3288 02d0 0000 0000 		.long	.LM61
+ 3289 02d4 18        		.byte	0x18
+ 3290 02d5 00        		.byte	0x0
+ 3291 02d6 05        		.uleb128 0x5
+ 3292 02d7 02        		.byte	0x2
+ 3293 02d8 0000 0000 		.long	.LM62
+ 3294 02dc 1C        		.byte	0x1c
+ 3295 02dd 00        		.byte	0x0
+ 3296 02de 05        		.uleb128 0x5
+ 3297 02df 02        		.byte	0x2
+ 3298 02e0 0000 0000 		.long	.LM63
+ 3299 02e4 12        		.byte	0x12
+ 3300 02e5 00        		.byte	0x0
+ 3301 02e6 05        		.uleb128 0x5
+ 3302 02e7 02        		.byte	0x2
+ 3303 02e8 0000 0000 		.long	.LM64
+ 3304 02ec 18        		.byte	0x18
+ 3305 02ed 00        		.byte	0x0
+ 3306 02ee 05        		.uleb128 0x5
+ 3307 02ef 02        		.byte	0x2
+ 3308 02f0 0000 0000 		.long	.LM65
+ 3309 02f4 53        		.byte	0x53
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/ccFNHrQJ.s 			page 60
+
+
+ 3310 02f5 00        		.byte	0x0
+ 3311 02f6 05        		.uleb128 0x5
+ 3312 02f7 02        		.byte	0x2
+ 3313 02f8 0000 0000 		.long	.LM66
+ 3314 02fc 01        		.byte	0x1
+ 3315 02fd 00        		.byte	0x0
+ 3316 02fe 05        		.uleb128 0x5
+ 3317 02ff 02        		.byte	0x2
+ 3318 0300 0000 0000 		.long	.LM67
+ 3319 0304 21        		.byte	0x21
+ 3320 0305 00        		.byte	0x0
+ 3321 0306 05        		.uleb128 0x5
+ 3322 0307 02        		.byte	0x2
+ 3323 0308 0000 0000 		.long	.LM68
+ 3324 030c 39        		.byte	0x39
+ 3325 030d 00        		.byte	0x0
+ 3326 030e 05        		.uleb128 0x5
+ 3327 030f 02        		.byte	0x2
+ 3328 0310 0000 0000 		.long	.LM69
+ 3329 0314 03        		.byte	0x3
+ 3330 0315 60        		.sleb128 -32
+ 3331 0316 01        		.byte	0x1
+ 3332 0317 00        		.byte	0x0
+ 3333 0318 05        		.uleb128 0x5
+ 3334 0319 02        		.byte	0x2
+ 3335 031a 0000 0000 		.long	.LM70
+ 3336 031e 0D        		.byte	0xd
+ 3337 031f 00        		.byte	0x0
+ 3338 0320 05        		.uleb128 0x5
+ 3339 0321 02        		.byte	0x2
+ 3340 0322 0000 0000 		.long	.LM71
+ 3341 0326 1E        		.byte	0x1e
+ 3342 0327 00        		.byte	0x0
+ 3343 0328 05        		.uleb128 0x5
+ 3344 0329 02        		.byte	0x2
+ 3345 032a 0000 0000 		.long	.LM72
+ 3346 032e 16        		.byte	0x16
+ 3347 032f 00        		.byte	0x0
+ 3348 0330 05        		.uleb128 0x5
+ 3349 0331 02        		.byte	0x2
+ 3350 0332 0000 0000 		.long	.LM73
+ 3351 0336 15        		.byte	0x15
+ 3352 0337 00        		.byte	0x0
+ 3353 0338 05        		.uleb128 0x5
+ 3354 0339 02        		.byte	0x2
+ 3355 033a 0000 0000 		.long	.LM74
+ 3356 033e 1A        		.byte	0x1a
+ 3357 033f 00        		.byte	0x0
+ 3358 0340 05        		.uleb128 0x5
+ 3359 0341 02        		.byte	0x2
+ 3360 0342 0000 0000 		.long	.LM75
+ 3361 0346 15        		.byte	0x15
+ 3362 0347 00        		.byte	0x0
+ 3363 0348 05        		.uleb128 0x5
+ 3364 0349 02        		.byte	0x2
+ 3365 034a 0000 0000 		.long	.LM76
+ 3366 034e 16        		.byte	0x16
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/ccFNHrQJ.s 			page 61
+
+
+ 3367 034f 00        		.byte	0x0
+ 3368 0350 05        		.uleb128 0x5
+ 3369 0351 02        		.byte	0x2
+ 3370 0352 0000 0000 		.long	.LM77
+ 3371 0356 16        		.byte	0x16
+ 3372 0357 00        		.byte	0x0
+ 3373 0358 05        		.uleb128 0x5
+ 3374 0359 02        		.byte	0x2
+ 3375 035a 0000 0000 		.long	.LM78
+ 3376 035e 15        		.byte	0x15
+ 3377 035f 00        		.byte	0x0
+ 3378 0360 05        		.uleb128 0x5
+ 3379 0361 02        		.byte	0x2
+ 3380 0362 0000 0000 		.long	.LM79
+ 3381 0366 16        		.byte	0x16
+ 3382 0367 00        		.byte	0x0
+ 3383 0368 05        		.uleb128 0x5
+ 3384 0369 02        		.byte	0x2
+ 3385 036a 0000 0000 		.long	.LM80
+ 3386 036e 19        		.byte	0x19
+ 3387 036f 00        		.byte	0x0
+ 3388 0370 05        		.uleb128 0x5
+ 3389 0371 02        		.byte	0x2
+ 3390 0372 0000 0000 		.long	.LM81
+ 3391 0376 15        		.byte	0x15
+ 3392 0377 00        		.byte	0x0
+ 3393 0378 05        		.uleb128 0x5
+ 3394 0379 02        		.byte	0x2
+ 3395 037a 0000 0000 		.long	.LM82
+ 3396 037e 15        		.byte	0x15
+ 3397 037f 00        		.byte	0x0
+ 3398 0380 05        		.uleb128 0x5
+ 3399 0381 02        		.byte	0x2
+ 3400 0382 0000 0000 		.long	.LM83
+ 3401 0386 15        		.byte	0x15
+ 3402 0387 00        		.byte	0x0
+ 3403 0388 05        		.uleb128 0x5
+ 3404 0389 02        		.byte	0x2
+ 3405 038a 0000 0000 		.long	.Letext0
+ 3406 038e 00        		.byte	0x0
+ 3407 038f 01        		.uleb128 0x1
+ 3408 0390 01        		.byte	0x1
+ 3409               	.LELT0:
+ 3410 0391 1600 0000 		.section	.debug_str,"MS",@progbits,1
+ 3410      0200 1000 
+ 3410      0000 0101 
+ 3410      FB0E 0A00 
+ 3410      0101 0101 
+ 3411               	.LASF17:
+ 3412 0000 7075 7463 		.string	"putchar_func"
+ 3412      6861 725F 
+ 3412      6675 6E63 
+ 3412      00
+ 3413               	.LASF42:
+ 3414 000d 474E 5520 		.string	"GNU C 4.3.3"
+ 3414      4320 342E 
+ 3414      332E 3300 
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/ccFNHrQJ.s 			page 62
+
+
+ 3415               	.LASF26:
+ 3416 0019 7270 7269 		.string	"rprintfu08"
+ 3416      6E74 6675 
+ 3416      3038 00
+ 3417               	.LASF47:
+ 3418 0024 434F 4E56 		.string	"CONVERSION_LOOP"
+ 3418      4552 5349 
+ 3418      4F4E 5F4C 
+ 3418      4F4F 5000 
+ 3419               	.LASF13:
+ 3420 0034 7368 6F72 		.string	"short int"
+ 3420      7420 696E 
+ 3420      7400 
+ 3421               	.LASF9:
+ 3422 003e 7072 6F67 		.string	"prog_char"
+ 3422      5F63 6861 
+ 3422      7200 
+ 3423               	.LASF33:
+ 3424 0048 7061 6463 		.string	"padchar"
+ 3424      6861 7200 
+ 3425               	.LASF11:
+ 3426 0050 7661 5F6C 		.string	"va_list"
+ 3426      6973 7400 
+ 3427               	.LASF39:
+ 3428 0058 6469 765F 		.string	"div_val"
+ 3428      7661 6C00 
+ 3429               	.LASF2:
+ 3430 0060 7569 6E74 		.string	"uint8_t"
+ 3430      385F 7400 
+ 3431               	.LASF31:
+ 3432 0068 6E75 6D44 		.string	"numDigits"
+ 3432      6967 6974 
+ 3432      7300 
+ 3433               	.LASF22:
+ 3434 0072 5F5F 6164 		.string	"__addr16"
+ 3434      6472 3136 
+ 3434      00
+ 3435               	.LASF27:
+ 3436 007b 7270 7269 		.string	"rprintfu16"
+ 3436      6E74 6675 
+ 3436      3136 00
+ 3437               	.LASF7:
+ 3438 0086 6C6F 6E67 		.string	"long long int"
+ 3438      206C 6F6E 
+ 3438      6720 696E 
+ 3438      7400 
+ 3439               	.LASF35:
+ 3440 0094 7374 7269 		.string	"stringInRom"
+ 3440      6E67 496E 
+ 3440      526F 6D00 
+ 3441               	.LASF18:
+ 3442 00a0 7270 7269 		.string	"rprintfStr"
+ 3442      6E74 6653 
+ 3442      7472 00
+ 3443               	.LASF5:
+ 3444 00ab 6C6F 6E67 		.string	"long int"
+ 3444      2069 6E74 
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/ccFNHrQJ.s 			page 63
+
+
+ 3444      00
+ 3445               	.LASF46:
+ 3446 00b4 7270 7269 		.string	"rprintf1RamRom"
+ 3446      6E74 6631 
+ 3446      5261 6D52 
+ 3446      6F6D 00
+ 3447               	.LASF45:
+ 3448 00c3 7270 7269 		.string	"rprintfCRLF"
+ 3448      6E74 6643 
+ 3448      524C 4600 
+ 3449               	.LASF41:
+ 3450 00cf 7270 7574 		.string	"rputchar"
+ 3450      6368 6172 
+ 3450      00
+ 3451               	.LASF1:
+ 3452 00d8 756E 7369 		.string	"unsigned char"
+ 3452      676E 6564 
+ 3452      2063 6861 
+ 3452      7200 
+ 3453               	.LASF40:
+ 3454 00e6 4865 7843 		.string	"HexChars"
+ 3454      6861 7273 
+ 3454      00
+ 3455               	.LASF0:
+ 3456 00ef 7369 676E 		.string	"signed char"
+ 3456      6564 2063 
+ 3456      6861 7200 
+ 3457               	.LASF8:
+ 3458 00fb 6C6F 6E67 		.string	"long long unsigned int"
+ 3458      206C 6F6E 
+ 3458      6720 756E 
+ 3458      7369 676E 
+ 3458      6564 2069 
+ 3459               	.LASF4:
+ 3460 0112 756E 7369 		.string	"unsigned int"
+ 3460      676E 6564 
+ 3460      2069 6E74 
+ 3460      00
+ 3461               	.LASF29:
+ 3462 011f 7270 7269 		.string	"rprintfNum"
+ 3462      6E74 664E 
+ 3462      756D 00
+ 3463               	.LASF3:
+ 3464 012a 7569 6E74 		.string	"uint16_t"
+ 3464      3136 5F74 
+ 3464      00
+ 3465               	.LASF23:
+ 3466 0133 5F5F 7265 		.string	"__result"
+ 3466      7375 6C74 
+ 3466      00
+ 3467               	.LASF38:
+ 3468 013c 755F 7661 		.string	"u_val"
+ 3468      6C00 
+ 3469               	.LASF21:
+ 3470 0142 7270 7269 		.string	"rprintfProgStr"
+ 3470      6E74 6650 
+ 3470      726F 6753 
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/ccFNHrQJ.s 			page 64
+
+
+ 3470      7472 00
+ 3471               	.LASF20:
+ 3472 0151 7374 6172 		.string	"start"
+ 3472      7400 
+ 3473               	.LASF12:
+ 3474 0157 7368 6F72 		.string	"short unsigned int"
+ 3474      7420 756E 
+ 3474      7369 676E 
+ 3474      6564 2069 
+ 3474      6E74 00
+ 3475               	.LASF14:
+ 3476 016a 6368 6172 		.string	"char"
+ 3476      00
+ 3477               	.LASF16:
+ 3478 016f 7270 7269 		.string	"rprintfChar"
+ 3478      6E74 6643 
+ 3478      6861 7200 
+ 3479               	.LASF15:
+ 3480 017b 7270 7269 		.string	"rprintfInit"
+ 3480      6E74 6649 
+ 3480      6E69 7400 
+ 3481               	.LASF24:
+ 3482 0187 7270 7269 		.string	"rprintfu04"
+ 3482      6E74 6675 
+ 3482      3034 00
+ 3483               	.LASF25:
+ 3484 0192 6461 7461 		.string	"data"
+ 3484      00
+ 3485               	.LASF37:
+ 3486 0197 666F 726D 		.string	"format_flag"
+ 3486      6174 5F66 
+ 3486      6C61 6700 
+ 3487               	.LASF32:
+ 3488 01a3 6973 5369 		.string	"isSigned"
+ 3488      676E 6564 
+ 3488      00
+ 3489               	.LASF43:
+ 3490 01ac 433A 5C41 		.string	"C:\\AVRlib/rprintf.c"
+ 3490      5652 6C69 
+ 3490      622F 7270 
+ 3490      7269 6E74 
+ 3490      662E 6300 
+ 3491               	.LASF6:
+ 3492 01c0 6C6F 6E67 		.string	"long unsigned int"
+ 3492      2075 6E73 
+ 3492      6967 6E65 
+ 3492      6420 696E 
+ 3492      7400 
+ 3493               	.LASF44:
+ 3494 01d2 5F5F 6275 		.string	"__builtin_va_list"
+ 3494      696C 7469 
+ 3494      6E5F 7661 
+ 3494      5F6C 6973 
+ 3494      7400 
+ 3495               	.LASF34:
+ 3496 01e4 636F 756E 		.string	"count"
+ 3496      7400 
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/ccFNHrQJ.s 			page 65
+
+
+ 3497               	.LASF28:
+ 3498 01ea 7270 7269 		.string	"rprintfu32"
+ 3498      6E74 6675 
+ 3498      3332 00
+ 3499               	.LASF10:
+ 3500 01f5 5F5F 676E 		.string	"__gnuc_va_list"
+ 3500      7563 5F76 
+ 3500      615F 6C69 
+ 3500      7374 00
+ 3501               	.LASF30:
+ 3502 0204 6261 7365 		.string	"base"
+ 3502      00
+ 3503               	.LASF19:
+ 3504 0209 7270 7269 		.string	"rprintfStrLen"
+ 3504      6E74 6653 
+ 3504      7472 4C65 
+ 3504      6E00 
+ 3505               	.LASF36:
+ 3506 0217 666F 726D 		.string	"format"
+ 3506      6174 00
+ 3507               	.global __do_clear_bss
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/ccFNHrQJ.s 			page 66
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 rprintf.c
+C:\Users\Jason\AppData\Local\Temp/ccFNHrQJ.s:2      *ABS*:0000003f __SREG__
+C:\Users\Jason\AppData\Local\Temp/ccFNHrQJ.s:3      *ABS*:0000003e __SP_H__
+C:\Users\Jason\AppData\Local\Temp/ccFNHrQJ.s:4      *ABS*:0000003d __SP_L__
+C:\Users\Jason\AppData\Local\Temp/ccFNHrQJ.s:5      *ABS*:00000034 __CCP__
+C:\Users\Jason\AppData\Local\Temp/ccFNHrQJ.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\Jason\AppData\Local\Temp/ccFNHrQJ.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\Jason\AppData\Local\Temp/ccFNHrQJ.s:18     .text:00000000 rprintfInit
+                             .bss:00000000 rputchar
+C:\Users\Jason\AppData\Local\Temp/ccFNHrQJ.s:34     .text:0000000a rprintfChar
+C:\Users\Jason\AppData\Local\Temp/ccFNHrQJ.s:67     .text:0000002e rprintfStr
+C:\Users\Jason\AppData\Local\Temp/ccFNHrQJ.s:103    .text:0000004c rprintfStrLen
+C:\Users\Jason\AppData\Local\Temp/ccFNHrQJ.s:184    .text:000000a8 rprintfProgStr
+C:\Users\Jason\AppData\Local\Temp/ccFNHrQJ.s:230    .text:000000c8 rprintfCRLF
+C:\Users\Jason\AppData\Local\Temp/ccFNHrQJ.s:245    .text:000000d0 rprintfu04
+C:\Users\Jason\AppData\Local\Temp/ccFNHrQJ.s:877    .progmem.data:00000000 HexChars
+C:\Users\Jason\AppData\Local\Temp/ccFNHrQJ.s:280    .text:000000e6 rprintfu08
+C:\Users\Jason\AppData\Local\Temp/ccFNHrQJ.s:305    .text:000000fc rprintfu16
+C:\Users\Jason\AppData\Local\Temp/ccFNHrQJ.s:330    .text:00000110 rprintfu32
+C:\Users\Jason\AppData\Local\Temp/ccFNHrQJ.s:363    .text:00000136 rprintfNum
+C:\Users\Jason\AppData\Local\Temp/ccFNHrQJ.s:639    .text:000002b8 rprintf1RamRom
+
+UNDEFINED SYMBOLS
+__udivmodsi4
+__udivmodhi4
+__do_clear_bss

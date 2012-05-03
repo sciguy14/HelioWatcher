@@ -1,0 +1,1839 @@
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/ccQTzhMS.s 			page 1
+
+
+   1               		.file	"buffer.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+   8               		.section	.debug_abbrev,"",@progbits
+   9               	.Ldebug_abbrev0:
+  10               		.section	.debug_info,"",@progbits
+  11               	.Ldebug_info0:
+  12               		.section	.debug_line,"",@progbits
+  13               	.Ldebug_line0:
+  14               		.text
+  15               	.Ltext0:
+  16               	.global	bufferInit
+  17               		.type	bufferInit, @function
+  18               	bufferInit:
+  19               	.LFB2:
+  20               	.LM1:
+  21               	.LVL0:
+  22               	/* prologue: function */
+  23               	/* frame size = 0 */
+  24 0000 FC01      		movw r30,r24
+  25               	.LM2:
+  26 0002 8FB7      		in r24,__SREG__
+  27               	.LVL1:
+  28               	/* #APP */
+  29               	 ;  34 "C:\AVRlib/buffer.c" 1
+  30 0004 F894      		cli
+  31               	 ;  0 "" 2
+  32               	.LM3:
+  33               	/* #NOAPP */
+  34 0006 7183      		std Z+1,r23
+  35 0008 6083      		st Z,r22
+  36               	.LM4:
+  37 000a 5383      		std Z+3,r21
+  38 000c 4283      		std Z+2,r20
+  39               	.LM5:
+  40 000e 1782      		std Z+7,__zero_reg__
+  41 0010 1682      		std Z+6,__zero_reg__
+  42               	.LM6:
+  43 0012 1582      		std Z+5,__zero_reg__
+  44 0014 1482      		std Z+4,__zero_reg__
+  45               	.LM7:
+  46 0016 8FBF      		out __SREG__,r24
+  47               	/* epilogue start */
+  48               	.LM8:
+  49 0018 0895      		ret
+  50               	.LFE2:
+  51               		.size	bufferInit, .-bufferInit
+  52               	.global	bufferGetFromFront
+  53               		.type	bufferGetFromFront, @function
+  54               	bufferGetFromFront:
+  55               	.LFB3:
+  56               	.LM9:
+  57               	.LVL2:
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/ccQTzhMS.s 			page 2
+
+
+  58               	/* prologue: function */
+  59               	/* frame size = 0 */
+  60 001a DC01      		movw r26,r24
+  61               	.LM10:
+  62 001c 4FB7      		in r20,__SREG__
+  63               	.LVL3:
+  64               	/* #APP */
+  65               	 ;  50 "C:\AVRlib/buffer.c" 1
+  66 001e F894      		cli
+  67               	 ;  0 "" 2
+  68               	.LM11:
+  69               	/* #NOAPP */
+  70 0020 1496      		adiw r26,4
+  71 0022 8D91      		ld r24,X+
+  72 0024 9C91      		ld r25,X
+  73 0026 1597      		sbiw r26,4+1
+  74               	.LVL4:
+  75 0028 892B      		or r24,r25
+  76 002a 01F4      		brne .L4
+  77 002c E0E0      		ldi r30,lo8(0)
+  78               	.LVL5:
+  79 002e 00C0      		rjmp .L5
+  80               	.LVL6:
+  81               	.L4:
+  82               	.LM12:
+  83 0030 1696      		adiw r26,6
+  84 0032 8D91      		ld r24,X+
+  85 0034 9C91      		ld r25,X
+  86 0036 1797      		sbiw r26,6+1
+  87 0038 ED91      		ld r30,X+
+  88 003a FC91      		ld r31,X
+  89 003c 1197      		sbiw r26,1
+  90 003e E80F      		add r30,r24
+  91 0040 F91F      		adc r31,r25
+  92 0042 E081      		ld r30,Z
+  93               	.LVL7:
+  94               	.LM13:
+  95 0044 0196      		adiw r24,1
+  96 0046 1796      		adiw r26,6+1
+  97 0048 9C93      		st X,r25
+  98 004a 8E93      		st -X,r24
+  99 004c 1697      		sbiw r26,6
+ 100               	.LM14:
+ 101 004e 1296      		adiw r26,2
+ 102 0050 2D91      		ld r18,X+
+ 103 0052 3C91      		ld r19,X
+ 104 0054 1397      		sbiw r26,2+1
+ 105 0056 8217      		cp r24,r18
+ 106 0058 9307      		cpc r25,r19
+ 107 005a 00F0      		brlo .L6
+ 108               	.LM15:
+ 109 005c 821B      		sub r24,r18
+ 110 005e 930B      		sbc r25,r19
+ 111 0060 1796      		adiw r26,6+1
+ 112 0062 9C93      		st X,r25
+ 113 0064 8E93      		st -X,r24
+ 114 0066 1697      		sbiw r26,6
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/ccQTzhMS.s 			page 3
+
+
+ 115               	.L6:
+ 116               	.LM16:
+ 117 0068 1496      		adiw r26,4
+ 118 006a 8D91      		ld r24,X+
+ 119 006c 9C91      		ld r25,X
+ 120 006e 1597      		sbiw r26,4+1
+ 121 0070 0197      		sbiw r24,1
+ 122 0072 1596      		adiw r26,4+1
+ 123 0074 9C93      		st X,r25
+ 124 0076 8E93      		st -X,r24
+ 125 0078 1497      		sbiw r26,4
+ 126               	.L5:
+ 127               	.LM17:
+ 128 007a 4FBF      		out __SREG__,r20
+ 129               	.LM18:
+ 130 007c 8E2F      		mov r24,r30
+ 131               	/* epilogue start */
+ 132 007e 0895      		ret
+ 133               	.LFE3:
+ 134               		.size	bufferGetFromFront, .-bufferGetFromFront
+ 135               	.global	bufferDumpFromFront
+ 136               		.type	bufferDumpFromFront, @function
+ 137               	bufferDumpFromFront:
+ 138               	.LFB4:
+ 139               	.LM19:
+ 140               	.LVL8:
+ 141               	/* prologue: function */
+ 142               	/* frame size = 0 */
+ 143 0080 FC01      		movw r30,r24
+ 144               	.LM20:
+ 145 0082 4FB7      		in r20,__SREG__
+ 146               	.LVL9:
+ 147               	/* #APP */
+ 148               	 ;  73 "C:\AVRlib/buffer.c" 1
+ 149 0084 F894      		cli
+ 150               	 ;  0 "" 2
+ 151               	.LM21:
+ 152               	/* #NOAPP */
+ 153 0086 8481      		ldd r24,Z+4
+ 154 0088 9581      		ldd r25,Z+5
+ 155               	.LVL10:
+ 156 008a 6817      		cp r22,r24
+ 157 008c 7907      		cpc r23,r25
+ 158 008e 00F4      		brsh .L9
+ 159               	.LM22:
+ 160 0090 8681      		ldd r24,Z+6
+ 161 0092 9781      		ldd r25,Z+7
+ 162 0094 860F      		add r24,r22
+ 163 0096 971F      		adc r25,r23
+ 164 0098 9783      		std Z+7,r25
+ 165 009a 8683      		std Z+6,r24
+ 166               	.LM23:
+ 167 009c 2281      		ldd r18,Z+2
+ 168 009e 3381      		ldd r19,Z+3
+ 169 00a0 8217      		cp r24,r18
+ 170 00a2 9307      		cpc r25,r19
+ 171 00a4 00F0      		brlo .L10
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/ccQTzhMS.s 			page 4
+
+
+ 172               	.LM24:
+ 173 00a6 821B      		sub r24,r18
+ 174 00a8 930B      		sbc r25,r19
+ 175 00aa 9783      		std Z+7,r25
+ 176 00ac 8683      		std Z+6,r24
+ 177               	.L10:
+ 178               	.LM25:
+ 179 00ae 8481      		ldd r24,Z+4
+ 180 00b0 9581      		ldd r25,Z+5
+ 181 00b2 861B      		sub r24,r22
+ 182 00b4 970B      		sbc r25,r23
+ 183 00b6 9583      		std Z+5,r25
+ 184 00b8 8483      		std Z+4,r24
+ 185 00ba 00C0      		rjmp .L11
+ 186               	.L9:
+ 187               	.LM26:
+ 188 00bc 1582      		std Z+5,__zero_reg__
+ 189 00be 1482      		std Z+4,__zero_reg__
+ 190               	.L11:
+ 191               	.LM27:
+ 192 00c0 4FBF      		out __SREG__,r20
+ 193               	/* epilogue start */
+ 194               	.LM28:
+ 195 00c2 0895      		ret
+ 196               	.LFE4:
+ 197               		.size	bufferDumpFromFront, .-bufferDumpFromFront
+ 198               	.global	bufferGetAtIndex
+ 199               		.type	bufferGetAtIndex, @function
+ 200               	bufferGetAtIndex:
+ 201               	.LFB5:
+ 202               	.LM29:
+ 203               	.LVL11:
+ 204               	/* prologue: function */
+ 205               	/* frame size = 0 */
+ 206 00c4 FC01      		movw r30,r24
+ 207 00c6 CB01      		movw r24,r22
+ 208               	.LVL12:
+ 209               	.LM30:
+ 210 00c8 2FB7      		in r18,__SREG__
+ 211               	.LVL13:
+ 212               	/* #APP */
+ 213               	 ;  98 "C:\AVRlib/buffer.c" 1
+ 214 00ca F894      		cli
+ 215               	 ;  0 "" 2
+ 216               	.LM31:
+ 217               	/* #NOAPP */
+ 218 00cc 2FBF      		out __SREG__,r18
+ 219 00ce 2681      		ldd r18,Z+6
+ 220 00d0 3781      		ldd r19,Z+7
+ 221               	.LVL14:
+ 222 00d2 6281      		ldd r22,Z+2
+ 223 00d4 7381      		ldd r23,Z+3
+ 224               	.LVL15:
+ 225 00d6 820F      		add r24,r18
+ 226 00d8 931F      		adc r25,r19
+ 227               	.LVL16:
+ 228 00da 0E94 0000 		call __udivmodhi4
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/ccQTzhMS.s 			page 5
+
+
+ 229 00de 0190      		ld __tmp_reg__,Z+
+ 230 00e0 F081      		ld r31,Z
+ 231 00e2 E02D      		mov r30,__tmp_reg__
+ 232               	.LVL17:
+ 233 00e4 E80F      		add r30,r24
+ 234 00e6 F91F      		adc r31,r25
+ 235               	.LM32:
+ 236 00e8 8081      		ld r24,Z
+ 237               	/* epilogue start */
+ 238 00ea 0895      		ret
+ 239               	.LFE5:
+ 240               		.size	bufferGetAtIndex, .-bufferGetAtIndex
+ 241               	.global	bufferAddToEnd
+ 242               		.type	bufferAddToEnd, @function
+ 243               	bufferAddToEnd:
+ 244               	.LFB6:
+ 245               	.LM33:
+ 246               	.LVL18:
+ 247 00ec 1F93      		push r17
+ 248 00ee CF93      		push r28
+ 249 00f0 DF93      		push r29
+ 250               	/* prologue: function */
+ 251               	/* frame size = 0 */
+ 252 00f2 EC01      		movw r28,r24
+ 253 00f4 162F      		mov r17,r22
+ 254               	.LM34:
+ 255 00f6 4FB7      		in r20,__SREG__
+ 256               	.LVL19:
+ 257               	/* #APP */
+ 258               	 ;  109 "C:\AVRlib/buffer.c" 1
+ 259 00f8 F894      		cli
+ 260               	 ;  0 "" 2
+ 261               	.LM35:
+ 262               	/* #NOAPP */
+ 263 00fa 2C81      		ldd r18,Y+4
+ 264 00fc 3D81      		ldd r19,Y+5
+ 265 00fe 6A81      		ldd r22,Y+2
+ 266 0100 7B81      		ldd r23,Y+3
+ 267               	.LVL20:
+ 268 0102 2617      		cp r18,r22
+ 269 0104 3707      		cpc r19,r23
+ 270 0106 00F4      		brsh .L16
+ 271               	.LVL21:
+ 272               	.LM36:
+ 273 0108 8E81      		ldd r24,Y+6
+ 274 010a 9F81      		ldd r25,Y+7
+ 275 010c 820F      		add r24,r18
+ 276 010e 931F      		adc r25,r19
+ 277 0110 0E94 0000 		call __udivmodhi4
+ 278 0114 E881      		ld r30,Y
+ 279 0116 F981      		ldd r31,Y+1
+ 280 0118 E80F      		add r30,r24
+ 281 011a F91F      		adc r31,r25
+ 282 011c 1083      		st Z,r17
+ 283               	.LM37:
+ 284 011e 8C81      		ldd r24,Y+4
+ 285 0120 9D81      		ldd r25,Y+5
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/ccQTzhMS.s 			page 6
+
+
+ 286 0122 0196      		adiw r24,1
+ 287 0124 9D83      		std Y+5,r25
+ 288 0126 8C83      		std Y+4,r24
+ 289               	.LM38:
+ 290 0128 4FBF      		out __SREG__,r20
+ 291 012a 8FEF      		ldi r24,lo8(-1)
+ 292 012c 00C0      		rjmp .L17
+ 293               	.LVL22:
+ 294               	.L16:
+ 295               	.LM39:
+ 296 012e 4FBF      		out __SREG__,r20
+ 297 0130 80E0      		ldi r24,lo8(0)
+ 298               	.L17:
+ 299               	/* epilogue start */
+ 300               	.LM40:
+ 301 0132 DF91      		pop r29
+ 302 0134 CF91      		pop r28
+ 303               	.LVL23:
+ 304 0136 1F91      		pop r17
+ 305               	.LVL24:
+ 306 0138 0895      		ret
+ 307               	.LFE6:
+ 308               		.size	bufferAddToEnd, .-bufferAddToEnd
+ 309               	.global	bufferIsNotFull
+ 310               		.type	bufferIsNotFull, @function
+ 311               	bufferIsNotFull:
+ 312               	.LFB7:
+ 313               	.LM41:
+ 314               	.LVL25:
+ 315               	/* prologue: function */
+ 316               	/* frame size = 0 */
+ 317 013a FC01      		movw r30,r24
+ 318               	.LM42:
+ 319 013c 8FB7      		in r24,__SREG__
+ 320               	.LVL26:
+ 321               	/* #APP */
+ 322               	 ;  131 "C:\AVRlib/buffer.c" 1
+ 323 013e F894      		cli
+ 324               	 ;  0 "" 2
+ 325               	.LM43:
+ 326               	/* #NOAPP */
+ 327 0140 8FBF      		out __SREG__,r24
+ 328 0142 2281      		ldd r18,Z+2
+ 329 0144 3381      		ldd r19,Z+3
+ 330 0146 8481      		ldd r24,Z+4
+ 331 0148 9581      		ldd r25,Z+5
+ 332               	.LVL27:
+ 333 014a 281B      		sub r18,r24
+ 334 014c 390B      		sbc r19,r25
+ 335               	.LM44:
+ 336 014e C901      		movw r24,r18
+ 337               	/* epilogue start */
+ 338 0150 0895      		ret
+ 339               	.LFE7:
+ 340               		.size	bufferIsNotFull, .-bufferIsNotFull
+ 341               	.global	bufferFlush
+ 342               		.type	bufferFlush, @function
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/ccQTzhMS.s 			page 7
+
+
+ 343               	bufferFlush:
+ 344               	.LFB8:
+ 345               	.LM45:
+ 346               	.LVL28:
+ 347               	/* prologue: function */
+ 348               	/* frame size = 0 */
+ 349 0152 FC01      		movw r30,r24
+ 350               	.LM46:
+ 351 0154 8FB7      		in r24,__SREG__
+ 352               	.LVL29:
+ 353               	/* #APP */
+ 354               	 ;  143 "C:\AVRlib/buffer.c" 1
+ 355 0156 F894      		cli
+ 356               	 ;  0 "" 2
+ 357               	.LM47:
+ 358               	/* #NOAPP */
+ 359 0158 1582      		std Z+5,__zero_reg__
+ 360 015a 1482      		std Z+4,__zero_reg__
+ 361               	.LM48:
+ 362 015c 8FBF      		out __SREG__,r24
+ 363               	/* epilogue start */
+ 364               	.LM49:
+ 365 015e 0895      		ret
+ 366               	.LFE8:
+ 367               		.size	bufferFlush, .-bufferFlush
+ 368               		.section	.debug_frame,"",@progbits
+ 369               	.Lframe0:
+ 370 0000 0C00 0000 		.long	.LECIE0-.LSCIE0
+ 371               	.LSCIE0:
+ 372 0004 FFFF FFFF 		.long	0xffffffff
+ 373 0008 01        		.byte	0x1
+ 374 0009 00        		.string	""
+ 375 000a 01        		.uleb128 0x1
+ 376 000b 7F        		.sleb128 -1
+ 377 000c 24        		.byte	0x24
+ 378 000d 0C        		.byte	0xc
+ 379 000e 20        		.uleb128 0x20
+ 380 000f 00        		.uleb128 0x0
+ 381               		.p2align	2
+ 382               	.LECIE0:
+ 383               	.LSFDE0:
+ 384 0010 0C00 0000 		.long	.LEFDE0-.LASFDE0
+ 385               	.LASFDE0:
+ 386 0014 0000 0000 		.long	.Lframe0
+ 387 0018 0000 0000 		.long	.LFB2
+ 388 001c 1A00 0000 		.long	.LFE2-.LFB2
+ 389               		.p2align	2
+ 390               	.LEFDE0:
+ 391               	.LSFDE2:
+ 392 0020 0C00 0000 		.long	.LEFDE2-.LASFDE2
+ 393               	.LASFDE2:
+ 394 0024 0000 0000 		.long	.Lframe0
+ 395 0028 0000 0000 		.long	.LFB3
+ 396 002c 6600 0000 		.long	.LFE3-.LFB3
+ 397               		.p2align	2
+ 398               	.LEFDE2:
+ 399               	.LSFDE4:
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/ccQTzhMS.s 			page 8
+
+
+ 400 0030 0C00 0000 		.long	.LEFDE4-.LASFDE4
+ 401               	.LASFDE4:
+ 402 0034 0000 0000 		.long	.Lframe0
+ 403 0038 0000 0000 		.long	.LFB4
+ 404 003c 4400 0000 		.long	.LFE4-.LFB4
+ 405               		.p2align	2
+ 406               	.LEFDE4:
+ 407               	.LSFDE6:
+ 408 0040 0C00 0000 		.long	.LEFDE6-.LASFDE6
+ 409               	.LASFDE6:
+ 410 0044 0000 0000 		.long	.Lframe0
+ 411 0048 0000 0000 		.long	.LFB5
+ 412 004c 2800 0000 		.long	.LFE5-.LFB5
+ 413               		.p2align	2
+ 414               	.LEFDE6:
+ 415               	.LSFDE8:
+ 416 0050 0C00 0000 		.long	.LEFDE8-.LASFDE8
+ 417               	.LASFDE8:
+ 418 0054 0000 0000 		.long	.Lframe0
+ 419 0058 0000 0000 		.long	.LFB6
+ 420 005c 4E00 0000 		.long	.LFE6-.LFB6
+ 421               		.p2align	2
+ 422               	.LEFDE8:
+ 423               	.LSFDE10:
+ 424 0060 0C00 0000 		.long	.LEFDE10-.LASFDE10
+ 425               	.LASFDE10:
+ 426 0064 0000 0000 		.long	.Lframe0
+ 427 0068 0000 0000 		.long	.LFB7
+ 428 006c 1800 0000 		.long	.LFE7-.LFB7
+ 429               		.p2align	2
+ 430               	.LEFDE10:
+ 431               	.LSFDE12:
+ 432 0070 0C00 0000 		.long	.LEFDE12-.LASFDE12
+ 433               	.LASFDE12:
+ 434 0074 0000 0000 		.long	.Lframe0
+ 435 0078 0000 0000 		.long	.LFB8
+ 436 007c 0E00 0000 		.long	.LFE8-.LFB8
+ 437               		.p2align	2
+ 438               	.LEFDE12:
+ 439               		.text
+ 440               	.Letext0:
+ 441               		.section	.debug_loc,"",@progbits
+ 442               	.Ldebug_loc0:
+ 443               	.LLST1:
+ 444 0000 0000 0000 		.long	.LVL0-.Ltext0
+ 445 0004 0400 0000 		.long	.LVL1-.Ltext0
+ 446 0008 0600      		.word	0x6
+ 447 000a 68        		.byte	0x68
+ 448 000b 93        		.byte	0x93
+ 449 000c 01        		.uleb128 0x1
+ 450 000d 69        		.byte	0x69
+ 451 000e 93        		.byte	0x93
+ 452 000f 01        		.uleb128 0x1
+ 453 0010 0400 0000 		.long	.LVL1-.Ltext0
+ 454 0014 1A00 0000 		.long	.LFE2-.Ltext0
+ 455 0018 0600      		.word	0x6
+ 456 001a 6E        		.byte	0x6e
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/ccQTzhMS.s 			page 9
+
+
+ 457 001b 93        		.byte	0x93
+ 458 001c 01        		.uleb128 0x1
+ 459 001d 6F        		.byte	0x6f
+ 460 001e 93        		.byte	0x93
+ 461 001f 01        		.uleb128 0x1
+ 462 0020 0000 0000 		.long	0x0
+ 463 0024 0000 0000 		.long	0x0
+ 464               	.LLST3:
+ 465 0028 1A00 0000 		.long	.LVL2-.Ltext0
+ 466 002c 2800 0000 		.long	.LVL4-.Ltext0
+ 467 0030 0600      		.word	0x6
+ 468 0032 68        		.byte	0x68
+ 469 0033 93        		.byte	0x93
+ 470 0034 01        		.uleb128 0x1
+ 471 0035 69        		.byte	0x69
+ 472 0036 93        		.byte	0x93
+ 473 0037 01        		.uleb128 0x1
+ 474 0038 2800 0000 		.long	.LVL4-.Ltext0
+ 475 003c 8000 0000 		.long	.LFE3-.Ltext0
+ 476 0040 0600      		.word	0x6
+ 477 0042 6A        		.byte	0x6a
+ 478 0043 93        		.byte	0x93
+ 479 0044 01        		.uleb128 0x1
+ 480 0045 6B        		.byte	0x6b
+ 481 0046 93        		.byte	0x93
+ 482 0047 01        		.uleb128 0x1
+ 483 0048 0000 0000 		.long	0x0
+ 484 004c 0000 0000 		.long	0x0
+ 485               	.LLST4:
+ 486 0050 2E00 0000 		.long	.LVL5-.Ltext0
+ 487 0054 3000 0000 		.long	.LVL6-.Ltext0
+ 488 0058 0100      		.word	0x1
+ 489 005a 6E        		.byte	0x6e
+ 490 005b 4400 0000 		.long	.LVL7-.Ltext0
+ 491 005f 8000 0000 		.long	.LFE3-.Ltext0
+ 492 0063 0100      		.word	0x1
+ 493 0065 6E        		.byte	0x6e
+ 494 0066 0000 0000 		.long	0x0
+ 495 006a 0000 0000 		.long	0x0
+ 496               	.LLST6:
+ 497 006e 8000 0000 		.long	.LVL8-.Ltext0
+ 498 0072 8A00 0000 		.long	.LVL10-.Ltext0
+ 499 0076 0600      		.word	0x6
+ 500 0078 68        		.byte	0x68
+ 501 0079 93        		.byte	0x93
+ 502 007a 01        		.uleb128 0x1
+ 503 007b 69        		.byte	0x69
+ 504 007c 93        		.byte	0x93
+ 505 007d 01        		.uleb128 0x1
+ 506 007e 8A00 0000 		.long	.LVL10-.Ltext0
+ 507 0082 C400 0000 		.long	.LFE4-.Ltext0
+ 508 0086 0600      		.word	0x6
+ 509 0088 6E        		.byte	0x6e
+ 510 0089 93        		.byte	0x93
+ 511 008a 01        		.uleb128 0x1
+ 512 008b 6F        		.byte	0x6f
+ 513 008c 93        		.byte	0x93
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/ccQTzhMS.s 			page 10
+
+
+ 514 008d 01        		.uleb128 0x1
+ 515 008e 0000 0000 		.long	0x0
+ 516 0092 0000 0000 		.long	0x0
+ 517               	.LLST8:
+ 518 0096 C400 0000 		.long	.LVL11-.Ltext0
+ 519 009a C800 0000 		.long	.LVL12-.Ltext0
+ 520 009e 0600      		.word	0x6
+ 521 00a0 68        		.byte	0x68
+ 522 00a1 93        		.byte	0x93
+ 523 00a2 01        		.uleb128 0x1
+ 524 00a3 69        		.byte	0x69
+ 525 00a4 93        		.byte	0x93
+ 526 00a5 01        		.uleb128 0x1
+ 527 00a6 C800 0000 		.long	.LVL12-.Ltext0
+ 528 00aa E400 0000 		.long	.LVL17-.Ltext0
+ 529 00ae 0600      		.word	0x6
+ 530 00b0 6E        		.byte	0x6e
+ 531 00b1 93        		.byte	0x93
+ 532 00b2 01        		.uleb128 0x1
+ 533 00b3 6F        		.byte	0x6f
+ 534 00b4 93        		.byte	0x93
+ 535 00b5 01        		.uleb128 0x1
+ 536 00b6 0000 0000 		.long	0x0
+ 537 00ba 0000 0000 		.long	0x0
+ 538               	.LLST9:
+ 539 00be C400 0000 		.long	.LVL11-.Ltext0
+ 540 00c2 D600 0000 		.long	.LVL15-.Ltext0
+ 541 00c6 0600      		.word	0x6
+ 542 00c8 66        		.byte	0x66
+ 543 00c9 93        		.byte	0x93
+ 544 00ca 01        		.uleb128 0x1
+ 545 00cb 67        		.byte	0x67
+ 546 00cc 93        		.byte	0x93
+ 547 00cd 01        		.uleb128 0x1
+ 548 00ce D600 0000 		.long	.LVL15-.Ltext0
+ 549 00d2 DA00 0000 		.long	.LVL16-.Ltext0
+ 550 00d6 0600      		.word	0x6
+ 551 00d8 68        		.byte	0x68
+ 552 00d9 93        		.byte	0x93
+ 553 00da 01        		.uleb128 0x1
+ 554 00db 69        		.byte	0x69
+ 555 00dc 93        		.byte	0x93
+ 556 00dd 01        		.uleb128 0x1
+ 557 00de 0000 0000 		.long	0x0
+ 558 00e2 0000 0000 		.long	0x0
+ 559               	.LLST10:
+ 560 00e6 CA00 0000 		.long	.LVL13-.Ltext0
+ 561 00ea D200 0000 		.long	.LVL14-.Ltext0
+ 562 00ee 0100      		.word	0x1
+ 563 00f0 62        		.byte	0x62
+ 564 00f1 0000 0000 		.long	0x0
+ 565 00f5 0000 0000 		.long	0x0
+ 566               	.LLST12:
+ 567 00f9 EC00 0000 		.long	.LVL18-.Ltext0
+ 568 00fd 0801 0000 		.long	.LVL21-.Ltext0
+ 569 0101 0600      		.word	0x6
+ 570 0103 68        		.byte	0x68
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/ccQTzhMS.s 			page 11
+
+
+ 571 0104 93        		.byte	0x93
+ 572 0105 01        		.uleb128 0x1
+ 573 0106 69        		.byte	0x69
+ 574 0107 93        		.byte	0x93
+ 575 0108 01        		.uleb128 0x1
+ 576 0109 0801 0000 		.long	.LVL21-.Ltext0
+ 577 010d 3601 0000 		.long	.LVL23-.Ltext0
+ 578 0111 0600      		.word	0x6
+ 579 0113 6C        		.byte	0x6c
+ 580 0114 93        		.byte	0x93
+ 581 0115 01        		.uleb128 0x1
+ 582 0116 6D        		.byte	0x6d
+ 583 0117 93        		.byte	0x93
+ 584 0118 01        		.uleb128 0x1
+ 585 0119 0000 0000 		.long	0x0
+ 586 011d 0000 0000 		.long	0x0
+ 587               	.LLST13:
+ 588 0121 EC00 0000 		.long	.LVL18-.Ltext0
+ 589 0125 0201 0000 		.long	.LVL20-.Ltext0
+ 590 0129 0100      		.word	0x1
+ 591 012b 66        		.byte	0x66
+ 592 012c 0201 0000 		.long	.LVL20-.Ltext0
+ 593 0130 3801 0000 		.long	.LVL24-.Ltext0
+ 594 0134 0100      		.word	0x1
+ 595 0136 61        		.byte	0x61
+ 596 0137 0000 0000 		.long	0x0
+ 597 013b 0000 0000 		.long	0x0
+ 598               	.LLST15:
+ 599 013f 3A01 0000 		.long	.LVL25-.Ltext0
+ 600 0143 3E01 0000 		.long	.LVL26-.Ltext0
+ 601 0147 0600      		.word	0x6
+ 602 0149 68        		.byte	0x68
+ 603 014a 93        		.byte	0x93
+ 604 014b 01        		.uleb128 0x1
+ 605 014c 69        		.byte	0x69
+ 606 014d 93        		.byte	0x93
+ 607 014e 01        		.uleb128 0x1
+ 608 014f 3E01 0000 		.long	.LVL26-.Ltext0
+ 609 0153 5201 0000 		.long	.LFE7-.Ltext0
+ 610 0157 0600      		.word	0x6
+ 611 0159 6E        		.byte	0x6e
+ 612 015a 93        		.byte	0x93
+ 613 015b 01        		.uleb128 0x1
+ 614 015c 6F        		.byte	0x6f
+ 615 015d 93        		.byte	0x93
+ 616 015e 01        		.uleb128 0x1
+ 617 015f 0000 0000 		.long	0x0
+ 618 0163 0000 0000 		.long	0x0
+ 619               	.LLST16:
+ 620 0167 3E01 0000 		.long	.LVL26-.Ltext0
+ 621 016b 4A01 0000 		.long	.LVL27-.Ltext0
+ 622 016f 0100      		.word	0x1
+ 623 0171 68        		.byte	0x68
+ 624 0172 0000 0000 		.long	0x0
+ 625 0176 0000 0000 		.long	0x0
+ 626               	.LLST18:
+ 627 017a 5201 0000 		.long	.LVL28-.Ltext0
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/ccQTzhMS.s 			page 12
+
+
+ 628 017e 5601 0000 		.long	.LVL29-.Ltext0
+ 629 0182 0600      		.word	0x6
+ 630 0184 68        		.byte	0x68
+ 631 0185 93        		.byte	0x93
+ 632 0186 01        		.uleb128 0x1
+ 633 0187 69        		.byte	0x69
+ 634 0188 93        		.byte	0x93
+ 635 0189 01        		.uleb128 0x1
+ 636 018a 5601 0000 		.long	.LVL29-.Ltext0
+ 637 018e 6001 0000 		.long	.LFE8-.Ltext0
+ 638 0192 0600      		.word	0x6
+ 639 0194 6E        		.byte	0x6e
+ 640 0195 93        		.byte	0x93
+ 641 0196 01        		.uleb128 0x1
+ 642 0197 6F        		.byte	0x6f
+ 643 0198 93        		.byte	0x93
+ 644 0199 01        		.uleb128 0x1
+ 645 019a 0000 0000 		.long	0x0
+ 646 019e 0000 0000 		.long	0x0
+ 647               		.section	.debug_info
+ 648 0000 C302 0000 		.long	0x2c3
+ 649 0004 0200      		.word	0x2
+ 650 0006 0000 0000 		.long	.Ldebug_abbrev0
+ 651 000a 04        		.byte	0x4
+ 652 000b 01        		.uleb128 0x1
+ 653 000c 0000 0000 		.long	.LASF27
+ 654 0010 01        		.byte	0x1
+ 655 0011 0000 0000 		.long	.LASF28
+ 656 0015 0000 0000 		.long	.Ltext0
+ 657 0019 0000 0000 		.long	.Letext0
+ 658 001d 0000 0000 		.long	.Ldebug_line0
+ 659 0021 02        		.uleb128 0x2
+ 660 0022 0000 0000 		.long	.LASF29
+ 661 0026 08        		.byte	0x8
+ 662 0027 02        		.byte	0x2
+ 663 0028 2A        		.byte	0x2a
+ 664 0029 6600 0000 		.long	0x66
+ 665 002d 03        		.uleb128 0x3
+ 666 002e 0000 0000 		.long	.LASF0
+ 667 0032 02        		.byte	0x2
+ 668 0033 2B        		.byte	0x2b
+ 669 0034 6600 0000 		.long	0x66
+ 670 0038 02        		.byte	0x2
+ 671 0039 23        		.byte	0x23
+ 672 003a 00        		.uleb128 0x0
+ 673 003b 03        		.uleb128 0x3
+ 674 003c 0000 0000 		.long	.LASF1
+ 675 0040 02        		.byte	0x2
+ 676 0041 2C        		.byte	0x2c
+ 677 0042 7300 0000 		.long	0x73
+ 678 0046 02        		.byte	0x2
+ 679 0047 23        		.byte	0x23
+ 680 0048 02        		.uleb128 0x2
+ 681 0049 03        		.uleb128 0x3
+ 682 004a 0000 0000 		.long	.LASF2
+ 683 004e 02        		.byte	0x2
+ 684 004f 2D        		.byte	0x2d
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/ccQTzhMS.s 			page 13
+
+
+ 685 0050 7300 0000 		.long	0x73
+ 686 0054 02        		.byte	0x2
+ 687 0055 23        		.byte	0x23
+ 688 0056 04        		.uleb128 0x4
+ 689 0057 03        		.uleb128 0x3
+ 690 0058 0000 0000 		.long	.LASF3
+ 691 005c 02        		.byte	0x2
+ 692 005d 2E        		.byte	0x2e
+ 693 005e 7300 0000 		.long	0x73
+ 694 0062 02        		.byte	0x2
+ 695 0063 23        		.byte	0x23
+ 696 0064 06        		.uleb128 0x6
+ 697 0065 00        		.byte	0x0
+ 698 0066 04        		.uleb128 0x4
+ 699 0067 02        		.byte	0x2
+ 700 0068 6C00 0000 		.long	0x6c
+ 701 006c 05        		.uleb128 0x5
+ 702 006d 01        		.byte	0x1
+ 703 006e 08        		.byte	0x8
+ 704 006f 0000 0000 		.long	.LASF4
+ 705 0073 05        		.uleb128 0x5
+ 706 0074 02        		.byte	0x2
+ 707 0075 07        		.byte	0x7
+ 708 0076 0000 0000 		.long	.LASF5
+ 709 007a 06        		.uleb128 0x6
+ 710 007b 0000 0000 		.long	.LASF30
+ 711 007f 02        		.byte	0x2
+ 712 0080 2F        		.byte	0x2f
+ 713 0081 2100 0000 		.long	0x21
+ 714 0085 05        		.uleb128 0x5
+ 715 0086 01        		.byte	0x1
+ 716 0087 06        		.byte	0x6
+ 717 0088 0000 0000 		.long	.LASF6
+ 718 008c 05        		.uleb128 0x5
+ 719 008d 02        		.byte	0x2
+ 720 008e 05        		.byte	0x5
+ 721 008f 0000 0000 		.long	.LASF7
+ 722 0093 05        		.uleb128 0x5
+ 723 0094 04        		.byte	0x4
+ 724 0095 07        		.byte	0x7
+ 725 0096 0000 0000 		.long	.LASF8
+ 726 009a 05        		.uleb128 0x5
+ 727 009b 04        		.byte	0x4
+ 728 009c 05        		.byte	0x5
+ 729 009d 0000 0000 		.long	.LASF9
+ 730 00a1 05        		.uleb128 0x5
+ 731 00a2 08        		.byte	0x8
+ 732 00a3 07        		.byte	0x7
+ 733 00a4 0000 0000 		.long	.LASF10
+ 734 00a8 05        		.uleb128 0x5
+ 735 00a9 08        		.byte	0x8
+ 736 00aa 05        		.byte	0x5
+ 737 00ab 0000 0000 		.long	.LASF11
+ 738 00af 05        		.uleb128 0x5
+ 739 00b0 02        		.byte	0x2
+ 740 00b1 07        		.byte	0x7
+ 741 00b2 0000 0000 		.long	.LASF12
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/ccQTzhMS.s 			page 14
+
+
+ 742 00b6 05        		.uleb128 0x5
+ 743 00b7 01        		.byte	0x1
+ 744 00b8 06        		.byte	0x6
+ 745 00b9 0000 0000 		.long	.LASF13
+ 746 00bd 07        		.uleb128 0x7
+ 747 00be 02        		.byte	0x2
+ 748 00bf 05        		.byte	0x5
+ 749 00c0 696E 7400 		.string	"int"
+ 750 00c4 08        		.uleb128 0x8
+ 751 00c5 01        		.byte	0x1
+ 752 00c6 0000 0000 		.long	.LASF18
+ 753 00ca 01        		.byte	0x1
+ 754 00cb 20        		.byte	0x20
+ 755 00cc 01        		.byte	0x1
+ 756 00cd 0000 0000 		.long	.LFB2
+ 757 00d1 0000 0000 		.long	.LFE2
+ 758 00d5 02        		.byte	0x2
+ 759 00d6 90        		.byte	0x90
+ 760 00d7 20        		.uleb128 0x20
+ 761 00d8 1D01 0000 		.long	0x11d
+ 762 00dc 09        		.uleb128 0x9
+ 763 00dd 0000 0000 		.long	.LASF14
+ 764 00e1 01        		.byte	0x1
+ 765 00e2 1F        		.byte	0x1f
+ 766 00e3 1D01 0000 		.long	0x11d
+ 767 00e7 0000 0000 		.long	.LLST1
+ 768 00eb 0A        		.uleb128 0xa
+ 769 00ec 0000 0000 		.long	.LASF15
+ 770 00f0 01        		.byte	0x1
+ 771 00f1 1F        		.byte	0x1f
+ 772 00f2 6600 0000 		.long	0x66
+ 773 00f6 06        		.byte	0x6
+ 774 00f7 66        		.byte	0x66
+ 775 00f8 93        		.byte	0x93
+ 776 00f9 01        		.uleb128 0x1
+ 777 00fa 67        		.byte	0x67
+ 778 00fb 93        		.byte	0x93
+ 779 00fc 01        		.uleb128 0x1
+ 780 00fd 0A        		.uleb128 0xa
+ 781 00fe 0000 0000 		.long	.LASF1
+ 782 0102 01        		.byte	0x1
+ 783 0103 1F        		.byte	0x1f
+ 784 0104 7300 0000 		.long	0x73
+ 785 0108 06        		.byte	0x6
+ 786 0109 64        		.byte	0x64
+ 787 010a 93        		.byte	0x93
+ 788 010b 01        		.uleb128 0x1
+ 789 010c 65        		.byte	0x65
+ 790 010d 93        		.byte	0x93
+ 791 010e 01        		.uleb128 0x1
+ 792 010f 0B        		.uleb128 0xb
+ 793 0110 0000 0000 		.long	.LASF16
+ 794 0114 01        		.byte	0x1
+ 795 0115 22        		.byte	0x22
+ 796 0116 6C00 0000 		.long	0x6c
+ 797 011a 01        		.byte	0x1
+ 798 011b 68        		.byte	0x68
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/ccQTzhMS.s 			page 15
+
+
+ 799 011c 00        		.byte	0x0
+ 800 011d 04        		.uleb128 0x4
+ 801 011e 02        		.byte	0x2
+ 802 011f 7A00 0000 		.long	0x7a
+ 803 0123 0C        		.uleb128 0xc
+ 804 0124 01        		.byte	0x1
+ 805 0125 0000 0000 		.long	.LASF21
+ 806 0129 01        		.byte	0x1
+ 807 012a 2F        		.byte	0x2f
+ 808 012b 01        		.byte	0x1
+ 809 012c 6C00 0000 		.long	0x6c
+ 810 0130 0000 0000 		.long	.LFB3
+ 811 0134 0000 0000 		.long	.LFE3
+ 812 0138 02        		.byte	0x2
+ 813 0139 90        		.byte	0x90
+ 814 013a 20        		.uleb128 0x20
+ 815 013b 6B01 0000 		.long	0x16b
+ 816 013f 09        		.uleb128 0x9
+ 817 0140 0000 0000 		.long	.LASF14
+ 818 0144 01        		.byte	0x1
+ 819 0145 2E        		.byte	0x2e
+ 820 0146 1D01 0000 		.long	0x11d
+ 821 014a 0000 0000 		.long	.LLST3
+ 822 014e 0D        		.uleb128 0xd
+ 823 014f 0000 0000 		.long	.LASF17
+ 824 0153 01        		.byte	0x1
+ 825 0154 30        		.byte	0x30
+ 826 0155 6C00 0000 		.long	0x6c
+ 827 0159 0000 0000 		.long	.LLST4
+ 828 015d 0B        		.uleb128 0xb
+ 829 015e 0000 0000 		.long	.LASF16
+ 830 0162 01        		.byte	0x1
+ 831 0163 32        		.byte	0x32
+ 832 0164 6C00 0000 		.long	0x6c
+ 833 0168 01        		.byte	0x1
+ 834 0169 64        		.byte	0x64
+ 835 016a 00        		.byte	0x0
+ 836 016b 08        		.uleb128 0x8
+ 837 016c 01        		.byte	0x1
+ 838 016d 0000 0000 		.long	.LASF19
+ 839 0171 01        		.byte	0x1
+ 840 0172 47        		.byte	0x47
+ 841 0173 01        		.byte	0x1
+ 842 0174 0000 0000 		.long	.LFB4
+ 843 0178 0000 0000 		.long	.LFE4
+ 844 017c 02        		.byte	0x2
+ 845 017d 90        		.byte	0x90
+ 846 017e 20        		.uleb128 0x20
+ 847 017f B201 0000 		.long	0x1b2
+ 848 0183 09        		.uleb128 0x9
+ 849 0184 0000 0000 		.long	.LASF14
+ 850 0188 01        		.byte	0x1
+ 851 0189 46        		.byte	0x46
+ 852 018a 1D01 0000 		.long	0x11d
+ 853 018e 0000 0000 		.long	.LLST6
+ 854 0192 0A        		.uleb128 0xa
+ 855 0193 0000 0000 		.long	.LASF20
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/ccQTzhMS.s 			page 16
+
+
+ 856 0197 01        		.byte	0x1
+ 857 0198 46        		.byte	0x46
+ 858 0199 7300 0000 		.long	0x73
+ 859 019d 06        		.byte	0x6
+ 860 019e 66        		.byte	0x66
+ 861 019f 93        		.byte	0x93
+ 862 01a0 01        		.uleb128 0x1
+ 863 01a1 67        		.byte	0x67
+ 864 01a2 93        		.byte	0x93
+ 865 01a3 01        		.uleb128 0x1
+ 866 01a4 0B        		.uleb128 0xb
+ 867 01a5 0000 0000 		.long	.LASF16
+ 868 01a9 01        		.byte	0x1
+ 869 01aa 49        		.byte	0x49
+ 870 01ab 6C00 0000 		.long	0x6c
+ 871 01af 01        		.byte	0x1
+ 872 01b0 64        		.byte	0x64
+ 873 01b1 00        		.byte	0x0
+ 874 01b2 0C        		.uleb128 0xc
+ 875 01b3 01        		.byte	0x1
+ 876 01b4 0000 0000 		.long	.LASF22
+ 877 01b8 01        		.byte	0x1
+ 878 01b9 60        		.byte	0x60
+ 879 01ba 01        		.byte	0x1
+ 880 01bb 6C00 0000 		.long	0x6c
+ 881 01bf 0000 0000 		.long	.LFB5
+ 882 01c3 0000 0000 		.long	.LFE5
+ 883 01c7 02        		.byte	0x2
+ 884 01c8 90        		.byte	0x90
+ 885 01c9 20        		.uleb128 0x20
+ 886 01ca 0702 0000 		.long	0x207
+ 887 01ce 09        		.uleb128 0x9
+ 888 01cf 0000 0000 		.long	.LASF14
+ 889 01d3 01        		.byte	0x1
+ 890 01d4 5F        		.byte	0x5f
+ 891 01d5 1D01 0000 		.long	0x11d
+ 892 01d9 0000 0000 		.long	.LLST8
+ 893 01dd 09        		.uleb128 0x9
+ 894 01de 0000 0000 		.long	.LASF23
+ 895 01e2 01        		.byte	0x1
+ 896 01e3 5F        		.byte	0x5f
+ 897 01e4 7300 0000 		.long	0x73
+ 898 01e8 0000 0000 		.long	.LLST9
+ 899 01ec 0D        		.uleb128 0xd
+ 900 01ed 0000 0000 		.long	.LASF16
+ 901 01f1 01        		.byte	0x1
+ 902 01f2 62        		.byte	0x62
+ 903 01f3 6C00 0000 		.long	0x6c
+ 904 01f7 0000 0000 		.long	.LLST10
+ 905 01fb 0E        		.uleb128 0xe
+ 906 01fc 0000 0000 		.long	.LASF17
+ 907 0200 01        		.byte	0x1
+ 908 0201 64        		.byte	0x64
+ 909 0202 6C00 0000 		.long	0x6c
+ 910 0206 00        		.byte	0x0
+ 911 0207 0C        		.uleb128 0xc
+ 912 0208 01        		.byte	0x1
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/ccQTzhMS.s 			page 17
+
+
+ 913 0209 0000 0000 		.long	.LASF24
+ 914 020d 01        		.byte	0x1
+ 915 020e 6B        		.byte	0x6b
+ 916 020f 01        		.byte	0x1
+ 917 0210 6C00 0000 		.long	0x6c
+ 918 0214 0000 0000 		.long	.LFB6
+ 919 0218 0000 0000 		.long	.LFE6
+ 920 021c 02        		.byte	0x2
+ 921 021d 90        		.byte	0x90
+ 922 021e 20        		.uleb128 0x20
+ 923 021f 4F02 0000 		.long	0x24f
+ 924 0223 09        		.uleb128 0x9
+ 925 0224 0000 0000 		.long	.LASF14
+ 926 0228 01        		.byte	0x1
+ 927 0229 6A        		.byte	0x6a
+ 928 022a 1D01 0000 		.long	0x11d
+ 929 022e 0000 0000 		.long	.LLST12
+ 930 0232 09        		.uleb128 0x9
+ 931 0233 0000 0000 		.long	.LASF17
+ 932 0237 01        		.byte	0x1
+ 933 0238 6A        		.byte	0x6a
+ 934 0239 6C00 0000 		.long	0x6c
+ 935 023d 0000 0000 		.long	.LLST13
+ 936 0241 0B        		.uleb128 0xb
+ 937 0242 0000 0000 		.long	.LASF16
+ 938 0246 01        		.byte	0x1
+ 939 0247 6D        		.byte	0x6d
+ 940 0248 6C00 0000 		.long	0x6c
+ 941 024c 01        		.byte	0x1
+ 942 024d 64        		.byte	0x64
+ 943 024e 00        		.byte	0x0
+ 944 024f 0C        		.uleb128 0xc
+ 945 0250 01        		.byte	0x1
+ 946 0251 0000 0000 		.long	.LASF25
+ 947 0255 01        		.byte	0x1
+ 948 0256 81        		.byte	0x81
+ 949 0257 01        		.byte	0x1
+ 950 0258 7300 0000 		.long	0x73
+ 951 025c 0000 0000 		.long	.LFB7
+ 952 0260 0000 0000 		.long	.LFE7
+ 953 0264 02        		.byte	0x2
+ 954 0265 90        		.byte	0x90
+ 955 0266 20        		.uleb128 0x20
+ 956 0267 9502 0000 		.long	0x295
+ 957 026b 09        		.uleb128 0x9
+ 958 026c 0000 0000 		.long	.LASF14
+ 959 0270 01        		.byte	0x1
+ 960 0271 80        		.byte	0x80
+ 961 0272 1D01 0000 		.long	0x11d
+ 962 0276 0000 0000 		.long	.LLST15
+ 963 027a 0D        		.uleb128 0xd
+ 964 027b 0000 0000 		.long	.LASF16
+ 965 027f 01        		.byte	0x1
+ 966 0280 83        		.byte	0x83
+ 967 0281 6C00 0000 		.long	0x6c
+ 968 0285 0000 0000 		.long	.LLST16
+ 969 0289 0E        		.uleb128 0xe
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/ccQTzhMS.s 			page 18
+
+
+ 970 028a 0000 0000 		.long	.LASF26
+ 971 028e 01        		.byte	0x1
+ 972 028f 86        		.byte	0x86
+ 973 0290 7300 0000 		.long	0x73
+ 974 0294 00        		.byte	0x0
+ 975 0295 0F        		.uleb128 0xf
+ 976 0296 01        		.byte	0x1
+ 977 0297 0000 0000 		.long	.LASF31
+ 978 029b 01        		.byte	0x1
+ 979 029c 8D        		.byte	0x8d
+ 980 029d 01        		.byte	0x1
+ 981 029e 0000 0000 		.long	.LFB8
+ 982 02a2 0000 0000 		.long	.LFE8
+ 983 02a6 02        		.byte	0x2
+ 984 02a7 90        		.byte	0x90
+ 985 02a8 20        		.uleb128 0x20
+ 986 02a9 09        		.uleb128 0x9
+ 987 02aa 0000 0000 		.long	.LASF14
+ 988 02ae 01        		.byte	0x1
+ 989 02af 8C        		.byte	0x8c
+ 990 02b0 1D01 0000 		.long	0x11d
+ 991 02b4 0000 0000 		.long	.LLST18
+ 992 02b8 0B        		.uleb128 0xb
+ 993 02b9 0000 0000 		.long	.LASF16
+ 994 02bd 01        		.byte	0x1
+ 995 02be 8F        		.byte	0x8f
+ 996 02bf 6C00 0000 		.long	0x6c
+ 997 02c3 01        		.byte	0x1
+ 998 02c4 68        		.byte	0x68
+ 999 02c5 00        		.byte	0x0
+ 1000 02c6 00        		.byte	0x0
+ 1001               		.section	.debug_abbrev
+ 1002 0000 01        		.uleb128 0x1
+ 1003 0001 11        		.uleb128 0x11
+ 1004 0002 01        		.byte	0x1
+ 1005 0003 25        		.uleb128 0x25
+ 1006 0004 0E        		.uleb128 0xe
+ 1007 0005 13        		.uleb128 0x13
+ 1008 0006 0B        		.uleb128 0xb
+ 1009 0007 03        		.uleb128 0x3
+ 1010 0008 0E        		.uleb128 0xe
+ 1011 0009 11        		.uleb128 0x11
+ 1012 000a 01        		.uleb128 0x1
+ 1013 000b 12        		.uleb128 0x12
+ 1014 000c 01        		.uleb128 0x1
+ 1015 000d 10        		.uleb128 0x10
+ 1016 000e 06        		.uleb128 0x6
+ 1017 000f 00        		.byte	0x0
+ 1018 0010 00        		.byte	0x0
+ 1019 0011 02        		.uleb128 0x2
+ 1020 0012 13        		.uleb128 0x13
+ 1021 0013 01        		.byte	0x1
+ 1022 0014 03        		.uleb128 0x3
+ 1023 0015 0E        		.uleb128 0xe
+ 1024 0016 0B        		.uleb128 0xb
+ 1025 0017 0B        		.uleb128 0xb
+ 1026 0018 3A        		.uleb128 0x3a
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/ccQTzhMS.s 			page 19
+
+
+ 1027 0019 0B        		.uleb128 0xb
+ 1028 001a 3B        		.uleb128 0x3b
+ 1029 001b 0B        		.uleb128 0xb
+ 1030 001c 01        		.uleb128 0x1
+ 1031 001d 13        		.uleb128 0x13
+ 1032 001e 00        		.byte	0x0
+ 1033 001f 00        		.byte	0x0
+ 1034 0020 03        		.uleb128 0x3
+ 1035 0021 0D        		.uleb128 0xd
+ 1036 0022 00        		.byte	0x0
+ 1037 0023 03        		.uleb128 0x3
+ 1038 0024 0E        		.uleb128 0xe
+ 1039 0025 3A        		.uleb128 0x3a
+ 1040 0026 0B        		.uleb128 0xb
+ 1041 0027 3B        		.uleb128 0x3b
+ 1042 0028 0B        		.uleb128 0xb
+ 1043 0029 49        		.uleb128 0x49
+ 1044 002a 13        		.uleb128 0x13
+ 1045 002b 38        		.uleb128 0x38
+ 1046 002c 0A        		.uleb128 0xa
+ 1047 002d 00        		.byte	0x0
+ 1048 002e 00        		.byte	0x0
+ 1049 002f 04        		.uleb128 0x4
+ 1050 0030 0F        		.uleb128 0xf
+ 1051 0031 00        		.byte	0x0
+ 1052 0032 0B        		.uleb128 0xb
+ 1053 0033 0B        		.uleb128 0xb
+ 1054 0034 49        		.uleb128 0x49
+ 1055 0035 13        		.uleb128 0x13
+ 1056 0036 00        		.byte	0x0
+ 1057 0037 00        		.byte	0x0
+ 1058 0038 05        		.uleb128 0x5
+ 1059 0039 24        		.uleb128 0x24
+ 1060 003a 00        		.byte	0x0
+ 1061 003b 0B        		.uleb128 0xb
+ 1062 003c 0B        		.uleb128 0xb
+ 1063 003d 3E        		.uleb128 0x3e
+ 1064 003e 0B        		.uleb128 0xb
+ 1065 003f 03        		.uleb128 0x3
+ 1066 0040 0E        		.uleb128 0xe
+ 1067 0041 00        		.byte	0x0
+ 1068 0042 00        		.byte	0x0
+ 1069 0043 06        		.uleb128 0x6
+ 1070 0044 16        		.uleb128 0x16
+ 1071 0045 00        		.byte	0x0
+ 1072 0046 03        		.uleb128 0x3
+ 1073 0047 0E        		.uleb128 0xe
+ 1074 0048 3A        		.uleb128 0x3a
+ 1075 0049 0B        		.uleb128 0xb
+ 1076 004a 3B        		.uleb128 0x3b
+ 1077 004b 0B        		.uleb128 0xb
+ 1078 004c 49        		.uleb128 0x49
+ 1079 004d 13        		.uleb128 0x13
+ 1080 004e 00        		.byte	0x0
+ 1081 004f 00        		.byte	0x0
+ 1082 0050 07        		.uleb128 0x7
+ 1083 0051 24        		.uleb128 0x24
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/ccQTzhMS.s 			page 20
+
+
+ 1084 0052 00        		.byte	0x0
+ 1085 0053 0B        		.uleb128 0xb
+ 1086 0054 0B        		.uleb128 0xb
+ 1087 0055 3E        		.uleb128 0x3e
+ 1088 0056 0B        		.uleb128 0xb
+ 1089 0057 03        		.uleb128 0x3
+ 1090 0058 08        		.uleb128 0x8
+ 1091 0059 00        		.byte	0x0
+ 1092 005a 00        		.byte	0x0
+ 1093 005b 08        		.uleb128 0x8
+ 1094 005c 2E        		.uleb128 0x2e
+ 1095 005d 01        		.byte	0x1
+ 1096 005e 3F        		.uleb128 0x3f
+ 1097 005f 0C        		.uleb128 0xc
+ 1098 0060 03        		.uleb128 0x3
+ 1099 0061 0E        		.uleb128 0xe
+ 1100 0062 3A        		.uleb128 0x3a
+ 1101 0063 0B        		.uleb128 0xb
+ 1102 0064 3B        		.uleb128 0x3b
+ 1103 0065 0B        		.uleb128 0xb
+ 1104 0066 27        		.uleb128 0x27
+ 1105 0067 0C        		.uleb128 0xc
+ 1106 0068 11        		.uleb128 0x11
+ 1107 0069 01        		.uleb128 0x1
+ 1108 006a 12        		.uleb128 0x12
+ 1109 006b 01        		.uleb128 0x1
+ 1110 006c 40        		.uleb128 0x40
+ 1111 006d 0A        		.uleb128 0xa
+ 1112 006e 01        		.uleb128 0x1
+ 1113 006f 13        		.uleb128 0x13
+ 1114 0070 00        		.byte	0x0
+ 1115 0071 00        		.byte	0x0
+ 1116 0072 09        		.uleb128 0x9
+ 1117 0073 05        		.uleb128 0x5
+ 1118 0074 00        		.byte	0x0
+ 1119 0075 03        		.uleb128 0x3
+ 1120 0076 0E        		.uleb128 0xe
+ 1121 0077 3A        		.uleb128 0x3a
+ 1122 0078 0B        		.uleb128 0xb
+ 1123 0079 3B        		.uleb128 0x3b
+ 1124 007a 0B        		.uleb128 0xb
+ 1125 007b 49        		.uleb128 0x49
+ 1126 007c 13        		.uleb128 0x13
+ 1127 007d 02        		.uleb128 0x2
+ 1128 007e 06        		.uleb128 0x6
+ 1129 007f 00        		.byte	0x0
+ 1130 0080 00        		.byte	0x0
+ 1131 0081 0A        		.uleb128 0xa
+ 1132 0082 05        		.uleb128 0x5
+ 1133 0083 00        		.byte	0x0
+ 1134 0084 03        		.uleb128 0x3
+ 1135 0085 0E        		.uleb128 0xe
+ 1136 0086 3A        		.uleb128 0x3a
+ 1137 0087 0B        		.uleb128 0xb
+ 1138 0088 3B        		.uleb128 0x3b
+ 1139 0089 0B        		.uleb128 0xb
+ 1140 008a 49        		.uleb128 0x49
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/ccQTzhMS.s 			page 21
+
+
+ 1141 008b 13        		.uleb128 0x13
+ 1142 008c 02        		.uleb128 0x2
+ 1143 008d 0A        		.uleb128 0xa
+ 1144 008e 00        		.byte	0x0
+ 1145 008f 00        		.byte	0x0
+ 1146 0090 0B        		.uleb128 0xb
+ 1147 0091 34        		.uleb128 0x34
+ 1148 0092 00        		.byte	0x0
+ 1149 0093 03        		.uleb128 0x3
+ 1150 0094 0E        		.uleb128 0xe
+ 1151 0095 3A        		.uleb128 0x3a
+ 1152 0096 0B        		.uleb128 0xb
+ 1153 0097 3B        		.uleb128 0x3b
+ 1154 0098 0B        		.uleb128 0xb
+ 1155 0099 49        		.uleb128 0x49
+ 1156 009a 13        		.uleb128 0x13
+ 1157 009b 02        		.uleb128 0x2
+ 1158 009c 0A        		.uleb128 0xa
+ 1159 009d 00        		.byte	0x0
+ 1160 009e 00        		.byte	0x0
+ 1161 009f 0C        		.uleb128 0xc
+ 1162 00a0 2E        		.uleb128 0x2e
+ 1163 00a1 01        		.byte	0x1
+ 1164 00a2 3F        		.uleb128 0x3f
+ 1165 00a3 0C        		.uleb128 0xc
+ 1166 00a4 03        		.uleb128 0x3
+ 1167 00a5 0E        		.uleb128 0xe
+ 1168 00a6 3A        		.uleb128 0x3a
+ 1169 00a7 0B        		.uleb128 0xb
+ 1170 00a8 3B        		.uleb128 0x3b
+ 1171 00a9 0B        		.uleb128 0xb
+ 1172 00aa 27        		.uleb128 0x27
+ 1173 00ab 0C        		.uleb128 0xc
+ 1174 00ac 49        		.uleb128 0x49
+ 1175 00ad 13        		.uleb128 0x13
+ 1176 00ae 11        		.uleb128 0x11
+ 1177 00af 01        		.uleb128 0x1
+ 1178 00b0 12        		.uleb128 0x12
+ 1179 00b1 01        		.uleb128 0x1
+ 1180 00b2 40        		.uleb128 0x40
+ 1181 00b3 0A        		.uleb128 0xa
+ 1182 00b4 01        		.uleb128 0x1
+ 1183 00b5 13        		.uleb128 0x13
+ 1184 00b6 00        		.byte	0x0
+ 1185 00b7 00        		.byte	0x0
+ 1186 00b8 0D        		.uleb128 0xd
+ 1187 00b9 34        		.uleb128 0x34
+ 1188 00ba 00        		.byte	0x0
+ 1189 00bb 03        		.uleb128 0x3
+ 1190 00bc 0E        		.uleb128 0xe
+ 1191 00bd 3A        		.uleb128 0x3a
+ 1192 00be 0B        		.uleb128 0xb
+ 1193 00bf 3B        		.uleb128 0x3b
+ 1194 00c0 0B        		.uleb128 0xb
+ 1195 00c1 49        		.uleb128 0x49
+ 1196 00c2 13        		.uleb128 0x13
+ 1197 00c3 02        		.uleb128 0x2
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/ccQTzhMS.s 			page 22
+
+
+ 1198 00c4 06        		.uleb128 0x6
+ 1199 00c5 00        		.byte	0x0
+ 1200 00c6 00        		.byte	0x0
+ 1201 00c7 0E        		.uleb128 0xe
+ 1202 00c8 34        		.uleb128 0x34
+ 1203 00c9 00        		.byte	0x0
+ 1204 00ca 03        		.uleb128 0x3
+ 1205 00cb 0E        		.uleb128 0xe
+ 1206 00cc 3A        		.uleb128 0x3a
+ 1207 00cd 0B        		.uleb128 0xb
+ 1208 00ce 3B        		.uleb128 0x3b
+ 1209 00cf 0B        		.uleb128 0xb
+ 1210 00d0 49        		.uleb128 0x49
+ 1211 00d1 13        		.uleb128 0x13
+ 1212 00d2 00        		.byte	0x0
+ 1213 00d3 00        		.byte	0x0
+ 1214 00d4 0F        		.uleb128 0xf
+ 1215 00d5 2E        		.uleb128 0x2e
+ 1216 00d6 01        		.byte	0x1
+ 1217 00d7 3F        		.uleb128 0x3f
+ 1218 00d8 0C        		.uleb128 0xc
+ 1219 00d9 03        		.uleb128 0x3
+ 1220 00da 0E        		.uleb128 0xe
+ 1221 00db 3A        		.uleb128 0x3a
+ 1222 00dc 0B        		.uleb128 0xb
+ 1223 00dd 3B        		.uleb128 0x3b
+ 1224 00de 0B        		.uleb128 0xb
+ 1225 00df 27        		.uleb128 0x27
+ 1226 00e0 0C        		.uleb128 0xc
+ 1227 00e1 11        		.uleb128 0x11
+ 1228 00e2 01        		.uleb128 0x1
+ 1229 00e3 12        		.uleb128 0x12
+ 1230 00e4 01        		.uleb128 0x1
+ 1231 00e5 40        		.uleb128 0x40
+ 1232 00e6 0A        		.uleb128 0xa
+ 1233 00e7 00        		.byte	0x0
+ 1234 00e8 00        		.byte	0x0
+ 1235 00e9 00        		.byte	0x0
+ 1236               		.section	.debug_pubnames,"",@progbits
+ 1237 0000 9800 0000 		.long	0x98
+ 1238 0004 0200      		.word	0x2
+ 1239 0006 0000 0000 		.long	.Ldebug_info0
+ 1240 000a C702 0000 		.long	0x2c7
+ 1241 000e C400 0000 		.long	0xc4
+ 1242 0012 6275 6666 		.string	"bufferInit"
+ 1242      6572 496E 
+ 1242      6974 00
+ 1243 001d 2301 0000 		.long	0x123
+ 1244 0021 6275 6666 		.string	"bufferGetFromFront"
+ 1244      6572 4765 
+ 1244      7446 726F 
+ 1244      6D46 726F 
+ 1244      6E74 00
+ 1245 0034 6B01 0000 		.long	0x16b
+ 1246 0038 6275 6666 		.string	"bufferDumpFromFront"
+ 1246      6572 4475 
+ 1246      6D70 4672 
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/ccQTzhMS.s 			page 23
+
+
+ 1246      6F6D 4672 
+ 1246      6F6E 7400 
+ 1247 004c B201 0000 		.long	0x1b2
+ 1248 0050 6275 6666 		.string	"bufferGetAtIndex"
+ 1248      6572 4765 
+ 1248      7441 7449 
+ 1248      6E64 6578 
+ 1248      00
+ 1249 0061 0702 0000 		.long	0x207
+ 1250 0065 6275 6666 		.string	"bufferAddToEnd"
+ 1250      6572 4164 
+ 1250      6454 6F45 
+ 1250      6E64 00
+ 1251 0074 4F02 0000 		.long	0x24f
+ 1252 0078 6275 6666 		.string	"bufferIsNotFull"
+ 1252      6572 4973 
+ 1252      4E6F 7446 
+ 1252      756C 6C00 
+ 1253 0088 9502 0000 		.long	0x295
+ 1254 008c 6275 6666 		.string	"bufferFlush"
+ 1254      6572 466C 
+ 1254      7573 6800 
+ 1255 0098 0000 0000 		.long	0x0
+ 1256               		.section	.debug_aranges,"",@progbits
+ 1257 0000 1C00 0000 		.long	0x1c
+ 1258 0004 0200      		.word	0x2
+ 1259 0006 0000 0000 		.long	.Ldebug_info0
+ 1260 000a 04        		.byte	0x4
+ 1261 000b 00        		.byte	0x0
+ 1262 000c 0000      		.word	0x0
+ 1263 000e 0000      		.word	0x0
+ 1264 0010 0000 0000 		.long	.Ltext0
+ 1265 0014 6001 0000 		.long	.Letext0-.Ltext0
+ 1266 0018 0000 0000 		.long	0x0
+ 1267 001c 0000 0000 		.long	0x0
+ 1268               		.section	.debug_line
+ 1269 0000 CA01 0000 		.long	.LELT0-.LSLT0
+ 1270               	.LSLT0:
+ 1271 0004 0200      		.word	0x2
+ 1272 0006 3200 0000 		.long	.LELTP0-.LASLTP0
+ 1273               	.LASLTP0:
+ 1274 000a 01        		.byte	0x1
+ 1275 000b 01        		.byte	0x1
+ 1276 000c F6        		.byte	0xf6
+ 1277 000d F5        		.byte	0xf5
+ 1278 000e 0A        		.byte	0xa
+ 1279 000f 00        		.byte	0x0
+ 1280 0010 01        		.byte	0x1
+ 1281 0011 01        		.byte	0x1
+ 1282 0012 01        		.byte	0x1
+ 1283 0013 01        		.byte	0x1
+ 1284 0014 00        		.byte	0x0
+ 1285 0015 00        		.byte	0x0
+ 1286 0016 00        		.byte	0x0
+ 1287 0017 01        		.byte	0x1
+ 1288 0018 433A 5C41 		.ascii	"C:\\AVRlib"
+ 1288      5652 6C69 
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/ccQTzhMS.s 			page 24
+
+
+ 1288      62
+ 1289 0021 00        		.byte	0
+ 1290 0022 00        		.byte	0x0
+ 1291 0023 6275 6666 		.string	"buffer.c"
+ 1291      6572 2E63 
+ 1291      00
+ 1292 002c 01        		.uleb128 0x1
+ 1293 002d 00        		.uleb128 0x0
+ 1294 002e 00        		.uleb128 0x0
+ 1295 002f 6275 6666 		.string	"buffer.h"
+ 1295      6572 2E68 
+ 1295      00
+ 1296 0038 01        		.uleb128 0x1
+ 1297 0039 00        		.uleb128 0x0
+ 1298 003a 00        		.uleb128 0x0
+ 1299 003b 00        		.byte	0x0
+ 1300               	.LELTP0:
+ 1301 003c 00        		.byte	0x0
+ 1302 003d 05        		.uleb128 0x5
+ 1303 003e 02        		.byte	0x2
+ 1304 003f 0000 0000 		.long	.LM1
+ 1305 0043 33        		.byte	0x33
+ 1306 0044 00        		.byte	0x0
+ 1307 0045 05        		.uleb128 0x5
+ 1308 0046 02        		.byte	0x2
+ 1309 0047 0000 0000 		.long	.LM2
+ 1310 004b 16        		.byte	0x16
+ 1311 004c 00        		.byte	0x0
+ 1312 004d 05        		.uleb128 0x5
+ 1313 004e 02        		.byte	0x2
+ 1314 004f 0000 0000 		.long	.LM3
+ 1315 0053 16        		.byte	0x16
+ 1316 0054 00        		.byte	0x0
+ 1317 0055 05        		.uleb128 0x5
+ 1318 0056 02        		.byte	0x2
+ 1319 0057 0000 0000 		.long	.LM4
+ 1320 005b 15        		.byte	0x15
+ 1321 005c 00        		.byte	0x0
+ 1322 005d 05        		.uleb128 0x5
+ 1323 005e 02        		.byte	0x2
+ 1324 005f 0000 0000 		.long	.LM5
+ 1325 0063 16        		.byte	0x16
+ 1326 0064 00        		.byte	0x0
+ 1327 0065 05        		.uleb128 0x5
+ 1328 0066 02        		.byte	0x2
+ 1329 0067 0000 0000 		.long	.LM6
+ 1330 006b 15        		.byte	0x15
+ 1331 006c 00        		.byte	0x0
+ 1332 006d 05        		.uleb128 0x5
+ 1333 006e 02        		.byte	0x2
+ 1334 006f 0000 0000 		.long	.LM7
+ 1335 0073 16        		.byte	0x16
+ 1336 0074 00        		.byte	0x0
+ 1337 0075 05        		.uleb128 0x5
+ 1338 0076 02        		.byte	0x2
+ 1339 0077 0000 0000 		.long	.LM8
+ 1340 007b 15        		.byte	0x15
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/ccQTzhMS.s 			page 25
+
+
+ 1341 007c 00        		.byte	0x0
+ 1342 007d 05        		.uleb128 0x5
+ 1343 007e 02        		.byte	0x2
+ 1344 007f 0000 0000 		.long	.LM9
+ 1345 0083 18        		.byte	0x18
+ 1346 0084 00        		.byte	0x0
+ 1347 0085 05        		.uleb128 0x5
+ 1348 0086 02        		.byte	0x2
+ 1349 0087 0000 0000 		.long	.LM10
+ 1350 008b 17        		.byte	0x17
+ 1351 008c 00        		.byte	0x0
+ 1352 008d 05        		.uleb128 0x5
+ 1353 008e 02        		.byte	0x2
+ 1354 008f 0000 0000 		.long	.LM11
+ 1355 0093 16        		.byte	0x16
+ 1356 0094 00        		.byte	0x0
+ 1357 0095 05        		.uleb128 0x5
+ 1358 0096 02        		.byte	0x2
+ 1359 0097 0000 0000 		.long	.LM12
+ 1360 009b 17        		.byte	0x17
+ 1361 009c 00        		.byte	0x0
+ 1362 009d 05        		.uleb128 0x5
+ 1363 009e 02        		.byte	0x2
+ 1364 009f 0000 0000 		.long	.LM13
+ 1365 00a3 16        		.byte	0x16
+ 1366 00a4 00        		.byte	0x0
+ 1367 00a5 05        		.uleb128 0x5
+ 1368 00a6 02        		.byte	0x2
+ 1369 00a7 0000 0000 		.long	.LM14
+ 1370 00ab 15        		.byte	0x15
+ 1371 00ac 00        		.byte	0x0
+ 1372 00ad 05        		.uleb128 0x5
+ 1373 00ae 02        		.byte	0x2
+ 1374 00af 0000 0000 		.long	.LM15
+ 1375 00b3 16        		.byte	0x16
+ 1376 00b4 00        		.byte	0x0
+ 1377 00b5 05        		.uleb128 0x5
+ 1378 00b6 02        		.byte	0x2
+ 1379 00b7 0000 0000 		.long	.LM16
+ 1380 00bb 16        		.byte	0x16
+ 1381 00bc 00        		.byte	0x0
+ 1382 00bd 05        		.uleb128 0x5
+ 1383 00be 02        		.byte	0x2
+ 1384 00bf 0000 0000 		.long	.LM17
+ 1385 00c3 17        		.byte	0x17
+ 1386 00c4 00        		.byte	0x0
+ 1387 00c5 05        		.uleb128 0x5
+ 1388 00c6 02        		.byte	0x2
+ 1389 00c7 0000 0000 		.long	.LM18
+ 1390 00cb 17        		.byte	0x17
+ 1391 00cc 00        		.byte	0x0
+ 1392 00cd 05        		.uleb128 0x5
+ 1393 00ce 02        		.byte	0x2
+ 1394 00cf 0000 0000 		.long	.LM19
+ 1395 00d3 17        		.byte	0x17
+ 1396 00d4 00        		.byte	0x0
+ 1397 00d5 05        		.uleb128 0x5
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/ccQTzhMS.s 			page 26
+
+
+ 1398 00d6 02        		.byte	0x2
+ 1399 00d7 0000 0000 		.long	.LM20
+ 1400 00db 16        		.byte	0x16
+ 1401 00dc 00        		.byte	0x0
+ 1402 00dd 05        		.uleb128 0x5
+ 1403 00de 02        		.byte	0x2
+ 1404 00df 0000 0000 		.long	.LM21
+ 1405 00e3 17        		.byte	0x17
+ 1406 00e4 00        		.byte	0x0
+ 1407 00e5 05        		.uleb128 0x5
+ 1408 00e6 02        		.byte	0x2
+ 1409 00e7 0000 0000 		.long	.LM22
+ 1410 00eb 17        		.byte	0x17
+ 1411 00ec 00        		.byte	0x0
+ 1412 00ed 05        		.uleb128 0x5
+ 1413 00ee 02        		.byte	0x2
+ 1414 00ef 0000 0000 		.long	.LM23
+ 1415 00f3 15        		.byte	0x15
+ 1416 00f4 00        		.byte	0x0
+ 1417 00f5 05        		.uleb128 0x5
+ 1418 00f6 02        		.byte	0x2
+ 1419 00f7 0000 0000 		.long	.LM24
+ 1420 00fb 16        		.byte	0x16
+ 1421 00fc 00        		.byte	0x0
+ 1422 00fd 05        		.uleb128 0x5
+ 1423 00fe 02        		.byte	0x2
+ 1424 00ff 0000 0000 		.long	.LM25
+ 1425 0103 16        		.byte	0x16
+ 1426 0104 00        		.byte	0x0
+ 1427 0105 05        		.uleb128 0x5
+ 1428 0106 02        		.byte	0x2
+ 1429 0107 0000 0000 		.long	.LM26
+ 1430 010b 19        		.byte	0x19
+ 1431 010c 00        		.byte	0x0
+ 1432 010d 05        		.uleb128 0x5
+ 1433 010e 02        		.byte	0x2
+ 1434 010f 0000 0000 		.long	.LM27
+ 1435 0113 17        		.byte	0x17
+ 1436 0114 00        		.byte	0x0
+ 1437 0115 05        		.uleb128 0x5
+ 1438 0116 02        		.byte	0x2
+ 1439 0117 0000 0000 		.long	.LM28
+ 1440 011b 15        		.byte	0x15
+ 1441 011c 00        		.byte	0x0
+ 1442 011d 05        		.uleb128 0x5
+ 1443 011e 02        		.byte	0x2
+ 1444 011f 0000 0000 		.long	.LM29
+ 1445 0123 17        		.byte	0x17
+ 1446 0124 00        		.byte	0x0
+ 1447 0125 05        		.uleb128 0x5
+ 1448 0126 02        		.byte	0x2
+ 1449 0127 0000 0000 		.long	.LM30
+ 1450 012b 16        		.byte	0x16
+ 1451 012c 00        		.byte	0x0
+ 1452 012d 05        		.uleb128 0x5
+ 1453 012e 02        		.byte	0x2
+ 1454 012f 0000 0000 		.long	.LM31
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/ccQTzhMS.s 			page 27
+
+
+ 1455 0133 18        		.byte	0x18
+ 1456 0134 00        		.byte	0x0
+ 1457 0135 05        		.uleb128 0x5
+ 1458 0136 02        		.byte	0x2
+ 1459 0137 0000 0000 		.long	.LM32
+ 1460 013b 16        		.byte	0x16
+ 1461 013c 00        		.byte	0x0
+ 1462 013d 05        		.uleb128 0x5
+ 1463 013e 02        		.byte	0x2
+ 1464 013f 0000 0000 		.long	.LM33
+ 1465 0143 17        		.byte	0x17
+ 1466 0144 00        		.byte	0x0
+ 1467 0145 05        		.uleb128 0x5
+ 1468 0146 02        		.byte	0x2
+ 1469 0147 0000 0000 		.long	.LM34
+ 1470 014b 16        		.byte	0x16
+ 1471 014c 00        		.byte	0x0
+ 1472 014d 05        		.uleb128 0x5
+ 1473 014e 02        		.byte	0x2
+ 1474 014f 0000 0000 		.long	.LM35
+ 1475 0153 16        		.byte	0x16
+ 1476 0154 00        		.byte	0x0
+ 1477 0155 05        		.uleb128 0x5
+ 1478 0156 02        		.byte	0x2
+ 1479 0157 0000 0000 		.long	.LM36
+ 1480 015b 17        		.byte	0x17
+ 1481 015c 00        		.byte	0x0
+ 1482 015d 05        		.uleb128 0x5
+ 1483 015e 02        		.byte	0x2
+ 1484 015f 0000 0000 		.long	.LM37
+ 1485 0163 16        		.byte	0x16
+ 1486 0164 00        		.byte	0x0
+ 1487 0165 05        		.uleb128 0x5
+ 1488 0166 02        		.byte	0x2
+ 1489 0167 0000 0000 		.long	.LM38
+ 1490 016b 16        		.byte	0x16
+ 1491 016c 00        		.byte	0x0
+ 1492 016d 05        		.uleb128 0x5
+ 1493 016e 02        		.byte	0x2
+ 1494 016f 0000 0000 		.long	.LM39
+ 1495 0173 19        		.byte	0x19
+ 1496 0174 00        		.byte	0x0
+ 1497 0175 05        		.uleb128 0x5
+ 1498 0176 02        		.byte	0x2
+ 1499 0177 0000 0000 		.long	.LM40
+ 1500 017b 17        		.byte	0x17
+ 1501 017c 00        		.byte	0x0
+ 1502 017d 05        		.uleb128 0x5
+ 1503 017e 02        		.byte	0x2
+ 1504 017f 0000 0000 		.long	.LM41
+ 1505 0183 17        		.byte	0x17
+ 1506 0184 00        		.byte	0x0
+ 1507 0185 05        		.uleb128 0x5
+ 1508 0186 02        		.byte	0x2
+ 1509 0187 0000 0000 		.long	.LM42
+ 1510 018b 16        		.byte	0x16
+ 1511 018c 00        		.byte	0x0
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/ccQTzhMS.s 			page 28
+
+
+ 1512 018d 05        		.uleb128 0x5
+ 1513 018e 02        		.byte	0x2
+ 1514 018f 0000 0000 		.long	.LM43
+ 1515 0193 19        		.byte	0x19
+ 1516 0194 00        		.byte	0x0
+ 1517 0195 05        		.uleb128 0x5
+ 1518 0196 02        		.byte	0x2
+ 1519 0197 0000 0000 		.long	.LM44
+ 1520 019b 16        		.byte	0x16
+ 1521 019c 00        		.byte	0x0
+ 1522 019d 05        		.uleb128 0x5
+ 1523 019e 02        		.byte	0x2
+ 1524 019f 0000 0000 		.long	.LM45
+ 1525 01a3 17        		.byte	0x17
+ 1526 01a4 00        		.byte	0x0
+ 1527 01a5 05        		.uleb128 0x5
+ 1528 01a6 02        		.byte	0x2
+ 1529 01a7 0000 0000 		.long	.LM46
+ 1530 01ab 16        		.byte	0x16
+ 1531 01ac 00        		.byte	0x0
+ 1532 01ad 05        		.uleb128 0x5
+ 1533 01ae 02        		.byte	0x2
+ 1534 01af 0000 0000 		.long	.LM47
+ 1535 01b3 16        		.byte	0x16
+ 1536 01b4 00        		.byte	0x0
+ 1537 01b5 05        		.uleb128 0x5
+ 1538 01b6 02        		.byte	0x2
+ 1539 01b7 0000 0000 		.long	.LM48
+ 1540 01bb 16        		.byte	0x16
+ 1541 01bc 00        		.byte	0x0
+ 1542 01bd 05        		.uleb128 0x5
+ 1543 01be 02        		.byte	0x2
+ 1544 01bf 0000 0000 		.long	.LM49
+ 1545 01c3 15        		.byte	0x15
+ 1546 01c4 00        		.byte	0x0
+ 1547 01c5 05        		.uleb128 0x5
+ 1548 01c6 02        		.byte	0x2
+ 1549 01c7 0000 0000 		.long	.Letext0
+ 1550 01cb 00        		.byte	0x0
+ 1551 01cc 01        		.uleb128 0x1
+ 1552 01cd 01        		.byte	0x1
+ 1553               	.LELT0:
+ 1554 01ce 1600 0000 		.section	.debug_str,"MS",@progbits,1
+ 1554      0200 1000 
+ 1554      0000 0101 
+ 1554      FB0E 0A00 
+ 1554      0101 0101 
+ 1555               	.LASF16:
+ 1556 0000 5F73 7265 		.string	"_sreg"
+ 1556      6700 
+ 1557               	.LASF25:
+ 1558 0006 6275 6666 		.string	"bufferIsNotFull"
+ 1558      6572 4973 
+ 1558      4E6F 7446 
+ 1558      756C 6C00 
+ 1559               	.LASF15:
+ 1560 0016 7374 6172 		.string	"start"
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/ccQTzhMS.s 			page 29
+
+
+ 1560      7400 
+ 1561               	.LASF17:
+ 1562 001c 6461 7461 		.string	"data"
+ 1562      00
+ 1563               	.LASF1:
+ 1564 0021 7369 7A65 		.string	"size"
+ 1564      00
+ 1565               	.LASF29:
+ 1566 0026 7374 7275 		.string	"struct_cBuffer"
+ 1566      6374 5F63 
+ 1566      4275 6666 
+ 1566      6572 00
+ 1567               	.LASF8:
+ 1568 0035 6C6F 6E67 		.string	"long unsigned int"
+ 1568      2075 6E73 
+ 1568      6967 6E65 
+ 1568      6420 696E 
+ 1568      7400 
+ 1569               	.LASF5:
+ 1570 0047 7368 6F72 		.string	"short unsigned int"
+ 1570      7420 756E 
+ 1570      7369 676E 
+ 1570      6564 2069 
+ 1570      6E74 00
+ 1571               	.LASF27:
+ 1572 005a 474E 5520 		.string	"GNU C 4.3.3"
+ 1572      4320 342E 
+ 1572      332E 3300 
+ 1573               	.LASF0:
+ 1574 0066 6461 7461 		.string	"dataptr"
+ 1574      7074 7200 
+ 1575               	.LASF20:
+ 1576 006e 6E75 6D62 		.string	"numbytes"
+ 1576      7974 6573 
+ 1576      00
+ 1577               	.LASF18:
+ 1578 0077 6275 6666 		.string	"bufferInit"
+ 1578      6572 496E 
+ 1578      6974 00
+ 1579               	.LASF30:
+ 1580 0082 6342 7566 		.string	"cBuffer"
+ 1580      6665 7200 
+ 1581               	.LASF4:
+ 1582 008a 756E 7369 		.string	"unsigned char"
+ 1582      676E 6564 
+ 1582      2063 6861 
+ 1582      7200 
+ 1583               	.LASF12:
+ 1584 0098 756E 7369 		.string	"unsigned int"
+ 1584      676E 6564 
+ 1584      2069 6E74 
+ 1584      00
+ 1585               	.LASF10:
+ 1586 00a5 6C6F 6E67 		.string	"long long unsigned int"
+ 1586      206C 6F6E 
+ 1586      6720 756E 
+ 1586      7369 676E 
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/ccQTzhMS.s 			page 30
+
+
+ 1586      6564 2069 
+ 1587               	.LASF24:
+ 1588 00bc 6275 6666 		.string	"bufferAddToEnd"
+ 1588      6572 4164 
+ 1588      6454 6F45 
+ 1588      6E64 00
+ 1589               	.LASF19:
+ 1590 00cb 6275 6666 		.string	"bufferDumpFromFront"
+ 1590      6572 4475 
+ 1590      6D70 4672 
+ 1590      6F6D 4672 
+ 1590      6F6E 7400 
+ 1591               	.LASF2:
+ 1592 00df 6461 7461 		.string	"datalength"
+ 1592      6C65 6E67 
+ 1592      7468 00
+ 1593               	.LASF11:
+ 1594 00ea 6C6F 6E67 		.string	"long long int"
+ 1594      206C 6F6E 
+ 1594      6720 696E 
+ 1594      7400 
+ 1595               	.LASF26:
+ 1596 00f8 6279 7465 		.string	"bytesleft"
+ 1596      736C 6566 
+ 1596      7400 
+ 1597               	.LASF28:
+ 1598 0102 433A 5C41 		.string	"C:\\AVRlib/buffer.c"
+ 1598      5652 6C69 
+ 1598      622F 6275 
+ 1598      6666 6572 
+ 1598      2E63 00
+ 1599               	.LASF13:
+ 1600 0115 6368 6172 		.string	"char"
+ 1600      00
+ 1601               	.LASF23:
+ 1602 011a 696E 6465 		.string	"index"
+ 1602      7800 
+ 1603               	.LASF7:
+ 1604 0120 7368 6F72 		.string	"short int"
+ 1604      7420 696E 
+ 1604      7400 
+ 1605               	.LASF14:
+ 1606 012a 6275 6666 		.string	"buffer"
+ 1606      6572 00
+ 1607               	.LASF22:
+ 1608 0131 6275 6666 		.string	"bufferGetAtIndex"
+ 1608      6572 4765 
+ 1608      7441 7449 
+ 1608      6E64 6578 
+ 1608      00
+ 1609               	.LASF9:
+ 1610 0142 6C6F 6E67 		.string	"long int"
+ 1610      2069 6E74 
+ 1610      00
+ 1611               	.LASF3:
+ 1612 014b 6461 7461 		.string	"dataindex"
+ 1612      696E 6465 
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/ccQTzhMS.s 			page 31
+
+
+ 1612      7800 
+ 1613               	.LASF6:
+ 1614 0155 7369 676E 		.string	"signed char"
+ 1614      6564 2063 
+ 1614      6861 7200 
+ 1615               	.LASF21:
+ 1616 0161 6275 6666 		.string	"bufferGetFromFront"
+ 1616      6572 4765 
+ 1616      7446 726F 
+ 1616      6D46 726F 
+ 1616      6E74 00
+ 1617               	.LASF31:
+ 1618 0174 6275 6666 		.string	"bufferFlush"
+ 1618      6572 466C 
+ 1618      7573 6800 
+GAS LISTING C:\Users\Jason\AppData\Local\Temp/ccQTzhMS.s 			page 32
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 buffer.c
+C:\Users\Jason\AppData\Local\Temp/ccQTzhMS.s:2      *ABS*:0000003f __SREG__
+C:\Users\Jason\AppData\Local\Temp/ccQTzhMS.s:3      *ABS*:0000003e __SP_H__
+C:\Users\Jason\AppData\Local\Temp/ccQTzhMS.s:4      *ABS*:0000003d __SP_L__
+C:\Users\Jason\AppData\Local\Temp/ccQTzhMS.s:5      *ABS*:00000034 __CCP__
+C:\Users\Jason\AppData\Local\Temp/ccQTzhMS.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\Jason\AppData\Local\Temp/ccQTzhMS.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\Jason\AppData\Local\Temp/ccQTzhMS.s:18     .text:00000000 bufferInit
+C:\Users\Jason\AppData\Local\Temp/ccQTzhMS.s:54     .text:0000001a bufferGetFromFront
+C:\Users\Jason\AppData\Local\Temp/ccQTzhMS.s:137    .text:00000080 bufferDumpFromFront
+C:\Users\Jason\AppData\Local\Temp/ccQTzhMS.s:200    .text:000000c4 bufferGetAtIndex
+C:\Users\Jason\AppData\Local\Temp/ccQTzhMS.s:243    .text:000000ec bufferAddToEnd
+C:\Users\Jason\AppData\Local\Temp/ccQTzhMS.s:311    .text:0000013a bufferIsNotFull
+C:\Users\Jason\AppData\Local\Temp/ccQTzhMS.s:343    .text:00000152 bufferFlush
+
+UNDEFINED SYMBOLS
+__udivmodhi4
