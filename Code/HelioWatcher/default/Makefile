@@ -37,7 +37,7 @@ HEX_EEPROM_FLAGS += --change-section-lma .eeprom=0 --no-change-warnings
 
 
 ## Library Directories
-LIBDIRS = -L"C:\Users\Jason\Documents\My Dropbox\HelioWatcher\Code\HelioWatcher\AVRlib" 
+LIBDIRS = -L"C:\Users\Jeremy Blum\Dropbox\08 Senior Second Semester (11-12)\ECE 4760 - Designing with Microcontrollers\HelioWatcher\Code\HelioWatcher\AVRlib" 
 
 ## Libraries
 LIBS = -lm 

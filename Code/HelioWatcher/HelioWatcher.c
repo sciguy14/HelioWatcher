@@ -125,15 +125,23 @@ char rot_string[10];
 #define BASE_Z -180 //z-axis measurement without being on a screw
 #define SCREW_THRESHOLD 20 //threshold to detect screw
 
+//Custom screw thresholds -- can use this to calibrate for local magnetic interference.
 #define USE_CUSTOM_SCREW_THRESHOLDS 1
 
-int custom_screw_thresholds[12] = {-115, -110, -100, -64, -40, -40, 100, 0, -80, -105, -120, -125};
+//Be careful with this, make sure it's the same size as the number of screws you have.
+//int custom_screw_thresholds[12] = {-115, -110, -100, -64, -40, -40, 100, 0, -80, -105, -120, -125};
 
-#define SCREW_INITIAL_JUMP 75 //time for initial move, to get away from current screw
+//int screw values - we're gonna try doing hardcoded values.
+int custom_screw_thresholds[24] = {-158, -350, -145, 14, -152, -276, -156, -295, -163, -90, -106, -124, -211, -388, 8, -461, -148, -227, -178, -313, -145, -27, -137, -322};
+
+//screw theshold - +/- around the above defined values.
+int custom_screw_error = 20;
+
+#define SCREW_INITIAL_JUMP 40 //time for initial move, to get away from current screw
 #define SCREW_BIG_JUMP 75 //not in use
-#define SCREW_INCREMENT_TIME 25 //time for each move
+#define SCREW_INCREMENT_TIME 20 //time for each move
 
-#define MOVES_THRESHOLD 4 //Number of moves to make before considering stopping
+#define MOVES_THRESHOLD 1 //Number of moves to make before considering stopping
 
 //Raw Accelerometer values
 int16_t raw_x = 0;
@@ -148,20 +156,22 @@ int16_t raw_z = 0;
 #define MIN_ANGLE 30
 #define MAX_ANGLE 52
 
-#define OPT_ANGLE_MOVE_THRESHOLD 2 //how far away the optimum angle must be to move there
+#define OPT_ANGLE_MOVE_THRESHOLD 5 //how far away the optimum angle must be to move there
+#define OPT_ANGLE_SAFETY_THRESHOLD 4 //max distance between curr angle and max/min angle to justify moving
 
 #define QUAD_ANGLE_STAY_THRESHOLD 0 //how low the quad adjust value can be before moving
-#define QUAD_ANGLE_MOVE_THRESHOLD 4 //how high the quad adjust value must be to force moving
+#define QUAD_ANGLE_MOVE_THRESHOLD 9999 //how high the quad adjust value must be to force moving
 
 #define QUAD_ANGLE_INC_ADJUST 1000 //how much to adjust if quad forces a move
 
-#define MIN_ROT -90
-#define MAX_ROT 90
+#define MIN_ROT -180
+#define MAX_ROT 180
 
 #define QUAD_ROT_STAY_THRESHOLD 0 //how low the quad adjust value can be before moving
-#define QUAD_ROT_MOVE_THRESHOLD 10 //how high the quad adjust value must be to force moving
+#define QUAD_ROT_MOVE_THRESHOLD 9999 //how high the quad adjust value must be to force moving
 
-#define ANGLE_BETWEEN_SCREWS 30
+#define NUM_SCREWS 24
+#define ANGLE_BETWEEN_SCREWS 15
 
 #define QUAD_ADJ_SCALE 1 //how much to multiple quad adjust values by to convert to angle
 
@@ -170,8 +180,8 @@ int16_t raw_z = 0;
 #define WHEEL_DELAY_US 3000
 
 //settings for Torch Mode!
-#define TORCH_SAFETY 2
-#define TORCH_THRESHOLD 5
+#define TORCH_SAFETY 10
+#define TORCH_THRESHOLD 35
 #define TORCH_ANGLE 5
 #define TORCH_ROT 0.3
 
@@ -184,7 +194,7 @@ volatile int UTC_sec = 55;
 volatile int UTC_msec = 0;
 int UTC_offset = -4;
 int UTC_month = 5;
-int UTC_day = 2;
+int UTC_day = 14;
 int UTC_year = 2012;
 
 //buffers used for a few different things
@@ -618,13 +628,13 @@ int rotToNearestScrew(float rot)
 	int screw = 0;
 	if(rot < 0)
 	{
-		screw = round((rot)*(-6.0/180.0))+6;
+		screw = round(NUM_SCREWS*(1-(rot/-360.0)));
 	}
 	else
 	{
-		screw = round(rot*(6.0/180.0));
+		screw = round(rot*((NUM_SCREWS/2.0)/180.0));
 	}
-	if(screw == 12)
+	if(screw == NUM_SCREWS)
 	{
 		screw = 0;
 	}
@@ -635,13 +645,13 @@ int rotToNearestScrew(float rot)
 float screwToRot(int screw)
 {
 	float rot;
-	if(screw <= 6)
+	if(screw <= (NUM_SCREWS/2))
 	{
-		rot = (float)(screw*(180.0/6.0));
+		rot = (float)(screw*(360.0/NUM_SCREWS));
 	}
 	else
 	{
-		rot = (float)((screw-6)*(-180.0/6.0));
+		rot = (float)(-360.0*(1.0-((float)screw/(float)NUM_SCREWS)));
 	}
 	return rot;
 }
@@ -649,7 +659,7 @@ float screwToRot(int screw)
 //Increment the screw value (i.e., one clockwise turn)
 void incrementCurrScrew(void)
 {
-	if(curr_screw<11)
+	if(curr_screw<(NUM_SCREWS-1))
 	{
 		curr_screw++;
 	}
@@ -664,7 +674,7 @@ void decrementCurrScrew(void)
 {
 	if(curr_screw == 0)
 	{
-		curr_screw = 11;
+		curr_screw = NUM_SCREWS-1;
 	}
 	else
 	{
@@ -681,7 +691,7 @@ int distanceBetweenScrewsCW(int screw1, int screw2)
 	}
 	else
 	{
-		return ((screw2+12)-screw1);
+		return ((screw2+NUM_SCREWS)-screw1);
 	}
 }
 
@@ -694,7 +704,7 @@ int distanceBetweenScrewsCCW(int screw1, int screw2)
 	}
 	else
 	{
-		return ((screw1+12)-screw2);
+		return ((screw1+NUM_SCREWS)-screw2);
 	}
 }
 
@@ -936,7 +946,8 @@ void goToAngle(int valNum)
 	}
 	else
 	{
-		fprintf(stdout, "I'm sorry Dave, I'm afraid I can't do that...\r\n");
+		if (dataLog == 0)
+			fprintf(stdout, "I'm sorry Dave, I'm afraid I can't do that...\r\n");
 	}
 }
 
@@ -990,22 +1001,18 @@ void goRight(int duration)
 
 void goToScrewCW(void)
 {
+	/*
 	if(dataLog==0)
 		fprintf(stdout, "starting screw: %u\r\n", curr_screw);
 	
 	int numMoves = 0;
-	if(curr_screw == 0 || curr_screw == 3 || curr_screw == 6 || curr_screw == 9)
-	{
-		goLeft(SCREW_BIG_JUMP);
-	}
-	else
-	{
-		goLeft(SCREW_INITIAL_JUMP);
-	}
+
+	goLeft(SCREW_INITIAL_JUMP);
+
 	updateRot();
 	int activeScrewThresh;
 	int nextScrew;
-	if(curr_screw == 11)
+	if(curr_screw == (NUM_SCREWS-1))
 		nextScrew = 0;
 	else
 		nextScrew = curr_screw+1;
@@ -1013,53 +1020,61 @@ void goToScrewCW(void)
 		activeScrewThresh = custom_screw_thresholds[nextScrew];
 	else
 		activeScrewThresh = (BASE_Z + SCREW_THRESHOLD);
-	while (raw_z < activeScrewThresh || numMoves < MOVES_THRESHOLD)
+
+	while (raw_z > activeScrewThresh+custom_screw_error || raw_z <activeScrewThresh-custom_screw_error || numMoves < MOVES_THRESHOLD)
 	{
 		goLeft(SCREW_INCREMENT_TIME);
 		updateRot();
 		numMoves++;
 	}
+	*/
+
 	incrementCurrScrew();
 	
+	/*	
 	if(dataLog==0)
 		fprintf(stdout, "final screw: %u\r\n", curr_screw);
+	*/
+	goLeft(150);
 }
 
 void goToScrewCCW(void)
 {
+	/*
 	if(dataLog==0)
 		fprintf(stdout, "starting screw: %u\r\n", curr_screw);
 	
 	int numMoves = 0;
-	if(curr_screw == 0 || curr_screw == 3 || curr_screw == 6 || curr_screw == 9)
-	{
-		goRight(SCREW_BIG_JUMP);
-	}
-	else
-	{
-		goRight(SCREW_INITIAL_JUMP);
-	}
+
+	goRight(SCREW_INITIAL_JUMP);
+	
 	updateRot();
 	int activeScrewThresh;
 	int nextScrew;
 	if(curr_screw == 0)
-		nextScrew = 11;
+		nextScrew = (NUM_SCREWS-1);
 	else
 		nextScrew = curr_screw-1;
 	if(USE_CUSTOM_SCREW_THRESHOLDS)
 		activeScrewThresh = custom_screw_thresholds[nextScrew];
 	else
 		activeScrewThresh = (BASE_Z + SCREW_THRESHOLD);
-	while (raw_z < activeScrewThresh || numMoves < MOVES_THRESHOLD)
+
+	while (raw_z > activeScrewThresh+custom_screw_error || raw_z <activeScrewThresh-custom_screw_error || numMoves < MOVES_THRESHOLD)
 	{
 		goRight(SCREW_INCREMENT_TIME);
 		updateRot();
 		numMoves++;
 	}
+	*/
+
 	decrementCurrScrew();
 	
+	/*
 	if(dataLog==0)
 		fprintf(stdout, "final screw: %u\r\n", curr_screw);
+	*/
+	goRight(150);
 }
 
 void goToScrew(int screw)
@@ -1067,7 +1082,7 @@ void goToScrew(int screw)
 	if(dataLog==0)
 		fprintf(stdout, "on a journey from screw %u to screw %u\r\n", curr_screw, screw);
 	
-	if (screw >=0 && screw < 12)
+	if (screw >=0 && screw < NUM_SCREWS)
 	{
 		if (distanceBetweenScrewsCW(curr_screw, screw) < distanceBetweenScrewsCCW(curr_screw, screw))
 		{
@@ -1086,7 +1101,8 @@ void goToScrew(int screw)
 	}
 	else
 	{
-		fprintf(stdout, "I'm sorry Dave, I'm afraid I can't do that...\r\n");
+		if (dataLog == 0)
+			fprintf(stdout, "I'm sorry Dave, I'm afraid I can't do that...\r\n");
 	}
 }
 
@@ -1117,7 +1133,8 @@ void goToRot(float rot_wanted)
 	}
 	else
 	{
-		fprintf(stdout, "I'm sorry Dave, I'm afraid I can't do that...\r\n");
+		if (dataLog == 0)
+			fprintf(stdout, "I'm sorry Dave, I'm afraid I can't do that...\r\n");
 	}
 }
 
@@ -1342,7 +1359,7 @@ void optimize2()
 	opt_screw = rotToNearestScrew(opt_rot);
 	
 	if(dataLog==0)
-		fprintf(stdout, "results: opt_rot %f, opt_angle %f\r\n", opt_rot, opt_angle);
+		fprintf(stdout, "results: opt_rot %f, opt_angle %f, opt_screw %d\r\n", opt_rot, opt_angle, opt_screw);
 
 }
 
@@ -1361,11 +1378,11 @@ void considerMoving(void)
 	
 	if((opt_screw != curr_screw) && (abs(getAdjDeg(Lvoltage,Rvoltage))>=QUAD_ROT_STAY_THRESHOLD))
 	{
-		if(screwToRot(opt_screw) < MIN_ROT)
+		/*if(screwToRot(opt_screw) < MIN_ROT)
 			goToScrew(rotToNearestScrew(MIN_ROT));
 		else if(screwToRot(opt_screw) > MAX_ROT)
 			goToScrew(rotToNearestScrew(MAX_ROT));
-		else
+		else*/
 			goToScrew(opt_screw);
 	}
 	else if(abs(getAdjDeg(Lvoltage,Rvoltage))>QUAD_ROT_MOVE_THRESHOLD)
@@ -1387,9 +1404,9 @@ void considerMoving(void)
 	
 	if((abs(opt_angle-accelToAngle(curr_accel))>OPT_ANGLE_MOVE_THRESHOLD) && (abs(getAdjDeg(Dvoltage,Uvoltage))>QUAD_ANGLE_STAY_THRESHOLD))
 	{
-		if(opt_angle < MIN_ANGLE)
+		if((opt_angle < MIN_ANGLE) && abs(accelToAngle(curr_accel)-MIN_ANGLE)>OPT_ANGLE_SAFETY_THRESHOLD)
 			goToAngle(MIN_ANGLE);
-		else if(opt_angle > MAX_ANGLE)
+		else if(opt_angle > MAX_ANGLE && abs(accelToAngle(curr_accel)-MAX_ANGLE)>OPT_ANGLE_SAFETY_THRESHOLD)
 			goToAngle(MAX_ANGLE);
 		else
 			goToAngle(opt_angle);
